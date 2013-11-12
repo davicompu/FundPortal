@@ -83,7 +83,7 @@
         }
 
         function navigateToCreateView() {
-            return router.navigate('#/funds/create/' + vm.selectedAreaId());
+            return router.navigate('#/funds/create?areaid=' + vm.selectedAreaId());
         }
         //#endregion
     });

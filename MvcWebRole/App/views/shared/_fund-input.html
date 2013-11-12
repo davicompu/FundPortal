@@ -160,6 +160,13 @@
 
             <div class="row">
                 <div class="large-12 columns">
+                    <span class="error-message" 
+                        data-bind="visible: errorMessage, text: errorMessage"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-12 columns">
                     <span class="text-button" data-bind="click: $parent.saveItem">Save
                     </span>
                 </div>

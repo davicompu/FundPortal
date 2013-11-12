@@ -23,10 +23,10 @@
         return vm;
 
         //#region Internal methods.
-        function activate(areaid) {
+        function activate(queryString) {
             logger.log('Create fund view activated', null, 'funds/create', false);
             vm.item(datacontext.createItem({
-                AreaId: areaid
+                AreaId: queryString.areaid
             }));
             return true;
         }

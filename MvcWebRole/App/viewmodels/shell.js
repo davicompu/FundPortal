@@ -20,7 +20,7 @@
                 { route: 'areas/edit/:id', moduleId: 'viewmodels/areas/edit' },
 
                 { route: 'funds/browse', moduleId: 'viewmodels/funds/browse' },
-                { route: 'funds/create/:areaid', moduleId: 'viewmodels/funds/create' },
+                { route: 'funds/create', moduleId: 'viewmodels/funds/create' },
                 { route: 'funds/edit/:id', moduleId: 'viewmodels/funds/edit' }
             ]).buildNavigationModel();
 

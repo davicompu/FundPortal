@@ -1,0 +1,35 @@
+﻿<div class="row collapse">
+    <div class="large-12 columns">
+        <p>
+            <strong>
+                <a data-bind="fastlink: '/#/areas/create'">Create a new area</a>
+            </strong>
+        </p>
+
+        <table class="bumped">
+            <thead>
+                <tr>
+                    <th>Areas</th>
+                    <th class="right" data-bind="fastbutton: toggleRemoveItems">
+                        <i data-bind="css: removeItems() ? 'fi-x' : 'fi-trash'"></i>
+                    </th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: items">
+                <tr>
+                    <td colspan="2">
+                        <a data-bind="fastbutton: $parent.selectItem">
+                            <span data-bind="text: Name"></span>
+                            <span class="right" data-bind="ifnot: $parent.removeItems">&#62</span>
+                            <span class="right" data-bind="if: $parent.removeItems">
+                                <i class="fi-trash"></i>
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="error" data-bind="text: error"></p>
+    </div>
+</div>

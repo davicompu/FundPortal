@@ -1,0 +1,58 @@
+.bumped {
+	border-style: none;
+	width: 100%;
+
+	thead {
+		background-color: $secondary-color;
+
+		tr {
+			th {
+				font-size: 1.10em;
+
+				i {
+					cursor: pointer;
+				}
+			}
+		}
+	}
+
+	tbody {
+		cursor: pointer;
+
+		tr {
+			background: #FFF;
+
+			td {
+				padding: 0;
+
+				a {
+					color: $body-font-color;
+					display: block;
+					height: 100%;
+					padding: 0.5625em 0.625em;
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	tr {
+		border-color: $panel-border-color;
+		border-style: solid;
+		border-width: emCalc(1px) 0 emCalc(1px) 0;
+	}
+
+	td {
+		font-size: 1.25em;
+	}
+
+	.button {
+		margin: 0;
+	}
+}
+
+.bumpedUp {
+	@extend .bumped;
+	border-bottom: hidden;
+	margin-bottom: 0;
+}

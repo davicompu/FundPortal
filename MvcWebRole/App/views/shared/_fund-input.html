@@ -1,0 +1,170 @@
+﻿<div class="row view-background">
+    <div class="large-12 columns">
+        <section data-bind="with: item">
+            <h1 class="view-headline">Fund information</h1>
+
+            <fieldset>
+                <legend>Current status</legend>
+
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label for="Status">
+                            Status
+                        </label>
+                        <select name="Status" data-bind="value: Status">
+                            <option value="1">Draft</option>
+                            <option value="2">Final</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label for="Number">
+                            Fund number
+                        </label>
+                        <input name="Number" type="text" data-bind="value: Number" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-8 columns">
+                        <label for="Title">
+                            Fund title
+                        </label>
+                        <input name="Title" type="text" data-bind="value: Title" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label for="ResponsiblePerson">
+                            Responsible person
+                        </label>
+                        <input name="ResponsiblePerson" type="text" data-bind="value: ResponsiblePerson" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label for="CurrentBudget">
+                            Current fiscal year approved budget
+                        </label>
+                        <input name="CurrentBudget" type="text" data-bind="value: CurrentBudget" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label for="ProjectedExpenditures">
+                            YTD and projected expenditures through June 30
+                        </label>
+                        <input name="ProjectedExpenditures" type="text" data-bind="value: ProjectedExpenditures" />
+                    </div>
+                </div>
+
+                <div class="row panel">
+                    <div class="large-6 columns">
+                        <span>Projected year-end balance :
+                            <strong data-bind="text: projectedYearEndBalance"></strong>
+                        </span>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Next year projected budget</legend>
+
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label for="BudgetAdjustment">
+                            Projected increase or decrease
+                        </label>
+                        <input name="BudgetAdjustment" type="text" data-bind="value: BudgetAdjustment" />
+                    </div>
+                </div>
+
+                <div class="row panel">
+                    <div class="large-12 columns">
+                        <span>Requested budget: 
+                            <strong data-bind="text: requestedBudget"></strong>
+                        </span>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Supporting information</legend>
+
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="Description">
+                            Brief description of the program and types of expenses paid for by this fund
+                        </label>
+                        <textarea name="Description" data-bind="value: Description"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="BudgetAdjustmentNote">
+                            Reason for increase or decrease in the requested budget
+                        </label>
+                        <textarea name="BudgetAdjustmentNote" data-bind="value: BudgetAdjustmentNote"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Attachments</legend>
+
+                <div class="row">
+                    <div class="large-12 columns">
+                        <a href="#">Download template</a>
+                    </div>
+                </div>
+
+                <form name="fileInputForm">
+                    <input type="file" name="files[]" multiple
+                        data-bind="event: { onload: window.fileInputForm.reset(), change: $parent.postFiles }" />
+                </form>
+
+                <div class="row">
+                    <div class="large-12 columns">
+                        <table data-bind="visible: FileUploads().length > 0">
+                            <thead>
+                                <tr>
+                                    <th>File</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: FileUploads">
+                                <tr>
+                                    <td>
+                                        <a data-bind="visible: Id, text: OriginalFileName,
+                                        attr: { href: Source }"></a>
+                                        <span class="error-message" 
+                                            data-bind="visible: errorMessage, text: errorMessage"></span>
+                                    </td>
+                                    <td data-bind="click: $root.removeFileUpload">
+                                        <i class="fi-trash"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p data-bind="visible: FileUploads().length === 0">No files uploaded</p>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="row">
+                <div class="large-12 columns">
+                    <span class="text-button" data-bind="click: $parent.saveItem">Save
+                    </span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>

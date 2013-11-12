@@ -1,0 +1,61 @@
+﻿<div class="row collapse">
+    <div class="large-12 columns">
+        <div class="row">
+            <div class="large-12 columns">
+                <p>
+                    <strong>
+                        <a data-bind="click: navigateToCreateView">Create a new fund</a>
+                    </strong>
+                </p>
+            </div>
+        </div>
+
+        <p class="error" data-bind="if: error, text: error"></p>
+
+        <div class="row">
+            <div class="large-4 columns">
+                <label for="Area">
+                    Area
+                </label>
+                <select name="Area" data-bind="foreach: areas, value: selectedAreaId">
+                    <option data-bind="attr: { value: Id }, text: Name"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-12 columns">
+                <table data-bind="visible: !noItemsToShow()">
+                    <thead>
+                        <tr>
+                            <th>Fund number</th>
+                            <th>Fund title</th>
+                            <th>Responsible person</th>
+                            <th>Current fiscal year approved budget</th>
+                            <th>YTD and projected expenditures through June 30</th>
+                            <th>Requested budget</th>
+                            <th>Variance</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: items">
+                        <tr>
+                            <td>
+                                <a data-bind="fastlink: '#/funds/edit/' + Id, text: Number"></a>
+                            </td>
+                            <td data-bind="text: Title"></td>
+                            <td data-bind="text: ResponsiblePerson"></td>
+                            <td data-bind="text: CurrentBudget"></td>
+                            <td data-bind="text: ProjectedExpenditures"></td>
+                            <td data-bind="text: requestedBudget"></td>
+                            <td data-bind="text: variance"></td>
+                            <td data-bind="text: statusText"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <h4 class="text-center" data-bind="if: noItemsToShow">No records</h4>
+    </div>
+</div>

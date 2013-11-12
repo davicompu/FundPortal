@@ -1,0 +1,13 @@
+html {
+	background-color: #E0E0E0;
+	background-image: url("images/kindajean.png");
+}
+
+.view-background {
+	background-color: $view-bg;
+	padding-bottom: emCalc(20px);
+}
+
+.error-message {
+	color: $alert-color;
+}

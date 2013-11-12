@@ -42,11 +42,25 @@
         }
 
         function removeFileUpload(item) {
-            vm.item().FileUploads.remove(item);
+            var indexOfUpload = vm.item().FileUploads.indexOf(item);
+
+            // Mark upload item for removal when parent item is saved.
+            vm.item().FileUploads()[indexOfUpload].destroy(true);
         }
 
-        // TODO: Client-side validation
+        // TODO: Client-side validation.
         function saveItem(item) {
+            // Remove uploads with errors.
+            var removedUploadItems = item.FileUploads.remove(function (uploadItem) {
+                return uploadItem.errorMessage();
+            });
+
+            // Remove uploads marked to destroy.
+            removedUploadItems.push(item.FileUploads.remove(function (uploadItem) {
+                return uploadItem.destroy();
+            }));
+
+            // TODO: Delete uploads marked as destroy from server on save.
             datacontext.saveNewItem(
                 item,
                 [addNewItemToBrowseVM, navigateToBrowseView]);

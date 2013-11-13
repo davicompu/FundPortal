@@ -139,7 +139,7 @@
                                 </tr>
                             </thead>
                             <tbody data-bind="foreach: FileUploads">
-                                <tr>
+                                <tr data-bind="visible: !destroy()">
                                     <td>
                                         <a data-bind="visible: Id, text: OriginalFileName,
                                         attr: { href: Source }"></a>

@@ -51,16 +51,20 @@
         // TODO: Client-side validation.
         function saveItem(item) {
             // Remove uploads with errors.
-            var removedUploadItems = item.FileUploads.remove(function (uploadItem) {
+            var uploadItemsWithErrors = item.FileUploads.remove(function (uploadItem) {
                 return uploadItem.errorMessage();
             });
 
-            // Remove uploads marked to destroy.
-            removedUploadItems.push(item.FileUploads.remove(function (uploadItem) {
+            // Remove uploads marked with destroy.
+            var removedUploadItems = item.FileUploads.remove(function (uploadItem) {
                 return uploadItem.destroy();
-            }));
+            });
 
-            // TODO: Delete uploads marked as destroy from server on save.
+            // Delete removed files from server.
+            $.each(removedUploadItems, function (index, value) {
+                fileuploadDatacontext.deleteItem(value);
+            });
+
             datacontext.saveNewItem(
                 item,
                 [addNewItemToBrowseVM, navigateToBrowseView]);

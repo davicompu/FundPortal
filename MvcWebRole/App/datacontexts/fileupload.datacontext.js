@@ -28,9 +28,10 @@
             }
         }
 
-        function deleteItem(data, itemObservableArray, successFunctions) {
+        function deleteItem(data, successFunctions) {
             contextHelper.clearErrorMessage(data);
-            return contextHelper.ajaxRequest('delete', itemApi('delete', data.Id))
+            // Use query string due to period in the file name.
+            return contextHelper.ajaxRequest('delete', '/api/fileupload/delete?id=' + data.Id)
                 .done(getSucceeded)
                 .fail(getFailed);
 

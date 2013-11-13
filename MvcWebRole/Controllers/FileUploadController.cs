@@ -66,7 +66,7 @@ namespace MvcWebRole.Controllers
             // Add filename to srcList
             newFile = new FileUpload
             {
-                Id = guid,
+                Id = fileName,
                 DateTimeCreated = new DateTimeOffset(DateTime.UtcNow),
                 Source = src,
                 ContentType = file.ContentType,
@@ -79,6 +79,33 @@ namespace MvcWebRole.Controllers
             blockBlob.UploadFromStream(file.InputStream);
 
             return Request.CreateResponse(HttpStatusCode.Created, newFile);
+        }
+
+        // DELETE api/fileupload
+        public HttpResponseMessage Delete(string id)
+        {
+            CloudBlockBlob blockBlob;
+
+            try
+            {
+                // Retrieve reference to a blob named "myblob.txt".
+                blockBlob = blobContainer.GetBlockBlobReference(id);
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, e.Message);
+            }
+
+            try
+            {
+                // Delete the blob.
+                blockBlob.Delete();
+                return Request.CreateResponse(HttpStatusCode.NoContent, "application/json");
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
         }
 
         #region Private helper methods

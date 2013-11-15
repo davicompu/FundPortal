@@ -1,5 +1,5 @@
-﻿define(['datamodels/fund.model', 'services/contexthelper'],
-    function (model, contextHelper) {
+﻿define(['datamodels/fund.model', 'services/contexthelper', 'datamodels/area.model'],
+    function (model, contextHelper, areaModel) {
         //#region Public api.
         var datacontext = {
             createItem: createItem,
@@ -8,6 +8,7 @@
             saveNewItem: saveNewItem,
             saveChangedItem: saveChangedItem,
             deleteItem: deleteItem,
+            getFundSubtotalsForArea: getFundSubtotalsForArea,
         };
 
         return datacontext;
@@ -52,6 +53,27 @@
 
             function getFailed(result) {
                 itemObservableArray(undefined);
+                errorObservable('An error occurred during your request: '
+                    + result.statusText);
+            }
+        }
+
+        function getFundSubtotalsForArea(itemObservable, errorObservable, action, data, successFunctions) {
+            return $.getJSON(itemApi(action), data)
+                .done(getSucceeded)
+                .fail(getFailed);
+
+            function getSucceeded(result) {
+                var subtotalData = new areaModel.ItemSubtotals(JSON.parse(result)[0]);
+                itemObservable(subtotalData);
+
+                $.each(successFunctions || [], function (index, value) {
+                    value(subtotalData);
+                });
+            }
+
+            function getFailed(result) {
+                //itemObservableArray(undefined);
                 errorObservable('An error occurred during your request: '
                     + result.statusText);
             }

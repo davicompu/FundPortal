@@ -48,6 +48,7 @@
         function getFundDataForAreas(areas) {
             return $.each(vm.items(), function (index, value) {
                 getFundsForArea(value);
+                getSubtotalsForArea(value);
             });
         }
 
@@ -56,6 +57,16 @@
                 area.funds,
                 vm.error,
                 'getbyarea',
+                {
+                    areaId: area.Id
+                });
+        }
+
+        function getSubtotalsForArea(area) {
+            return fundDatacontext.getFundSubtotalsForArea(
+                area.subtotals,
+                vm.error,
+                'getfundsubtotalsbyarea',
                 {
                     areaId: area.Id
                 });

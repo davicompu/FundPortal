@@ -28,6 +28,13 @@
                     <td data-bind="text: variance"></td>
                 </tr>
                 <!--/ko-->
+                <tr data-bind="with: subtotals">
+                    <td colspan="3"></td>
+                    <td data-bind="text: currentBudget"></td>
+                    <td data-bind="text: projectedExpenditures"></td>
+                    <td data-bind="text: requestedBudget"></td>
+                    <td data-bind="text: variance"></td>
+                </tr>
             </tbody>
             <!--/ko-->
         </table>

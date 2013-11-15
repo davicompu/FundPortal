@@ -47,7 +47,7 @@
                 vm.error,
                 action,
                 null,
-                [updateNoItemsToShowProperty])
+                [updateNoItemsToShowProperty]);
         }
 
         function updateNoItemsToShowProperty() {
@@ -73,7 +73,7 @@
 
         function deleteItem(item) {
             return datacontext.deleteItem(item,
-                [removeDeletedItemsFromView, updateNoItemsToShowProperty])
+                [removeDeletedItemsFromView, updateNoItemsToShowProperty]);
         }
 
         function removeDeletedItemsFromView(item) {

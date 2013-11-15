@@ -22,9 +22,9 @@
             self.Status = data.Status;
             self.Description = data.Description;
             self.ResponsiblePerson = data.ResponsiblePerson;
-            self.CurrentBudget = ko.observable(data.CurrentBudget || 0);
-            self.ProjectedExpenditures = ko.observable(data.ProjectedExpenditures || 0);
-            self.BudgetAdjustment = ko.observable(data.BudgetAdjustment || 0);
+            self.CurrentBudget = ko.observable(data.CurrentBudget || 0).extend({ numeric: 0 });
+            self.ProjectedExpenditures = ko.observable(data.ProjectedExpenditures || 0).extend({ numeric: 0 });
+            self.BudgetAdjustment = ko.observable(data.BudgetAdjustment || 0).extend({ numeric: 0 });
             self.BudgetAdjustmentNote = data.BudgetAdjustmentNote;
             self.FiscalYear = data.FiscalYear;
             self.FileUploads = initFiles(self, data.FileUploads);
@@ -33,7 +33,7 @@
             //#region Non-persisted properties
             self.errorMessage = ko.observable();
             self.requestedBudget = ko.computed(function () {
-                return parseFloat(self.CurrentBudget()) + parseFloat(self.BudgetAdjustment());
+                return self.CurrentBudget() + self.BudgetAdjustment();
             });
             self.projectedYearEndBalance = ko.computed(function () {
                 return self.CurrentBudget() - self.ProjectedExpenditures();

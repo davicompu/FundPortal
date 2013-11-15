@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using FundEntities;
+using MongoDB.Bson;
 using MongoRepository;
 
 namespace MvcWebRole.Controllers
@@ -37,6 +38,64 @@ namespace MvcWebRole.Controllers
                 .Where(f => f.AreaId == areaId);
 
             return Request.CreateResponse<IEnumerable<Fund>>(HttpStatusCode.OK, funds);
+        }
+
+
+        // GET api/fund/getfundsubtotalsbyarea
+        public HttpResponseMessage GetFundSubtotalsByArea(string areaId)
+        {
+            // TODO: Verify access to area.
+            var match = new BsonDocument
+            {
+                {
+                    "$match", new BsonDocument
+                    {
+                        {
+                            "AreaId", areaId
+                        }
+                    }
+                }
+            };
+
+            var group = new BsonDocument 
+            {
+                { 
+                    "$group", new BsonDocument 
+                    {
+                        {
+                            "_id", "$AreaId"
+                        },
+                        {
+                            "currentBudget", new BsonDocument 
+                            {
+                                {
+                                    "$sum", "$CurrentBudget"
+                                }
+                            }
+                        },
+                        {
+                            "projectedExpenditures", new BsonDocument 
+                            {
+                                {
+                                    "$sum", "$ProjectedExpenditures"
+                                }
+                            }
+                        },
+                        {
+                            "budgetAdjustment", new BsonDocument 
+                            {
+                                {
+                                    "$sum", "$BudgetAdjustment"
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            var pipeline = new[] { match, group };
+            var result = repository.Collection.Aggregate(pipeline);
+
+            return Request.CreateResponse(HttpStatusCode.OK, result.ResultDocuments.ToJson());
         }
 
         // POST api/fund

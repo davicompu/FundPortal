@@ -28,11 +28,11 @@ namespace FundEntities
 
         public string ResponsiblePerson { get; set; }
 
-        public decimal CurrentBudget { get; set; }
+        public int CurrentBudget { get; set; }
 
-        public decimal ProjectedExpenditures { get; set; }
+        public int ProjectedExpenditures { get; set; }
 
-        public decimal BudgetAdjustment { get; set; }
+        public int BudgetAdjustment { get; set; }
 
         public string BudgetAdjustmentNote { get; set; }
 

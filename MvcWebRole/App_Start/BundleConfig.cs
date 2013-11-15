@@ -33,6 +33,7 @@ namespace MvcWebRole
                       "~/Scripts/jquery-{version}.js",
                       "~/Scripts/knockout-{version}.js",
                       "~/Scripts/app/knockout.custom.bindings.js",
+                      "~/Scripts/app/knockout.custom.extenders.js",
                       "~/Scripts/sammy-{version}.js",
                       "~/Scripts/toastr.js",
                       "~/Scripts/moment.js",

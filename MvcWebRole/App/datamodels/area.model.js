@@ -20,6 +20,7 @@
 
             //#region Non-persisted properties
             self.errorMessage = ko.observable();
+            self.funds = ko.observableArray([]);
             //#endregion
 
             //#region Public methods

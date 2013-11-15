@@ -205,9 +205,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AreaController.cs" />
-    <Compile Include="Controllers\FileUploadController.cs" />
-    <Compile Include="Controllers\FundController.cs" />
+    <Compile Include="Controllers\Api\AreaController.cs" />
+    <Compile Include="Controllers\Api\FileUploadController.cs" />
+    <Compile Include="Controllers\Api\FundController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\RequireHttpsAttributeWebApi.cs" />
@@ -236,6 +236,7 @@
     <Content Include="App\viewmodels\funds\browse.js" />
     <Content Include="App\viewmodels\funds\create.js" />
     <Content Include="App\viewmodels\funds\edit.js" />
+    <Content Include="App\viewmodels\reports\funding-request.js" />
     <Content Include="App\viewmodels\shell.js" />
     <Content Include="App\views\areas\browse.html" />
     <Content Include="App\views\areas\create.html" />
@@ -243,6 +244,7 @@
     <Content Include="App\views\funds\browse.html" />
     <Content Include="App\views\funds\create.html" />
     <Content Include="App\views\funds\edit.html" />
+    <Content Include="App\views\reports\funding-request.html" />
     <Content Include="App\views\shared\_area-input.html" />
     <Content Include="App\views\shared\_fund-input.html" />
     <Content Include="App\views\shell.html" />
@@ -368,6 +370,7 @@
     <Content Include="Content\fonts\foundation-icons.woff" />
     <Content Include="Content\fonts\Signika-Regular.woff" />
     <Content Include="Content\fonts\YanoneKaffeesatz-Regular.woff" />
+    <Content Include="Scripts\app\knockout.custom.extenders.js" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />

@@ -1,0 +1,36 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fund number</th>
+                    <th>Fund title</th>
+                    <th>Responsible person</th>
+                    <th>Current fiscal year approved budget</th>
+                    <th>YTD and projected expenditures through June 30</th>
+                    <th>Requested budget</th>
+                    <th>Variance</th>
+                </tr>
+            </thead>
+            <!-- ko foreach: items -->
+            <tbody>
+                <tr>
+                    <td colspan="7" class="text-center" data-bind="text: Name"></td>
+                </tr>
+                <!-- ko foreach: funds -->
+                <tr>
+                    <td data-bind="text: Number"></td>
+                    <td data-bind="text: Title"></td>
+                    <td data-bind="text: ResponsiblePerson"></td>
+                    <td data-bind="text: CurrentBudget"></td>
+                    <td data-bind="text: ProjectedExpenditures"></td>
+                    <td data-bind="text: requestedBudget"></td>
+                    <td data-bind="text: variance"></td>
+                </tr>
+                <!--/ko-->
+            </tbody>
+            <!--/ko-->
+        </table>
+    </div>
+</div>
+

@@ -27,7 +27,7 @@
 
         vm.selectedAreaId.subscribe(function (newValue) {
             getItems('getbyarea');
-        })
+        });
 
         return vm;
 
@@ -68,7 +68,7 @@
                 {
                     areaId: vm.selectedAreaId(),
                 },
-                [updateNoItemsToShowProperty])
+                [updateNoItemsToShowProperty]);
         }
 
         function updateNoItemsToShowProperty() {

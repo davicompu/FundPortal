@@ -42,10 +42,12 @@
         }
 
         function removeFileUpload(item) {
-            var indexOfUpload = vm.item().FileUploads.indexOf(item);
+            if (confirm('Are you sure you want to delete this item?')) {
+                var indexOfUpload = vm.item().FileUploads.indexOf(item);
 
-            // Mark upload item for removal when parent item is saved.
-            vm.item().FileUploads()[indexOfUpload].destroy(true);
+                // Mark upload item for removal when parent item is saved.
+                vm.item().FileUploads()[indexOfUpload].destroy(true);
+            }
         }
 
         // TODO: Client-side validation.

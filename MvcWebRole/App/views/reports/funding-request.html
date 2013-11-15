@@ -29,7 +29,7 @@
                 </tr>
                 <!--/ko-->
                 <tr data-bind="with: subtotals">
-                    <td colspan="3"></td>
+                    <td colspan="3" data-bind="text: 'Total for ' + $parent.Name"></td>
                     <td data-bind="text: currentBudget"></td>
                     <td data-bind="text: projectedExpenditures"></td>
                     <td data-bind="text: requestedBudget"></td>

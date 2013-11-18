@@ -37,6 +37,15 @@
                 </tr>
             </tbody>
             <!--/ko-->
+            <tbody>
+                <tr data-bind="with: grandTotals">
+                    <td colspan="3">Grand totals</td>
+                    <td data-bind="text: currentBudget"></td>
+                    <td data-bind="text: projectedExpenditures"></td>
+                    <td data-bind="text: requestedBudget"></td>
+                    <td data-bind="text: variance"></td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>

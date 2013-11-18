@@ -12,6 +12,7 @@
 
             //#region Properties.
             items: ko.observableArray(),
+            grandTotals: ko.observable(new GrandTotals()),
             //#endregion
 
             //#region Methods.
@@ -46,10 +47,11 @@
         }
 
         function getFundDataForAreas(areas) {
-            return $.each(vm.items(), function (index, value) {
+            $.each(vm.items(), function (index, value) {
                 getFundsForArea(value);
                 getSubtotalsForArea(value);
             });
+            
         }
 
         function getFundsForArea(area) {
@@ -69,7 +71,32 @@
                 'getfundsubtotalsbyarea',
                 {
                     areaId: area.Id
-                });
+                },
+                [getGrandTotals]);
+        }
+
+        function getGrandTotals(areaSubtotals) {
+            // Don't add 'Other uses of funds' subtotals to grand total
+            if (areaSubtotals.Id !== areaDatacontext.otherUsesOfFundsId()) {
+                vm.grandTotals().currentBudget(vm.grandTotals().currentBudget()
+                    + areaSubtotals.currentBudget());
+                vm.grandTotals().projectedExpenditures(vm.grandTotals().projectedExpenditures()
+                    + areaSubtotals.projectedExpenditures());
+                vm.grandTotals().requestedBudget(vm.grandTotals().requestedBudget()
+                    + (areaSubtotals.currentBudget() + areaSubtotals.budgetAdjustment()));
+                vm.grandTotals().variance(vm.grandTotals().variance()
+                    + (areaSubtotals.currentBudget() - areaSubtotals.requestedBudget()));
+            }
+        }
+
+        function GrandTotals(data) {
+            var self = this;
+            data = data || {};
+
+            self.currentBudget = ko.observable(0);
+            self.projectedExpenditures = ko.observable(0);
+            self.requestedBudget = ko.observable(0);
+            self.variance = ko.observable(0);
         }
         //#endregion
     });

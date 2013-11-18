@@ -34,6 +34,7 @@
             var self = this;
             data = data || {};
 
+            self.Id = data._id;
             self.currentBudget = ko.observable(data.currentBudget || 0);
             self.projectedExpenditures = ko.observable(data.projectedExpenditures || 0);
             self.budgetAdjustment = ko.observable(data.budgetAdjustment || 0);

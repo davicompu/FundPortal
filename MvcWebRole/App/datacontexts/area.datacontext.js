@@ -8,6 +8,7 @@
             saveNewItem: saveNewItem,
             saveChangedItem: saveChangedItem,
             deleteItem: deleteItem,
+            otherUsesOfFundsId: ko.observable(),
         };
 
         return datacontext;
@@ -41,6 +42,10 @@
 
             function getSucceeded(result) {
                 var mappedItems = $.map(result, function (item) {
+                    // Note 'Other uses of funds' Id
+                    if (item.Number === 'O') {
+                        datacontext.otherUsesOfFundsId(item.Id);
+                    }
                     return new createItem(item);
                 });
                 itemObservableArray(mappedItems);

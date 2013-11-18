@@ -12,7 +12,7 @@
         function activate() {
             router.map([
                 // Default route
-                { route: '', moduleId: 'viewmodels/reports/funding-request' },
+                { route: '', moduleId: 'viewmodels/funds/browse' },
 
 
                 { route: 'areas/browse', moduleId: 'viewmodels/areas/browse' },
@@ -23,7 +23,11 @@
                 { route: 'funds/create', moduleId: 'viewmodels/funds/create' },
                 { route: 'funds/edit/:id', moduleId: 'viewmodels/funds/edit' },
 
-                { route: 'reports/funding-request', moduleId: 'viewmodels/reports/funding-request' }
+                { route: 'reports/funding-request', moduleId: 'viewmodels/reports/funding-request' },
+                {
+                    route: 'reports/narrative-information',
+                    moduleId: 'viewmodels/reports/narrative-information'
+                }
             ]).buildNavigationModel();
 
             return router.activate();

@@ -1,0 +1,29 @@
+﻿<div class="row">
+    <div class="large-12 columns">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fund number</th>
+                    <th>Fund description</th>
+                    <th>Reason for increase/decrease</th>
+                    <th>Projected increase/decrease</th>
+                </tr>
+            </thead>
+            <!-- ko foreach: items -->
+            <tbody>
+                <tr>
+                    <td colspan="7" class="text-center" data-bind="text: Name"></td>
+                </tr>
+                <!-- ko foreach: funds -->
+                <tr>
+                    <td data-bind="text: Number"></td>
+                    <td data-bind="text: Description"></td>
+                    <td data-bind="text: BudgetAdjustmentNote"></td>
+                    <td data-bind="text: BudgetAdjustment"></td>
+                </tr>
+                <!--/ko-->
+            </tbody>
+            <!--/ko-->
+        </table>
+    </div>
+</div>

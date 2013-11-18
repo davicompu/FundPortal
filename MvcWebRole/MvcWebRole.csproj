@@ -209,6 +209,7 @@
     <Compile Include="Controllers\Api\FileUploadController.cs" />
     <Compile Include="Controllers\Api\FundController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\ConditionallyRequireNoteAttribute.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\RequireHttpsAttributeWebApi.cs" />
     <Compile Include="Filters\ValidateModelAttribute.cs" />
@@ -237,6 +238,7 @@
     <Content Include="App\viewmodels\funds\create.js" />
     <Content Include="App\viewmodels\funds\edit.js" />
     <Content Include="App\viewmodels\reports\funding-request.js" />
+    <Content Include="App\viewmodels\reports\narrative-information.js" />
     <Content Include="App\viewmodels\shell.js" />
     <Content Include="App\views\areas\browse.html" />
     <Content Include="App\views\areas\create.html" />
@@ -245,6 +247,7 @@
     <Content Include="App\views\funds\create.html" />
     <Content Include="App\views\funds\edit.html" />
     <Content Include="App\views\reports\funding-request.html" />
+    <Content Include="App\views\reports\narrative-information.html" />
     <Content Include="App\views\shared\_area-input.html" />
     <Content Include="App\views\shared\_fund-input.html" />
     <Content Include="App\views\shell.html" />

@@ -34,6 +34,7 @@ namespace FundEntities
 
         public int BudgetAdjustment { get; set; }
 
+        [ConditionallyRequireNote("BudgetAdjustment", 3)]
         public string BudgetAdjustmentNote { get; set; }
 
         public int FiscalYear { get; set; }

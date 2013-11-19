@@ -26,6 +26,7 @@
         function activate(id) {
             logger.log('Edit fund view activated', null, 'funds/edit', false);
             getFund(id);
+            vm.errors = ko.validation.group(vm.item());
             return true;
         }
 
@@ -44,7 +45,7 @@
             });
 
             // If item wasn't retrieved from BrowseVM, retrieve from DB.
-            if (undefined == vm.item()) {
+            if (undefined === vm.item()) {
                 return datacontext.getItem(id, vm.item, vm.error);
             }
         }
@@ -64,24 +65,28 @@
 
         // TODO: Client-side validation
         function saveItem(item) {
-            // Remove uploads with errors.
-            var uploadItemsWithErrors = item.FileUploads.remove(function (uploadItem) {
-                return uploadItem.errorMessage();
-            });
+            if (vm.errors().length === 0) {
+                // Remove uploads with errors.
+                var uploadItemsWithErrors = item.FileUploads.remove(function (uploadItem) {
+                    return uploadItem.errorMessage();
+                });
 
-            // Remove uploads marked with destroy.
-            var removedUploadItems = item.FileUploads.remove(function (uploadItem) {
-                return uploadItem.destroy();
-            });
+                // Remove uploads marked with destroy.
+                var removedUploadItems = item.FileUploads.remove(function (uploadItem) {
+                    return uploadItem.destroy();
+                });
 
-            // Delete removed files from server.
-            $.each(removedUploadItems, function (index, value) {
-                fileuploadDatacontext.deleteItem(value);
-            });
+                // Delete removed files from server.
+                $.each(removedUploadItems, function (index, value) {
+                    fileuploadDatacontext.deleteItem(value);
+                });
 
-            datacontext.saveChangedItem(
-                item,
-                [updateChangedItemInBrowseVM, navigateToBrowseView]);
+                datacontext.saveChangedItem(
+                    item,
+                    [updateChangedItemInBrowseVM, navigateToBrowseView]);
+            } else {
+                vm.errors.showAllMessages();
+            }
         }
 
         function updateChangedItemInBrowseVM(changedItem) {

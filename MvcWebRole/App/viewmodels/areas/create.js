@@ -24,6 +24,7 @@
         function activate() {
             logger.log('Create area view activated', null, 'areas/create', false);
             vm.item(datacontext.createItem({}));
+            vm.errors = ko.validation.group(vm.item());
             return true;
         }
 
@@ -35,14 +36,18 @@
 
         // TODO: Client-side validation
         function saveItem(item) {
-            datacontext.saveNewItem(
+            if (vm.errors().length === 0) {
+                datacontext.saveNewItem(
                 item,
                 [
                     addNewItemToBrowseVM,
                     navigateToBrowseView,
                     clearItems
                 ]);
+            } else {
+                vm.errors.showAllMessages();
             }
+        }
 
         function addNewItemToBrowseVM(newItem) {
             browseVM.items.push(newItem);

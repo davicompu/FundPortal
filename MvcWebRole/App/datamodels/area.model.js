@@ -15,8 +15,8 @@
 
             //#region Persisted properties
             self.Id = data.Id;
-            self.Number = data.Number;
-            self.Name = data.Name;
+            self.Number = ko.observable(data.Number).extend({ required: true });
+            self.Name = ko.observable(data.Name).extend({ required: true });
             //#endregion
 
             //#region Non-persisted properties

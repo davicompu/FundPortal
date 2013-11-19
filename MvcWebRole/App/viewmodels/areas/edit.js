@@ -24,6 +24,7 @@
         function activate(id) {
             logger.log('Edit area view activated', null, 'areas/edit', false);
             getArea(id);
+            vm.errors = ko.validation.group(vm.item());
             return true;
         }
 
@@ -49,10 +50,14 @@
 
         // TODO: Client-side validation
         function saveItem(item) {
-            datacontext.saveChangedItem(
+            if (vm.errors().length === 0) {
+                datacontext.saveChangedItem(
                 item,
                 [updateChangedItemInBrowseVM, navigateToBrowseView]);
+            } else {
+                vm.errors.showAllMessages();
             }
+        }
 
         function updateChangedItemInBrowseVM(changedItem) {
             browseVM.items.remove(function (item) {

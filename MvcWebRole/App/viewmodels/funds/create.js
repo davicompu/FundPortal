@@ -28,7 +28,6 @@
             vm.item = datacontext.createItem({
                 AreaId: queryString.areaid
             });
-
             vm.errors = ko.validation.group(vm.item());
             return true;
         }
@@ -54,7 +53,7 @@
 
         // TODO: Client-side validation.
         function saveItem(item) {
-            if (vm.errors().length == 0) {
+            if (vm.errors().length === 0) {
                 // Remove uploads with errors.
                 var uploadItemsWithErrors = item.FileUploads.remove(function (uploadItem) {
                     return uploadItem.errorMessage();

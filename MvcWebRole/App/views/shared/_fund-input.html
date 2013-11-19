@@ -23,7 +23,8 @@
                         <label for="Number">
                             Fund number
                         </label>
-                        <input name="Number" type="text" data-bind="value: Number" />
+                        <input name="Number" type="text" data-bind="value: Number, css: { validationElement: true }" />
+                        <span class="error-message" data-bind="validationMessage: Number"></span>
                     </div>
                 </div>
 
@@ -33,6 +34,7 @@
                             Fund title
                         </label>
                         <input name="Title" type="text" data-bind="value: Title" />
+                        <span class="error-message" data-bind="validationMessage: Title"></span>
                     </div>
                 </div>
 
@@ -42,6 +44,7 @@
                             Responsible person
                         </label>
                         <input name="ResponsiblePerson" type="text" data-bind="value: ResponsiblePerson" />
+                        <span class="error-message" data-bind="validationMessage: ResponsiblePerson"></span>
                     </div>
                 </div>
 
@@ -51,6 +54,7 @@
                             Current fiscal year approved budget
                         </label>
                         <input name="CurrentBudget" type="text" data-bind="value: CurrentBudget" />
+                        <span class="error-message" data-bind="validationMessage: CurrentBudget"></span>
                     </div>
                 </div>
 
@@ -60,6 +64,7 @@
                             YTD and projected expenditures through June 30
                         </label>
                         <input name="ProjectedExpenditures" type="text" data-bind="value: ProjectedExpenditures" />
+                        <span class="error-message" data-bind="validationMessage: ProjectedExpenditures"></span>
                     </div>
                 </div>
 
@@ -81,6 +86,7 @@
                             Projected increase or decrease
                         </label>
                         <input name="BudgetAdjustment" type="text" data-bind="value: BudgetAdjustment" />
+                        <span class="error-message" data-bind="validationMessage: BudgetAdjustment"></span>
                     </div>
                 </div>
 
@@ -102,6 +108,7 @@
                             Brief description of the program and types of expenses paid for by this fund
                         </label>
                         <textarea name="Description" data-bind="value: Description"></textarea>
+                        <span class="error-message" data-bind="validationMessage: Description"></span>
                     </div>
                 </div>
 
@@ -111,6 +118,7 @@
                             Reason for increase or decrease in the requested budget
                         </label>
                         <textarea name="BudgetAdjustmentNote" data-bind="value: BudgetAdjustmentNote"></textarea>
+                        <span class="error-message" data-bind="validationMessage: BudgetAdjustmentNote"></span>
                     </div>
                 </div>
             </fieldset>

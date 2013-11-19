@@ -16,7 +16,7 @@
 
         //#region Publicly accessible methods.
         function createItem(data) {
-            return new model.Item(data);
+            return ko.validatedObservable(new model.Item(data));
         }
 
         function getItem(id, itemObservable, errorObservable) {
@@ -92,8 +92,9 @@
             }
 
             function getFailed(result) {
-                data.errorMessage('Error adding the new item: ' +
-                    result.statusText);
+                var errorText = 'Error adding the new item: ' +
+                    result.statusText + '.';
+                data.errorMessage(contextHelper.getModelStateErrors(JSON.parse(result.responseText), errorText));
             }
         }
 
@@ -110,8 +111,9 @@
             }
 
             function getFailed(result) {
-                data.errorMessage('Error updating the item: ' +
-                    result.statusText);
+                var errorText = 'Error adding the new item: ' +
+                    result.statusText + '.';
+                data.errorMessage(contextHelper.getModelStateErrors(JSON.parse(result.responseText), errorText));
             }
         }
 

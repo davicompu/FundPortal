@@ -13,7 +13,7 @@
         registerExtenders: true,
         messagesOnModified: true,
         messageTemplate: null,
-        insertMessages: true,           // automatically inserts validation messages as <span></span>
+        insertMessages: false,           // automatically inserts validation messages as <span></span>
         parseInputAttributes: false,    // parses the HTML5 validation attribute from a form element and adds that to the object
         writeInputAttributes: false,    // adds HTML5 input validation attributes to form elements that ko observable's are bound to
         decorateElement: false,         // false to keep backward compatibility

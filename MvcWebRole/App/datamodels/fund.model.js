@@ -18,14 +18,25 @@
             self.Number = ko.observable(data.Number).extend({ required: true });
             self.DateTimeCreated = data.DateTimeCreated || new Date();
             self.DateTimeEdited = data.DateTimeEdited || [];
-            self.Title = data.Title;
+            self.Title = ko.observable(data.Title).extend({ required: true });
             self.Status = data.Status;
-            self.Description = data.Description;
-            self.ResponsiblePerson = data.ResponsiblePerson;
-            self.CurrentBudget = ko.observable(data.CurrentBudget || 0).extend({ numeric: 0 });
-            self.ProjectedExpenditures = ko.observable(data.ProjectedExpenditures || 0).extend({ numeric: 0 });
-            self.BudgetAdjustment = ko.observable(data.BudgetAdjustment || 0).extend({ numeric: 0 });
-            self.BudgetAdjustmentNote = data.BudgetAdjustmentNote;
+            self.Description = ko.observable(data.Description).extend({ required: true });
+            self.ResponsiblePerson = ko.observable(data.ResponsiblePerson).extend({ required: true });
+            self.CurrentBudget = ko.observable(data.CurrentBudget || 0)
+                .extend({ required: true, numeric: 0 });
+            self.ProjectedExpenditures = ko.observable(data.ProjectedExpenditures || 0)
+                .extend({ required: true, numeric: 0 });
+            self.BudgetAdjustment = ko.observable(data.BudgetAdjustment || 0)
+                .extend({ required: true, numeric: 0 });
+            self.BudgetAdjustmentNote = ko.observable(data.BudgetAdjustmentNote)
+                .extend({
+                    required: {
+                        onlyIf: function () {
+                            return self.BudgetAdjustment() > 0;
+                        },
+                        message: 'This field is required when there is a budget adjustment.'
+                    }
+                });
             self.FiscalYear = data.FiscalYear;
             self.FileUploads = initFiles(self, data.FileUploads);
             //#endregion

@@ -3,6 +3,7 @@
     var helper = {
         clearErrorMessage: clearErrorMessage,
         ajaxRequest: ajaxRequest,
+        getModelStateErrors: getModelStateErrors,
     };
 
     return helper;
@@ -28,4 +29,17 @@
         return $.ajax(url, options);
     }
 
+    function getModelStateErrors(errorData, errorText) {
+        if (undefined !== errorData.ModelState) {
+            // Remove first ModelState object containing summary of all errors.
+            //errorData.ModelState.splice(0, 1);
+
+            $.each(errorData.ModelState, function (index, value) {
+                $.each(value, function (index, modelError) {
+                    errorText += ' ' + modelError;
+                });
+            });
+        }
+        return errorText;
+    }
 });

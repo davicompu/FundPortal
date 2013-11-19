@@ -15,7 +15,7 @@
             //#region Persisted properties
             self.Id = data.Id;
             self.AreaId = data.AreaId;
-            self.Number = data.Number;
+            self.Number = ko.observable(data.Number).extend({ required: true });
             self.DateTimeCreated = data.DateTimeCreated || new Date();
             self.DateTimeEdited = data.DateTimeEdited || [];
             self.Title = data.Title;

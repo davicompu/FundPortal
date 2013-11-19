@@ -32,6 +32,7 @@ namespace MvcWebRole
                       "~/Scripts/app/google.fastbutton.js",
                       "~/Scripts/jquery-{version}.js",
                       "~/Scripts/knockout-{version}.js",
+                      "~/Scripts/knockout.validation.debug.js",
                       "~/Scripts/app/knockout.custom.bindings.js",
                       "~/Scripts/app/knockout.custom.extenders.js",
                       "~/Scripts/sammy-{version}.js",

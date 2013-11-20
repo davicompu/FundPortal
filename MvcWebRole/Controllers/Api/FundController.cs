@@ -13,6 +13,7 @@ namespace MvcWebRole.Controllers
     public class FundController : ApiController
     {
         private MongoRepository<Fund> repository = new MongoRepository<Fund>();
+        private MongoRepository<Area> areaRepository = new MongoRepository<Area>();
 
         // GET api/fund
         public HttpResponseMessage Get()
@@ -39,7 +40,6 @@ namespace MvcWebRole.Controllers
 
             return Request.CreateResponse<IEnumerable<Fund>>(HttpStatusCode.OK, funds);
         }
-
 
         // GET api/fund/getfundsubtotalsbyarea
         public HttpResponseMessage GetFundSubtotalsByArea(string areaId)
@@ -110,11 +110,16 @@ namespace MvcWebRole.Controllers
         // PUT api/fund/5
         public HttpResponseMessage Put(string id, [FromBody]Fund fund)
         {
-            fund.Id = id;
-            fund.DateTimeEdited.Add(new DateTimeOffset(DateTime.UtcNow));
-            var updatedFund = repository.Update(fund);
+            if (this.CanModifyFund(repository.GetById(id)))
+            {
+                fund.Id = id;
+                fund.DateTimeEdited.Add(new DateTimeOffset(DateTime.UtcNow));
+                var updatedFund = repository.Update(fund);
 
-            return Request.CreateResponse<Fund>(HttpStatusCode.OK, updatedFund);
+                return Request.CreateResponse<Fund>(HttpStatusCode.OK, updatedFund);
+            }
+
+            throw new HttpResponseException(HttpStatusCode.Unauthorized);
         }
 
         // DELETE api/fund/5
@@ -124,5 +129,34 @@ namespace MvcWebRole.Controllers
 
             return Request.CreateResponse(HttpStatusCode.NoContent, "application/json");
         }
+
+        #region Helpers
+        private bool CanModifyFund(Fund fund)
+        {
+            if (fund.Status.ToString() == "Draft")
+            {
+                return true;
+            }
+
+            if (User.IsInRole("CanAdministerFunds"))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool CanAccessAreaFunds(Area area)
+        {
+            string role = "CanEdit" + area.Number;
+
+            if (User.IsInRole(role))
+            {
+                return true;
+            }
+
+            return false;
+        }
+        #endregion
     }
 }

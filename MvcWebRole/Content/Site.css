@@ -431,8 +431,8 @@ body {
 
 /* line 272, ../sass/foundation/components/_global.scss */
 body {
-  background: white;
-  color: #222222;
+  background: transparent;
+  color: #333333;
   padding: 0;
   margin: 0;
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
@@ -1971,7 +1971,7 @@ p.lead {
 /* line 115, ../sass/foundation/components/_type.scss */
 .subheader {
   line-height: 1.4;
-  color: #6f6f6f;
+  color: #ffa569;
   font-weight: 300;
   margin-top: 0.2em;
   margin-bottom: 0.5em;
@@ -2042,7 +2042,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-style: normal;
-  color: #222222;
+  color: #cf5300;
   text-rendering: optimizeLegibility;
   margin-top: 0.2em;
   margin-bottom: 0.5em;
@@ -2051,7 +2051,7 @@ h1, h2, h3, h4, h5, h6 {
 /* line 191, ../sass/foundation/components/_type.scss */
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   font-size: 60%;
-  color: #6f6f6f;
+  color: #ffa569;
   line-height: 0;
 }
 
@@ -2194,7 +2194,7 @@ abbr,
 acronym {
   text-transform: uppercase;
   font-size: 90%;
-  color: #222222;
+  color: #333333;
   border-bottom: 1px dotted #dddddd;
   cursor: help;
 }
@@ -2215,7 +2215,7 @@ blockquote {
 blockquote cite {
   display: block;
   font-size: 0.8125em;
-  color: #555555;
+  color: #ff8736;
 }
 /* line 319, ../sass/foundation/components/_type.scss */
 blockquote cite:before {
@@ -2224,14 +2224,14 @@ blockquote cite:before {
 /* line 324, ../sass/foundation/components/_type.scss */
 blockquote cite a,
 blockquote cite a:visited {
-  color: #555555;
+  color: #ff8736;
 }
 
 /* line 330, ../sass/foundation/components/_type.scss */
 blockquote,
 blockquote p {
   line-height: 1.6;
-  color: #6f6f6f;
+  color: #ffa569;
 }
 
 /* Microformats */
@@ -6420,7 +6420,7 @@ ul.pagination li {
 
 /* Panels */
 /* line 66, ../sass/foundation/components/_panels.scss */
-.panel {
+.panel, .input-panel {
   border-style: solid;
   border-width: 1px;
   border-color: #d9d9d9;
@@ -6429,28 +6429,28 @@ ul.pagination li {
   background: #f2f2f2;
 }
 /* line 44, ../sass/foundation/components/_panels.scss */
-.panel > :first-child {
+.panel > :first-child, .input-panel > :first-child {
   margin-top: 0;
 }
 /* line 45, ../sass/foundation/components/_panels.scss */
-.panel > :last-child {
+.panel > :last-child, .input-panel > :last-child {
   margin-bottom: 0;
 }
 /* line 50, ../sass/foundation/components/_panels.scss */
-.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p {
+.panel h1, .input-panel h1, .panel h2, .input-panel h2, .panel h3, .input-panel h3, .panel h4, .input-panel h4, .panel h5, .input-panel h5, .panel h6, .input-panel h6, .panel p, .input-panel p {
   color: #333333;
 }
 /* line 54, ../sass/foundation/components/_panels.scss */
-.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
+.panel h1, .input-panel h1, .panel h2, .input-panel h2, .panel h3, .input-panel h3, .panel h4, .input-panel h4, .panel h5, .input-panel h5, .panel h6, .input-panel h6 {
   line-height: 1;
   margin-bottom: 0.625em;
 }
 /* line 56, ../sass/foundation/components/_panels.scss */
-.panel h1.subheader, .panel h2.subheader, .panel h3.subheader, .panel h4.subheader, .panel h5.subheader, .panel h6.subheader {
+.panel h1.subheader, .input-panel h1.subheader, .panel h2.subheader, .input-panel h2.subheader, .panel h3.subheader, .input-panel h3.subheader, .panel h4.subheader, .input-panel h4.subheader, .panel h5.subheader, .input-panel h5.subheader, .panel h6.subheader, .input-panel h6.subheader {
   line-height: 1.4;
 }
 /* line 68, ../sass/foundation/components/_panels.scss */
-.panel.callout {
+.panel.callout, .callout.input-panel {
   border-style: solid;
   border-width: 1px;
   border-color: #2284a1;
@@ -6461,28 +6461,28 @@ ul.pagination li {
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
 }
 /* line 44, ../sass/foundation/components/_panels.scss */
-.panel.callout > :first-child {
+.panel.callout > :first-child, .callout.input-panel > :first-child {
   margin-top: 0;
 }
 /* line 45, ../sass/foundation/components/_panels.scss */
-.panel.callout > :last-child {
+.panel.callout > :last-child, .callout.input-panel > :last-child {
   margin-bottom: 0;
 }
 /* line 51, ../sass/foundation/components/_panels.scss */
-.panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p {
+.panel.callout h1, .callout.input-panel h1, .panel.callout h2, .callout.input-panel h2, .panel.callout h3, .callout.input-panel h3, .panel.callout h4, .callout.input-panel h4, .panel.callout h5, .callout.input-panel h5, .panel.callout h6, .callout.input-panel h6, .panel.callout p, .callout.input-panel p {
   color: white;
 }
 /* line 54, ../sass/foundation/components/_panels.scss */
-.panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
+.panel.callout h1, .callout.input-panel h1, .panel.callout h2, .callout.input-panel h2, .panel.callout h3, .callout.input-panel h3, .panel.callout h4, .callout.input-panel h4, .panel.callout h5, .callout.input-panel h5, .panel.callout h6, .callout.input-panel h6 {
   line-height: 1;
   margin-bottom: 0.625em;
 }
 /* line 56, ../sass/foundation/components/_panels.scss */
-.panel.callout h1.subheader, .panel.callout h2.subheader, .panel.callout h3.subheader, .panel.callout h4.subheader, .panel.callout h5.subheader, .panel.callout h6.subheader {
+.panel.callout h1.subheader, .callout.input-panel h1.subheader, .panel.callout h2.subheader, .callout.input-panel h2.subheader, .panel.callout h3.subheader, .callout.input-panel h3.subheader, .panel.callout h4.subheader, .callout.input-panel h4.subheader, .panel.callout h5.subheader, .callout.input-panel h5.subheader, .panel.callout h6.subheader, .callout.input-panel h6.subheader {
   line-height: 1.4;
 }
 /* line 73, ../sass/foundation/components/_panels.scss */
-.panel.radius {
+.panel.radius, .radius.input-panel {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
@@ -7261,10 +7261,45 @@ a.th {
   padding: 0.3125em;
 }
 
-/* line 1, ../sass/app/components/_header.scss */
-.view-headline {
-  border-bottom: medium solid #2ba6cb;
+/* line 1, ../sass/app/components/_fieldset.scss */
+fieldset {
+  background-color: #fcf5ee;
+  padding-top: 0.625em;
+}
+
+/* line 1, ../sass/app/components/_heading.scss */
+.app-header {
+  border-bottom-style: dotted;
+  border-bottom-color: #2ba6cb;
+}
+/* line 5, ../sass/app/components/_heading.scss */
+.app-header h1 {
+  margin-bottom: 0;
+}
+/* line 9, ../sass/app/components/_heading.scss */
+.app-header span {
+  color: #6b6b6b;
+}
+
+/* line 14, ../sass/app/components/_heading.scss */
+.view-heading {
   margin-top: 0px;
+}
+
+/* line 1, ../sass/app/components/_label.scss */
+label {
+  margin: 0;
+  margin-bottom: 0.1875em;
+}
+/* line 5, ../sass/app/components/_label.scss */
+label span.required {
+  color: #c60f13;
+}
+
+/* line 10, ../sass/app/components/_label.scss */
+.error-message {
+  margin-bottom: 1em;
+  color: #c60f13;
 }
 
 /* line 1, ../sass/app/components/_pace.scss */
@@ -7358,79 +7393,82 @@ a.th {
   }
 }
 
+/* line 1, ../sass/app/components/_panel.scss */
+.input-panel {
+  margin-bottom: 0;
+}
+
 /* line 1, ../sass/app/components/_table.scss */
-.bumped, .bumpedUp {
+.tabular {
+  border: 0.125em solid white;
+}
+/* line 4, ../sass/app/components/_table.scss */
+.tabular th, .tabular td {
+  border: 0.125em solid white;
+}
+
+/* line 8, ../sass/app/components/_table.scss */
+.bumped {
   border-style: none;
+  margin-top: 1.875em;
   width: 100%;
 }
-/* line 5, ../sass/app/components/_table.scss */
-.bumped thead, .bumpedUp thead {
-  background-color: #e9e9e9;
-}
-/* line 9, ../sass/app/components/_table.scss */
-.bumped thead tr th, .bumpedUp thead tr th {
+/* line 15, ../sass/app/components/_table.scss */
+.bumped thead tr th {
   font-size: 1.10em;
 }
-/* line 12, ../sass/app/components/_table.scss */
-.bumped thead tr th i, .bumpedUp thead tr th i {
+/* line 18, ../sass/app/components/_table.scss */
+.bumped thead tr th i {
   cursor: pointer;
-}
-/* line 19, ../sass/app/components/_table.scss */
-.bumped tbody, .bumpedUp tbody {
-  cursor: pointer;
-}
-/* line 22, ../sass/app/components/_table.scss */
-.bumped tbody tr, .bumpedUp tbody tr {
-  background: #FFF;
 }
 /* line 25, ../sass/app/components/_table.scss */
-.bumped tbody tr td, .bumpedUp tbody tr td {
-  padding: 0;
+.bumped tbody {
+  cursor: pointer;
 }
 /* line 28, ../sass/app/components/_table.scss */
-.bumped tbody tr td a, .bumpedUp tbody tr td a {
-  color: #222222;
+.bumped tbody tr {
+  background: #FFF;
+}
+/* line 31, ../sass/app/components/_table.scss */
+.bumped tbody tr td {
+  padding: 0;
+}
+/* line 34, ../sass/app/components/_table.scss */
+.bumped tbody tr td a {
+  color: #333333;
   display: block;
   height: 100%;
   padding: 0.5625em 0.625em;
   width: 100%;
 }
-/* line 39, ../sass/app/components/_table.scss */
-.bumped tr, .bumpedUp tr {
+/* line 45, ../sass/app/components/_table.scss */
+.bumped tr {
   border-color: #d9d9d9;
   border-style: solid;
   border-width: 0.0625em 0 0.0625em 0;
 }
-/* line 45, ../sass/app/components/_table.scss */
-.bumped td, .bumpedUp td {
+/* line 51, ../sass/app/components/_table.scss */
+.bumped td {
   font-size: 1.25em;
 }
-/* line 49, ../sass/app/components/_table.scss */
-.bumped .button, .bumpedUp .button {
+/* line 55, ../sass/app/components/_table.scss */
+.bumped .button {
   margin: 0;
-}
-
-/* line 54, ../sass/app/components/_table.scss */
-.bumpedUp {
-  border-bottom: hidden;
-  margin-bottom: 0;
 }
 
 /* line 1, ../sass/app/components/_content.scss */
 html {
   background-color: #E0E0E0;
-  background-image: url("images/kindajean.png");
+  background-image: url("images/bright-squares.png");
 }
 
 /* line 6, ../sass/app/components/_content.scss */
 .view-background {
-  background-color: whitesmoke;
+  background-color: rgba(232, 229, 229, 0.85);
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.098), -3px 3px 3px 3px rgba(0, 0, 0, 0.098);
+  height: 90%;
+  margin-top: 30px;
   padding-bottom: 1.25em;
-}
-
-/* line 11, ../sass/app/components/_content.scss */
-.error-message {
-  color: #c60f13;
 }
 
 /* 

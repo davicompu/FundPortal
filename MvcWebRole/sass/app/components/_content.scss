@@ -1,13 +1,12 @@
 html {
 	background-color: #E0E0E0;
-	background-image: url("images/kindajean.png");
+	background-image: url("images/bright-squares.png");
 }
 
 .view-background {
 	background-color: $view-bg;
+	box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, .098), -3px 3px 3px 3px rgba(0, 0, 0, .098);
+	height: 90%;
+	margin-top: 30px;
 	padding-bottom: emCalc(20px);
-}
-
-.error-message {
-	color: $alert-color;
 }

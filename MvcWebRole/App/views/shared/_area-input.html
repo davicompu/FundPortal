@@ -1,25 +1,33 @@
-﻿<div class="row view-background">
+﻿<div class="row">
     <div class="large-12 columns">
         <section data-bind="with: item">
-            <h1 class="view-headline">Area information</h1>
+            <h4 class="view-heading">AREA INFORMATION</h4>
 
-            <div class="row">
-                <div class="large-12 columns">
-                    <label for="Number">
-                        Number
-                    </label>
-                    <input name="Number" type="text" data-bind="value: Number" />
-                </div>
-            </div>
+            <fieldset>
+                <h5>Details</h5>
 
-            <div class="row">
-                <div class="large-12 columns">
-                    <label for="Name">
-                        Name
-                    </label>
-                    <input name="Name" type="text" data-bind="value: Name" />
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label for="Number">
+                            Number<span class="required">*</span>
+                        </label>
+                        <input name="Number" type="text" data-bind="value: Number" />
+                        <label for="Number"
+                            class="error-message" data-bind="validationMessage: Number"></label>
+                    </div>
                 </div>
-            </div>
+
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label for="Name">
+                            Name<span class="required">*</span>
+                        </label>
+                        <input name="Name" type="text" data-bind="value: Name" />
+                        <label for="Name"
+                            class="error-message" data-bind="validationMessage: Name"></label>
+                    </div>
+                </div>
+            </fieldset>
 
             <div class="row">
                 <div class="large-12 columns">

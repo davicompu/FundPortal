@@ -1,0 +1,16 @@
+.app-header {
+		border-bottom-style: dotted;
+		border-bottom-color: $primary-color;
+
+		h1 {
+			margin-bottom: 0;
+		}
+
+		span {
+			color: $app-header-alt-color;
+		}
+}
+
+.view-heading {
+	margin-top: 0px;
+}

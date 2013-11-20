@@ -227,7 +227,6 @@
     <Content Include="App\datamodels\fileupload.model.js" />
     <Content Include="App\datamodels\fund.model.js" />
     <Content Include="App\datamodels\area.model.js" />
-    <Content Include="App\main-built.js" />
     <Content Include="App\main.js" />
     <Content Include="App\services\contexthelper.js" />
     <Content Include="App\services\logger.js" />
@@ -254,7 +253,7 @@
     <Content Include="Content\durandal.css" />
     <Content Include="Content\fonts\foundation-icons.svg" />
     <Content Include="Content\ie.css" />
-    <Content Include="Content\images\kindajean.png" />
+    <Content Include="Content\images\bright-squares.png" />
     <Content Include="Content\print.css" />
     <Content Include="Content\screen.css" />
     <Content Include="Content\toastr.css" />
@@ -360,7 +359,7 @@
     <Content Include="sass\_foundation.mvc.scss" />
     <Content Include="config.rb" />
     <Content Include="sass\app\components\_content.scss" />
-    <Content Include="sass\app\components\_header.scss" />
+    <Content Include="sass\app\components\_heading.scss" />
     <Content Include="sass\app\_app-variables.scss" />
     <Content Include="sass\app\_custom-foundation.scss" />
     <Content Include="sass\app\_foundation-variables.scss" />
@@ -376,6 +375,10 @@
     <Content Include="Content\fonts\Signika-Regular.woff" />
     <Content Include="Content\fonts\YanoneKaffeesatz-Regular.woff" />
     <Content Include="Scripts\app\knockout.custom.extenders.js" />
+    <Content Include="sass\app\components\_fieldset.scss" />
+    <Content Include="sass\app\components\_panel.scss" />
+    <Content Include="sass\app\components\_label.scss" />
+    <Content Include="sass\app\components\_input.scss" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />

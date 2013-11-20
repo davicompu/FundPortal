@@ -1,12 +1,10 @@
-﻿<div class="row collapse">
+﻿<div class="row">
     <div class="large-12 columns">
+        <h4 class="view-heading">REQUESTS</h4>
+
         <div class="row">
             <div class="large-12 columns">
-                <p>
-                    <strong>
-                        <a data-bind="click: navigateToCreateView">Create a new fund</a>
-                    </strong>
-                </p>
+                <a data-bind="click: navigateToCreateView">Create a new fund</a>
             </div>
         </div>
 
@@ -15,7 +13,7 @@
         <div class="row">
             <div class="large-4 columns">
                 <label for="Area">
-                    Area
+                    Requesting area
                 </label>
                 <select name="Area" data-bind="foreach: areas, value: selectedAreaId">
                     <option data-bind="attr: { value: Id }, text: Name"></option>
@@ -25,17 +23,17 @@
 
         <div class="row">
             <div class="large-12 columns">
-                <table data-bind="visible: !noItemsToShow()">
+                <table class="tabular" data-bind="visible: !noItemsToShow()">
                     <thead>
                         <tr>
                             <th>Fund number</th>
                             <th>Fund title</th>
                             <th>Responsible person</th>
-                            <th>Current fiscal year approved budget</th>
-                            <th>YTD and projected expenditures through June 30</th>
-                            <th>Requested budget</th>
-                            <th>Variance</th>
-                            <th>Status</th>
+                            <th class="hide-for-medium-down">Current fiscal year approved budget</th>
+                            <th class="hide-for-medium-down">YTD and projected expenditures through June 30</th>
+                            <th class="hide-for-medium-down">Requested budget</th>
+                            <th class="hide-for-medium-down">Variance</th>
+                            <th class="hide-for-medium-down">Status</th>
                         </tr>
                     </thead>
                     <tbody data-bind="foreach: items">
@@ -45,17 +43,17 @@
                             </td>
                             <td data-bind="text: Title"></td>
                             <td data-bind="text: ResponsiblePerson"></td>
-                            <td data-bind="text: CurrentBudget"></td>
-                            <td data-bind="text: ProjectedExpenditures"></td>
-                            <td data-bind="text: requestedBudget"></td>
-                            <td data-bind="text: variance"></td>
-                            <td data-bind="text: fundStatusText"></td>
+                            <td class="hide-for-medium-down" data-bind="text: CurrentBudget"></td>
+                            <td class="hide-for-medium-down" data-bind="text: ProjectedExpenditures"></td>
+                            <td class="hide-for-medium-down" data-bind="text: requestedBudget"></td>
+                            <td class="hide-for-medium-down" data-bind="text: variance"></td>
+                            <td class="hide-for-medium-down" data-bind="text: fundStatusText"></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <h4 class="text-center" data-bind="if: noItemsToShow">No records</h4>
+        <p data-bind="if: noItemsToShow">No records</p>
     </div>
 </div>

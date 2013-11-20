@@ -1,52 +1,68 @@
 ﻿<div class="row">
     <div class="large-12 columns">
-        <table>
-            <thead>
-                <tr>
-                    <th>Fund number</th>
-                    <th>Fund title</th>
-                    <th>Responsible person</th>
-                    <th>Current fiscal year approved budget</th>
-                    <th>YTD and projected expenditures through June 30</th>
-                    <th>Requested budget</th>
-                    <th>Variance</th>
-                </tr>
-            </thead>
-            <!-- ko foreach: items -->
-            <tbody>
-                <tr>
-                    <td colspan="7" class="text-center" data-bind="text: Name"></td>
-                </tr>
-                <!-- ko foreach: funds -->
-                <tr>
-                    <td data-bind="text: Number"></td>
-                    <td data-bind="text: Title"></td>
-                    <td data-bind="text: ResponsiblePerson"></td>
-                    <td data-bind="text: CurrentBudget"></td>
-                    <td data-bind="text: ProjectedExpenditures"></td>
-                    <td data-bind="text: requestedBudget"></td>
-                    <td data-bind="text: variance"></td>
-                </tr>
-                <!--/ko-->
-                <tr data-bind="with: subtotals">
-                    <td colspan="3" data-bind="text: 'Total for ' + $parent.Name"></td>
-                    <td data-bind="text: currentBudget"></td>
-                    <td data-bind="text: projectedExpenditures"></td>
-                    <td data-bind="text: requestedBudget"></td>
-                    <td data-bind="text: variance"></td>
-                </tr>
-            </tbody>
-            <!--/ko-->
-            <tbody>
-                <tr data-bind="with: grandTotals">
-                    <td colspan="3">Grand totals</td>
-                    <td data-bind="text: currentBudget"></td>
-                    <td data-bind="text: projectedExpenditures"></td>
-                    <td data-bind="text: requestedBudget"></td>
-                    <td data-bind="text: variance"></td>
-                </tr>
-            </tbody>
-        </table>
+        <h4 class="view-heading">FUNDING REQUEST REPORT</h4>
+
+        <div class="row">
+            <div class="large-12 columns">
+                <table class="tabular">
+                    <thead>
+                        <tr>
+                            <th class="hide-for-medium-down">Fund number</th>
+                            <th>Fund title</th>
+                            <th class="hide-for-medium-down">Responsible person</th>
+                            <th>Current fiscal year approved budget</th>
+                            <th class="hide-for-medium-down">YTD and projected expenditures through June 30</th>
+                            <th>Requested budget</th>
+                            <th class="hide-for-medium-down">Variance</th>
+                        </tr>
+                    </thead>
+                    <!-- ko foreach: items -->
+                    <tbody>
+                        <tr>
+                            <td colspan="7" class="text-center" data-bind="text: Name"></td>
+                        </tr>
+                        <!-- ko foreach: funds -->
+                        <tr>
+                            <td class="hide-for-medium-down" data-bind="text: Number"></td>
+                            <td data-bind="text: Title"></td>
+                            <td class="hide-for-medium-down" data-bind="text: ResponsiblePerson"></td>
+                            <td data-bind="text: CurrentBudget"></td>
+                            <td class="hide-for-medium-down" data-bind="text: ProjectedExpenditures"></td>
+                            <td data-bind="text: requestedBudget"></td>
+                            <td class="hide-for-medium-down" data-bind="text: variance"></td>
+                        </tr>
+                        <!--/ko-->
+                        <tr class="hide-for-medium-down" data-bind="with: subtotals">
+                            <td colspan="3" data-bind="text: 'Total for ' + $parent.Name()"></td>
+                            <td data-bind="text: currentBudget"></td>
+                            <td data-bind="text: projectedExpenditures"></td>
+                            <td data-bind="text: requestedBudget"></td>
+                            <td data-bind="text: variance"></td>
+                        </tr>
+                        <tr class="show-for-medium-down" data-bind="with: subtotals">
+                            <td data-bind="text: 'Total for ' + $parent.Name()"></td>
+                            <td data-bind="text: currentBudget"></td>
+                            <td data-bind="text: requestedBudget"></td>
+                        </tr>
+                    </tbody>
+                    <!--/ko-->
+                    <tbody>
+                        <tr class="hide-for-medium-down" data-bind="with: grandTotals">
+                            <td colspan="3">Grand totals</td>
+                            <td data-bind="text: currentBudget"></td>
+                            <td data-bind="text: projectedExpenditures"></td>
+                            <td data-bind="text: requestedBudget"></td>
+                            <td data-bind="text: variance"></td>
+                        </tr>
+                        <tr class="show-for-medium-down" data-bind="with: grandTotals">
+                            <td>Grand totals</td>
+                            <td data-bind="text: currentBudget"></td>
+                            <td data-bind="text: requestedBudget"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -1,0 +1,13 @@
+label {
+        margin: 0;
+        margin-bottom: emCalc(3px);
+
+        span.required {
+                color: $alert-color;
+        }
+}
+
+.error-message {
+    margin-bottom: 1em;
+	color: $alert-color;
+}

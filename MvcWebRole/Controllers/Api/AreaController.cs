@@ -9,10 +9,10 @@ using MongoRepository;
 
 namespace MvcWebRole.Controllers
 {
+    // TODO: Verify access to area.
     public class AreaController : ApiController
     {
         private MongoRepository<Area> repository = new MongoRepository<Area>();
-        // TODO: Verify access to area.
         // GET api/area
         public HttpResponseMessage Get()
         {
@@ -57,5 +57,19 @@ namespace MvcWebRole.Controllers
 
             return Request.CreateResponse(HttpStatusCode.NoContent, "application/json");
         }
+
+        #region Helpers
+        public bool CanAccessArea(Area area)
+        {
+            string role = "CanEdit" + area.Number;
+
+            if (User.IsInRole(role))
+            {
+                return true;
+            }
+
+            return false;
+        }
+        #endregion
     }
 }

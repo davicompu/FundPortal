@@ -1,10 +1,10 @@
-﻿<div class="row view-background">
+﻿<div class="row">
     <div class="large-12 columns">
         <section data-bind="with: item">
-            <h1 class="view-headline">Fund information</h1>
+            <h4 class="view-heading">FUND INFORMATION</h4>
 
             <fieldset>
-                <legend>Current status</legend>
+                <h5>Current status</h5>
 
                 <div class="row">
                     <div class="large-4 columns">
@@ -24,7 +24,7 @@
                             Fund number<span class="required">*</span>
                         </label>
                         <input name="Number" type="text" data-bind="value: Number, css: { validationElement: true }" />
-                        <span class="error-message" data-bind="validationMessage: Number"></span>
+                        <label for="Number" class="error-message" data-bind="validationMessage: Number"></label>
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@
                             Fund title<span class="required">*</span>
                         </label>
                         <input name="Title" type="text" data-bind="value: Title" />
-                        <span class="error-message" data-bind="validationMessage: Title"></span>
+                        <label for="Title" class="error-message" data-bind="validationMessage: Title"></label>
                     </div>
                 </div>
 
@@ -44,7 +44,8 @@
                             Responsible person<span class="required">*</span>
                         </label>
                         <input name="ResponsiblePerson" type="text" data-bind="value: ResponsiblePerson" />
-                        <span class="error-message" data-bind="validationMessage: ResponsiblePerson"></span>
+                        <label for="ResponsiblePerson"
+                            class="error-message" data-bind="validationMessage: ResponsiblePerson"></label>
                     </div>
                 </div>
 
@@ -54,7 +55,8 @@
                             Current fiscal year approved budget<span class="required">*</span>
                         </label>
                         <input name="CurrentBudget" type="text" data-bind="value: CurrentBudget" />
-                        <span class="error-message" data-bind="validationMessage: CurrentBudget"></span>
+                        <label for="CurrentBudget"
+                            class="error-message" data-bind="validationMessage: CurrentBudget"></label>
                     </div>
                 </div>
 
@@ -64,21 +66,24 @@
                             YTD and projected expenditures through June 30<span class="required">*</span>
                         </label>
                         <input name="ProjectedExpenditures" type="text" data-bind="value: ProjectedExpenditures" />
-                        <span class="error-message" data-bind="validationMessage: ProjectedExpenditures"></span>
+                        <label for="ProjectedExpenditures"
+                            class="error-message" data-bind="validationMessage: ProjectedExpenditures"></label>
                     </div>
                 </div>
 
-                <div class="row panel">
+                <div class="row">
                     <div class="large-6 columns">
-                        <span>Projected year-end balance :
+                        <div class="input-panel">
+                            <span>Projected year-end balance :
                             <strong data-bind="text: projectedYearEndBalance"></strong>
-                        </span>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </fieldset>
 
             <fieldset>
-                <legend>Next year projected budget</legend>
+                <h5>Next year projected budget</h5>
 
                 <div class="row">
                     <div class="large-4 columns">
@@ -86,21 +91,24 @@
                             Projected increase or decrease<span class="required">*</span>
                         </label>
                         <input name="BudgetAdjustment" type="text" data-bind="value: BudgetAdjustment" />
-                        <span class="error-message" data-bind="validationMessage: BudgetAdjustment"></span>
+                        <label for="BudgetAdjustment"
+                            class="error-message" data-bind="validationMessage: BudgetAdjustment"></label>
                     </div>
                 </div>
 
-                <div class="row panel">
-                    <div class="large-12 columns">
-                        <span>Requested budget: 
+                <div class="row">
+                    <div class="large-6 columns">
+                        <div class="input-panel">
+                            <span>Requested budget: 
                             <strong data-bind="text: requestedBudget"></strong>
-                        </span>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </fieldset>
 
             <fieldset>
-                <legend>Supporting information</legend>
+                <h5>Supporting information</h5>
 
                 <div class="row">
                     <div class="large-12 columns">
@@ -108,28 +116,32 @@
                             Brief description of the program and types of expenses paid for by this fund<span class="required">*</span>
                         </label>
                         <textarea name="Description" data-bind="value: Description"></textarea>
-                        <span class="error-message" data-bind="validationMessage: Description"></span>
+                        <label for="Description"
+                            class="error-message" data-bind="validationMessage: Description"></label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="large-12 columns">
                         <label for="BudgetAdjustmentNote">
-                            Reason for increase or decrease in the requested budget
+                            Reason for increase or decrease in the requested budget<span class="required"
+                            data-bind="visible: BudgetAdjustment() > 0">*</span>
                         </label>
                         <textarea name="BudgetAdjustmentNote" data-bind="value: BudgetAdjustmentNote"></textarea>
-                        <span class="error-message" data-bind="validationMessage: BudgetAdjustmentNote"></span>
+                        <label for="BudgetAdjustmentNote"
+                            class="error-message" data-bind="validationMessage: BudgetAdjustmentNote"></label>
                     </div>
                 </div>
             </fieldset>
 
             <fieldset>
-                <legend>Attachments</legend>
+                <h5>Attachments</h5>
 
                 <div class="row">
                     <div class="large-12 columns">
-                        <a href="http://www.obfp.vt.edu/forms/foundation-portal/budget-request-template.xlsx"
-                            >Download budget request template</a>
+                        <p>
+                            <a href="http://www.obfp.vt.edu/forms/foundation-portal/budget-request-template.xlsx">Download budget request template</a>
+                        </p>
                     </div>
                 </div>
 
@@ -151,8 +163,8 @@
                                 <tr data-bind="visible: !destroy()">
                                     <td>
                                         <a data-bind="visible: Id, text: OriginalFileName,
-                                        attr: { href: Source }"></a>
-                                        <span class="error-message" 
+    attr: { href: Source }"></a>
+                                        <span class="error-message"
                                             data-bind="visible: errorMessage, text: errorMessage"></span>
                                     </td>
                                     <td data-bind="click: $root.removeFileUpload">
@@ -167,10 +179,12 @@
                 </div>
             </fieldset>
 
-            <div class="row">
+            <div class="row" data-bind="visible: errorMessage">
                 <div class="large-12 columns">
-                    <span class="error-message" 
-                        data-bind="visible: errorMessage, text: errorMessage"></span>
+                    <p>
+                        <span class="error-message"
+                            data-bind="text: errorMessage"></span>
+                    </p>
                 </div>
             </div>
 

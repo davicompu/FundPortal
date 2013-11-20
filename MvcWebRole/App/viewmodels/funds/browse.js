@@ -19,7 +19,6 @@
             //#endregion
 
             //#region Methods.
-            selectItem: selectItem,
             navigateToCreateView: navigateToCreateView,
             updateNoItemsToShowProperty: updateNoItemsToShowProperty,
             //#endregion
@@ -76,10 +75,6 @@
                 return vm.noItemsToShow(true);
             }
             return vm.noItemsToShow(false);
-        }
-
-        function selectItem(item) {
-            return router.navigate('#/funds/edit/' + item.Id);
         }
 
         function navigateToCreateView() {

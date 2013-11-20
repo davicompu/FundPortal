@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="large-4 columns">
                         <label for="Number">
-                            Fund number
+                            Fund number<span class="required">*</span>
                         </label>
                         <input name="Number" type="text" data-bind="value: Number, css: { validationElement: true }" />
                         <span class="error-message" data-bind="validationMessage: Number"></span>
@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="large-8 columns">
                         <label for="Title">
-                            Fund title
+                            Fund title<span class="required">*</span>
                         </label>
                         <input name="Title" type="text" data-bind="value: Title" />
                         <span class="error-message" data-bind="validationMessage: Title"></span>
@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="large-6 columns">
                         <label for="ResponsiblePerson">
-                            Responsible person
+                            Responsible person<span class="required">*</span>
                         </label>
                         <input name="ResponsiblePerson" type="text" data-bind="value: ResponsiblePerson" />
                         <span class="error-message" data-bind="validationMessage: ResponsiblePerson"></span>
@@ -51,7 +51,7 @@
                 <div class="row">
                     <div class="large-6 columns">
                         <label for="CurrentBudget">
-                            Current fiscal year approved budget
+                            Current fiscal year approved budget<span class="required">*</span>
                         </label>
                         <input name="CurrentBudget" type="text" data-bind="value: CurrentBudget" />
                         <span class="error-message" data-bind="validationMessage: CurrentBudget"></span>
@@ -61,7 +61,7 @@
                 <div class="row">
                     <div class="large-6 columns">
                         <label for="ProjectedExpenditures">
-                            YTD and projected expenditures through June 30
+                            YTD and projected expenditures through June 30<span class="required">*</span>
                         </label>
                         <input name="ProjectedExpenditures" type="text" data-bind="value: ProjectedExpenditures" />
                         <span class="error-message" data-bind="validationMessage: ProjectedExpenditures"></span>
@@ -83,7 +83,7 @@
                 <div class="row">
                     <div class="large-4 columns">
                         <label for="BudgetAdjustment">
-                            Projected increase or decrease
+                            Projected increase or decrease<span class="required">*</span>
                         </label>
                         <input name="BudgetAdjustment" type="text" data-bind="value: BudgetAdjustment" />
                         <span class="error-message" data-bind="validationMessage: BudgetAdjustment"></span>
@@ -105,7 +105,7 @@
                 <div class="row">
                     <div class="large-12 columns">
                         <label for="Description">
-                            Brief description of the program and types of expenses paid for by this fund
+                            Brief description of the program and types of expenses paid for by this fund<span class="required">*</span>
                         </label>
                         <textarea name="Description" data-bind="value: Description"></textarea>
                         <span class="error-message" data-bind="validationMessage: Description"></span>

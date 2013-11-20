@@ -16,7 +16,7 @@
 
         //#region Publicly accessible methods.
         function createItem(data) {
-            return ko.validatedObservable(new model.Item(data));
+            return new model.Item(data);
         }
 
         function getItem(id, itemObservable, errorObservable) {

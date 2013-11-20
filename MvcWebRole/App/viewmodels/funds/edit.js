@@ -26,7 +26,7 @@
         function activate(id) {
             logger.log('Edit fund view activated', null, 'funds/edit', false);
             getFund(id);
-            vm.errors = ko.validation.group(vm.item());
+            //vm.errors = ko.validation.group(vm.item());
             return true;
         }
 

@@ -52,7 +52,7 @@
             self.variance = ko.computed(function () {
                 return self.CurrentBudget() - self.requestedBudget();
             });
-            self.statusText = ko.computed(function () {
+            self.fundStatusText = ko.computed(function () {
                 switch (self.Status) {
                     case 1:
                         return 'Draft';

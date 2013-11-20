@@ -15,8 +15,8 @@
 
             //#region Methods.
             postFiles: postFiles,
-            saveItem: saveItem,
             removeFileUpload: removeFileUpload,
+            saveItem: saveItem,
             //#endregion
         };
 
@@ -25,9 +25,11 @@
         //#region Internal methods.
         function activate(queryString) {
             logger.log('Create fund view activated', null, 'funds/create', false);
-            vm.item = datacontext.createItem({
+
+            vm.item(datacontext.createItem({
                 AreaId: queryString.areaid
-            });
+            }));
+
             vm.errors = ko.validation.group(vm.item());
             return true;
         }

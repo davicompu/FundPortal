@@ -42,7 +42,7 @@
                         <!--/ko-->
                     </tbody>
                     <tbody>
-                        <tr data-bind="with: subtotals">
+                        <tr class="subtotal" data-bind="with: subtotals">
                             <td colspan="3" data-bind="text: 'Total for ' + $parent.Name()"></td>
                             <td data-bind="text: currentBudget"></td>
                             <td data-bind="text: projectedExpenditures"></td>
@@ -52,7 +52,7 @@
                     </tbody>
                     <!--/ko-->
                     <tbody>
-                        <tr data-bind="with: grandTotals">
+                        <tr class="grandtotal" data-bind="with: grandTotals">
                             <td colspan="3">Grand totals</td>
                             <td data-bind="text: currentBudget"></td>
                             <td data-bind="text: projectedExpenditures"></td>

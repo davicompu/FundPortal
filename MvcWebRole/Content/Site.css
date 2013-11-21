@@ -7268,16 +7268,16 @@ fieldset {
 }
 
 /* line 1, ../sass/app/components/_heading.scss */
-.app-header {
+.app-heading {
   border-bottom-style: dotted;
   border-bottom-color: #2ba6cb;
 }
 /* line 5, ../sass/app/components/_heading.scss */
-.app-header h1 {
+.app-heading h1 {
   margin-bottom: 0;
 }
 /* line 9, ../sass/app/components/_heading.scss */
-.app-header span {
+.app-heading span {
   color: #6b6b6b;
 }
 
@@ -7399,60 +7399,78 @@ label span.required {
 }
 
 /* line 1, ../sass/app/components/_table.scss */
-.tabular {
+table.tabular {
   border: 0.125em solid white;
 }
 /* line 4, ../sass/app/components/_table.scss */
-.tabular th, .tabular td {
+table.tabular th, table.tabular td {
   border: 0.125em solid white;
 }
-
 /* line 8, ../sass/app/components/_table.scss */
-.bumped {
+table.tabular tr.subtotal {
+  background-color: #6b6b6b;
+}
+/* line 11, ../sass/app/components/_table.scss */
+table.tabular tr.subtotal td {
+  color: #FFF;
+  font-weight: bold;
+}
+/* line 17, ../sass/app/components/_table.scss */
+table.tabular tr.grandtotal {
+  background-color: #2ba6cb;
+}
+/* line 20, ../sass/app/components/_table.scss */
+table.tabular tr.grandtotal td {
+  color: #FFF;
+  font-weight: bold;
+}
+
+/* line 26, ../sass/app/components/_table.scss */
+table.bumped {
   border-style: none;
   margin-top: 1.875em;
   width: 100%;
 }
-/* line 15, ../sass/app/components/_table.scss */
-.bumped thead tr th {
+/* line 33, ../sass/app/components/_table.scss */
+table.bumped thead tr th {
   font-size: 1.10em;
 }
-/* line 18, ../sass/app/components/_table.scss */
-.bumped thead tr th i {
+/* line 36, ../sass/app/components/_table.scss */
+table.bumped thead tr th i {
   cursor: pointer;
 }
-/* line 25, ../sass/app/components/_table.scss */
-.bumped tbody {
+/* line 43, ../sass/app/components/_table.scss */
+table.bumped tbody {
   cursor: pointer;
 }
-/* line 28, ../sass/app/components/_table.scss */
-.bumped tbody tr {
+/* line 46, ../sass/app/components/_table.scss */
+table.bumped tbody tr {
   background: #FFF;
 }
-/* line 31, ../sass/app/components/_table.scss */
-.bumped tbody tr td {
+/* line 49, ../sass/app/components/_table.scss */
+table.bumped tbody tr td {
   padding: 0;
 }
-/* line 34, ../sass/app/components/_table.scss */
-.bumped tbody tr td a {
+/* line 52, ../sass/app/components/_table.scss */
+table.bumped tbody tr td a {
   color: #333333;
   display: block;
   height: 100%;
   padding: 0.5625em 0.625em;
   width: 100%;
 }
-/* line 45, ../sass/app/components/_table.scss */
-.bumped tr {
+/* line 63, ../sass/app/components/_table.scss */
+table.bumped tr {
   border-color: #d9d9d9;
   border-style: solid;
   border-width: 0.0625em 0 0.0625em 0;
 }
-/* line 51, ../sass/app/components/_table.scss */
-.bumped td {
+/* line 69, ../sass/app/components/_table.scss */
+table.bumped td {
   font-size: 1.25em;
 }
-/* line 55, ../sass/app/components/_table.scss */
-.bumped .button {
+/* line 73, ../sass/app/components/_table.scss */
+table.bumped .button {
   margin: 0;
 }
 

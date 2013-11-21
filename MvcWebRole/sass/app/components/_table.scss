@@ -1,11 +1,29 @@
-.tabular {
+table.tabular {
 	border: emCalc(2px) solid #FFF;
 
 	th, td {
 		border: emCalc(2px) solid #FFF;
 	}
+
+	tr.subtotal {
+		background-color: $table-subtotal-color;
+
+		td {
+			color: #FFF;
+			font-weight: bold;
+		}
+	}
+
+	tr.grandtotal {
+		background-color: $table-grandtotal-color;
+
+		td {
+			color: #FFF;
+			font-weight: bold;
+		}
+	}
 }
-.bumped {
+table.bumped {
         border-style: none;
 		margin-top: emCalc(30px);
         width: 100%;

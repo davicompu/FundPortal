@@ -19,6 +19,7 @@ namespace FundEntities
         public string AreaId { get; set; }
 
         [Required]
+        [Display(Name="Fund number")]
         public string Number { get; set; }
         
         public DateTimeOffset DateTimeCreated { get; set; }
@@ -26,6 +27,7 @@ namespace FundEntities
         public ICollection<DateTimeOffset> DateTimeEdited { get; set; }
 
         [Required]
+        [Display(Name="Fund title")]
         public string Title { get; set; }
 
         public Status Status { get; set; }
@@ -34,14 +36,17 @@ namespace FundEntities
         public string Description { get; set; }
 
         [Required]
+        [Display(Name="Responsible person")]
         public string ResponsiblePerson { get; set; }
 
         [Required]
         [DataMember(IsRequired = true)]
+        [Display(Name="Current fiscal year approved budget")]
         public int CurrentBudget { get; set; }
 
         [Required]
         [DataMember(IsRequired = true)]
+        [Display(Name="YTD and projected expenditures through June 30")]
         public int ProjectedExpenditures { get; set; }
 
         [Required]

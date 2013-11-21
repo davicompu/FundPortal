@@ -75,7 +75,10 @@
                     <div class="large-6 columns">
                         <div class="input-panel">
                             <span>Projected year-end balance :
-                            <strong data-bind="text: projectedYearEndBalance"></strong>
+                            <strong 
+                                data-bind="text: projectedYearEndBalance() >= 0 ? '$'
+                                    + projectedYearEndBalance() :
+                                    '($' + projectedYearEndBalance().toString().replace(/[^\.\d]/g, '') + ')'"></strong>
                             </span>
                         </div>
                     </div>
@@ -100,7 +103,10 @@
                     <div class="large-6 columns">
                         <div class="input-panel">
                             <span>Requested budget: 
-                            <strong data-bind="text: requestedBudget"></strong>
+                            <strong 
+                                data-bind="text: requestedBudget() >= 0 ? '$'
+                                    + requestedBudget() :
+                                    '($' + requestedBudget().toString().replace(/[^\.\d]/g, '') + ')'"></strong>
                             </span>
                         </div>
                     </div>

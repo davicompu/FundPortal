@@ -38,7 +38,8 @@ namespace MvcWebRole
                       "~/Scripts/sammy-{version}.js",
                       "~/Scripts/toastr.js",
                       "~/Scripts/moment.js",
-                      "~/Scripts/pace.js")
+                      "~/Scripts/pace.js",
+                      "~/Scripts/jquery.formatCurrency-{version}.js")
                   );
         }
 

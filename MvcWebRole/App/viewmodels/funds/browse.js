@@ -67,7 +67,7 @@
                 {
                     areaId: vm.selectedAreaId(),
                 },
-                [updateNoItemsToShowProperty]);
+                [updateNoItemsToShowProperty, formatCurrency]);
         }
 
         function updateNoItemsToShowProperty() {
@@ -75,6 +75,10 @@
                 return vm.noItemsToShow(true);
             }
             return vm.noItemsToShow(false);
+        }
+
+        function formatCurrency() {
+            $('.currency').formatCurrency({ colorize: false, roundToDecimalPlace: 0 });
         }
 
         function navigateToCreateView() {

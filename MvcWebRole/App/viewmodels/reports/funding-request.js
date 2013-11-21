@@ -61,7 +61,8 @@
                 'getbyarea',
                 {
                     areaId: area.Id
-                });
+                },
+                [formatCurrency]);
         }
 
         function getSubtotalsForArea(area) {
@@ -72,7 +73,7 @@
                 {
                     areaId: area.Id
                 },
-                [getGrandTotals]);
+                [getGrandTotals, formatCurrency]);
         }
 
         function getGrandTotals(areaSubtotals) {
@@ -87,6 +88,10 @@
                 vm.grandTotals().variance(vm.grandTotals().variance()
                     + (areaSubtotals.currentBudget() - areaSubtotals.requestedBudget()));
             }
+        }
+
+        function formatCurrency(config) {
+            $('.currency').formatCurrency({ colorize: false, roundToDecimalPlace: 0 });
         }
 
         function GrandTotals(data) {

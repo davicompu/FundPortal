@@ -34,30 +34,30 @@
                             <td data-bind="text: Number"></td>
                             <td data-bind="text: Title"></td>
                             <td data-bind="text: ResponsiblePerson"></td>
-                            <td data-bind="text: CurrentBudget"></td>
-                            <td data-bind="text: ProjectedExpenditures"></td>
-                            <td data-bind="text: requestedBudget"></td>
-                            <td data-bind="text: variance"></td>
+                            <td class="currency" data-bind="text: CurrentBudget"></td>
+                            <td class="currency" data-bind="text: ProjectedExpenditures"></td>
+                            <td class="currency" data-bind="text: requestedBudget"></td>
+                            <td class="currency" data-bind="text: variance"></td>
                         </tr>
                         <!--/ko-->
                     </tbody>
                     <tbody>
                         <tr class="subtotal" data-bind="with: subtotals">
                             <td colspan="3" data-bind="text: 'Total for ' + $parent.Name()"></td>
-                            <td data-bind="text: currentBudget"></td>
-                            <td data-bind="text: projectedExpenditures"></td>
-                            <td data-bind="text: requestedBudget"></td>
-                            <td data-bind="text: variance"></td>
+                            <td class="currency" data-bind="text: currentBudget"></td>
+                            <td class="currency" data-bind="text: projectedExpenditures"></td>
+                            <td class="currency" data-bind="text: requestedBudget"></td>
+                            <td class="currency" data-bind="text: variance"></td>
                         </tr>
                     </tbody>
                     <!--/ko-->
                     <tbody>
                         <tr class="grandtotal" data-bind="with: grandTotals">
                             <td colspan="3">Grand totals</td>
-                            <td data-bind="text: currentBudget"></td>
-                            <td data-bind="text: projectedExpenditures"></td>
-                            <td data-bind="text: requestedBudget"></td>
-                            <td data-bind="text: variance"></td>
+                            <td class="currency" data-bind="text: currentBudget"></td>
+                            <td class="currency" data-bind="text: projectedExpenditures"></td>
+                            <td class="currency" data-bind="text: requestedBudget"></td>
+                            <td class="currency" data-bind="text: variance"></td>
                         </tr>
                     </tbody>
                 </table>

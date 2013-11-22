@@ -234,6 +234,7 @@
     <Content Include="App\datamodels\fileupload.model.js" />
     <Content Include="App\datamodels\fund.model.js" />
     <Content Include="App\datamodels\area.model.js" />
+    <Content Include="App\main-built.js" />
     <Content Include="App\main.js" />
     <Content Include="App\services\contexthelper.js" />
     <Content Include="App\services\logger.js" />

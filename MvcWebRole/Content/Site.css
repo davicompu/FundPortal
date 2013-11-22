@@ -7398,6 +7398,69 @@ label span.required {
   margin-bottom: 0;
 }
 
+/* line 6, ../sass/app/components/_panel.scss */
+.panel, .input-panel {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d9d9d9;
+  margin-bottom: 1.25em;
+  padding: 1.25em;
+  background: #f2f2f2;
+}
+/* line 44, ../sass/foundation/components/_panels.scss */
+.panel > :first-child, .input-panel > :first-child {
+  margin-top: 0;
+}
+/* line 45, ../sass/foundation/components/_panels.scss */
+.panel > :last-child, .input-panel > :last-child {
+  margin-bottom: 0;
+}
+/* line 50, ../sass/foundation/components/_panels.scss */
+.panel h1, .input-panel h1, .panel h2, .input-panel h2, .panel h3, .input-panel h3, .panel h4, .input-panel h4, .panel h5, .input-panel h5, .panel h6, .input-panel h6, .panel p, .input-panel p {
+  color: #333333;
+}
+/* line 54, ../sass/foundation/components/_panels.scss */
+.panel h1, .input-panel h1, .panel h2, .input-panel h2, .panel h3, .input-panel h3, .panel h4, .input-panel h4, .panel h5, .input-panel h5, .panel h6, .input-panel h6 {
+  line-height: 1;
+  margin-bottom: 0.625em;
+}
+/* line 56, ../sass/foundation/components/_panels.scss */
+.panel h1.subheader, .input-panel h1.subheader, .panel h2.subheader, .input-panel h2.subheader, .panel h3.subheader, .input-panel h3.subheader, .panel h4.subheader, .input-panel h4.subheader, .panel h5.subheader, .input-panel h5.subheader, .panel h6.subheader, .input-panel h6.subheader {
+  line-height: 1.4;
+}
+/* line 8, ../sass/app/components/_panel.scss */
+.panel.mild-callout, .mild-callout.input-panel {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #baf0ff;
+  margin-bottom: 1.25em;
+  padding: 1.25em;
+  background: #edfbff;
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+}
+/* line 44, ../sass/foundation/components/_panels.scss */
+.panel.mild-callout > :first-child, .mild-callout.input-panel > :first-child {
+  margin-top: 0;
+}
+/* line 45, ../sass/foundation/components/_panels.scss */
+.panel.mild-callout > :last-child, .mild-callout.input-panel > :last-child {
+  margin-bottom: 0;
+}
+/* line 50, ../sass/foundation/components/_panels.scss */
+.panel.mild-callout h1, .mild-callout.input-panel h1, .panel.mild-callout h2, .mild-callout.input-panel h2, .panel.mild-callout h3, .mild-callout.input-panel h3, .panel.mild-callout h4, .mild-callout.input-panel h4, .panel.mild-callout h5, .mild-callout.input-panel h5, .panel.mild-callout h6, .mild-callout.input-panel h6, .panel.mild-callout p, .mild-callout.input-panel p {
+  color: #333333;
+}
+/* line 54, ../sass/foundation/components/_panels.scss */
+.panel.mild-callout h1, .mild-callout.input-panel h1, .panel.mild-callout h2, .mild-callout.input-panel h2, .panel.mild-callout h3, .mild-callout.input-panel h3, .panel.mild-callout h4, .mild-callout.input-panel h4, .panel.mild-callout h5, .mild-callout.input-panel h5, .panel.mild-callout h6, .mild-callout.input-panel h6 {
+  line-height: 1;
+  margin-bottom: 0.625em;
+}
+/* line 56, ../sass/foundation/components/_panels.scss */
+.panel.mild-callout h1.subheader, .mild-callout.input-panel h1.subheader, .panel.mild-callout h2.subheader, .mild-callout.input-panel h2.subheader, .panel.mild-callout h3.subheader, .mild-callout.input-panel h3.subheader, .panel.mild-callout h4.subheader, .mild-callout.input-panel h4.subheader, .panel.mild-callout h5.subheader, .mild-callout.input-panel h5.subheader, .panel.mild-callout h6.subheader, .mild-callout.input-panel h6.subheader {
+  line-height: 1.4;
+}
+
 /* line 1, ../sass/app/components/_table.scss */
 table.tabular {
   border: 0.125em solid white;

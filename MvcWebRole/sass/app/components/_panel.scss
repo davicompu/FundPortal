@@ -2,3 +2,11 @@
 	@extend .panel;
 	margin-bottom: 0;
 }
+
+.panel { @include panel;
+
+    &.mild-callout {
+      @include panel(#edfbff);
+      @include inset-shadow($active:false);
+    }
+}

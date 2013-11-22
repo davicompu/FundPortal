@@ -2,30 +2,34 @@
     <div class="large-12 columns">
         <h4 class="view-heading">NARRATIVE INFORMATION REPORT</h4>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Fund number</th>
-                    <th>Fund description</th>
-                    <th>Reason for increase/decrease</th>
-                    <th>Projected increase/decrease</th>
-                </tr>
-            </thead>
-            <!-- ko foreach: items -->
-            <tbody>
-                <tr>
-                    <td colspan="7" class="text-center" data-bind="text: Name"></td>
-                </tr>
-                <!-- ko foreach: funds -->
-                <tr>
-                    <td data-bind="text: Number"></td>
-                    <td data-bind="text: Description"></td>
-                    <td data-bind="text: BudgetAdjustmentNote"></td>
-                    <td data-bind="text: BudgetAdjustment"></td>
-                </tr>
-                <!--/ko-->
-            </tbody>
+        <!-- ko foreach: items -->
+        <fieldset>
+            <h5 data-bind="text: Name"></h5>
+
+            <!-- ko foreach: funds -->
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="panel">
+                        <p>
+                            <strong data-bind="text: Title"></strong><span data-bind="    text: ' (' + Number() + ')'"></span>
+                        </p>
+
+                        <p data-bind="text: Description"></p>
+
+                        <div class="mild-callout panel">
+                            <p>
+                                <strong>Variance: </strong><span data-bind="text: formattedVariance"></span>
+                            </p>
+
+                            <p data-bind="visible: variance() !== 0, text: BudgetAdjustmentNote"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!--/ko-->
-        </table>
+
+            <p data-bind="if: funds().length === 0">No records</p>
+        </fieldset>
+        <!--/ko-->
     </div>
 </div>

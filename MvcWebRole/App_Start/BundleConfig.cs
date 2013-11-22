@@ -29,17 +29,17 @@ namespace MvcWebRole
 
             bundles.Add(
                   new ScriptBundle("~/Scripts/vendor").Include(
+                      "~/Scripts/app/javascript.custom.functions.js",
                       "~/Scripts/app/google.fastbutton.js",
                       "~/Scripts/jquery-{version}.js",
                       "~/Scripts/knockout-{version}.js",
-                      "~/Scripts/knockout.validation.debug.js",
+                      "~/Scripts/knockout.validation.js",
                       "~/Scripts/app/knockout.custom.bindings.js",
                       "~/Scripts/app/knockout.custom.extenders.js",
                       "~/Scripts/sammy-{version}.js",
                       "~/Scripts/toastr.js",
                       "~/Scripts/moment.js",
-                      "~/Scripts/pace.js",
-                      "~/Scripts/jquery.formatCurrency-{version}.js")
+                      "~/Scripts/pace.js")
                   );
         }
 

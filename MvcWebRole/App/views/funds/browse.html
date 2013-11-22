@@ -1,6 +1,6 @@
 ﻿<div class="row">
     <div class="large-12 columns">
-        <h4 class="view-heading">REQUESTS</h4>
+        <h4 class="view-heading">FUNDS</h4>
 
         <div class="row">
             <div class="large-12 columns">
@@ -13,7 +13,7 @@
         <div class="row">
             <div class="large-4 columns">
                 <label for="Area">
-                    Requesting area
+                    Fund requesting area
                 </label>
                 <select name="Area" data-bind="foreach: areas, value: selectedAreaId">
                     <option data-bind="attr: { value: Id }, text: Name"></option>
@@ -28,12 +28,12 @@
                         <tr>
                             <th>Fund number</th>
                             <th>Fund title</th>
-                            <th>Responsible person</th>
-                            <th class="hide-for-medium-down">Current fiscal year approved budget</th>
-                            <th class="hide-for-medium-down">YTD and projected expenditures through June 30</th>
-                            <th class="hide-for-medium-down">Requested budget</th>
-                            <th class="hide-for-medium-down">Variance</th>
-                            <th class="hide-for-medium-down">Status</th>
+                            <th>Fund responsible person</th>
+                            <th class="hide-for-medium-down">Fund current fiscal year approved budget</th>
+                            <th class="hide-for-medium-down">Fund current fiscal year projected expenditures</th>
+                            <th class="hide-for-medium-down">Fund requested budget</th>
+                            <th class="hide-for-medium-down">Fund variance</th>
+                            <th class="hide-for-medium-down">Fund status</th>
                         </tr>
                     </thead>
                     <tbody data-bind="foreach: items">
@@ -43,10 +43,10 @@
                             </td>
                             <td data-bind="text: Title"></td>
                             <td data-bind="text: ResponsiblePerson"></td>
-                            <td class="hide-for-medium-down currency" data-bind="text: CurrentBudget"></td>
-                            <td class="hide-for-medium-down currency" data-bind="text: ProjectedExpenditures"></td>
-                            <td class="hide-for-medium-down currency" data-bind="text: requestedBudget"></td>
-                            <td class="hide-for-medium-down currency" data-bind="text: variance"></td>
+                            <td class="hide-for-medium-down" data-bind="text: formattedCurrentBudget"></td>
+                            <td class="hide-for-medium-down" data-bind="text: formattedProjectedExpenditures"></td>
+                            <td class="hide-for-medium-down" data-bind="text: formattedRequestedBudget"></td>
+                            <td class="hide-for-medium-down" data-bind="text: formattedVariance"></td>
                             <td class="hide-for-medium-down" data-bind="text: fundStatusText"></td>
                         </tr>
                     </tbody>

@@ -12,7 +12,7 @@
             var self = this;
             data = data || {};
 
-            //#region Persisted properties
+            //#region Persisted properties.
             self.Id = data.Id;
             self.AreaId = data.AreaId;
             self.Number = ko.observable(data.Number).extend({ required: true });
@@ -41,7 +41,9 @@
             self.FileUploads = initFiles(self, data.FileUploads);
             //#endregion
 
-            //#region Non-persisted properties
+            
+            //#region Non-persisted properties.
+            // TODO: Remove on save to reduce unneccesary over-posting.
             self.errorMessage = ko.observable();
             self.requestedBudget = ko.computed(function () {
                 return self.CurrentBudget() + self.BudgetAdjustment();
@@ -62,9 +64,30 @@
                         return 'Status error';
                 }
             });
+            self.formattedCurrentBudget = ko.observable(data.CurrentBudget || 0)
+                .extend({ currency: [0, self.CurrentBudget] });
+            self.formattedProjectedExpenditures = ko.observable(data.ProjectedExpenditures || 0)
+                .extend({ currency: [0, self.ProjectedExpenditures] });
+            self.formattedBudgetAdjustment = ko.observable(data.BudgetAdjustment || 0)
+                .extend({ currency: [0, self.BudgetAdjustment] });
+            self.formattedRequestedBudget = ko.observable(self.requestedBudget())
+                .extend({ currency: [0] });
+            self.formattedProjectedYearEndBalance = ko.observable(self.projectedYearEndBalance())
+                .extend({ currency: [0] });
+            self.formattedVariance = ko.observable(self.variance())
+                .extend({ currency: [0] });
             //#endregion
 
-            //#region Non-persisted properties
+            //#region Non-persisted functions.
+            self.requestedBudget.subscribe(function (newValue) {
+                self.formattedRequestedBudget(newValue);
+            });
+            self.projectedYearEndBalance.subscribe(function (newValue) {
+                self.formattedProjectedYearEndBalance(newValue);
+            });
+            self.variance.subscribe(function (newValue) {
+                self.formattedVariance(newValue);
+            });
             self.toJson = function () { return ko.toJSON(self); };
             //#endregion
         }

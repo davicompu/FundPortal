@@ -17,11 +17,11 @@
                         <tr>
                             <th>Fund number</th>
                             <th>Fund title</th>
-                            <th>Responsible person</th>
-                            <th>Current fiscal year approved budget</th>
-                            <th>YTD and projected expenditures through June 30</th>
-                            <th>Requested budget</th>
-                            <th>Variance</th>
+                            <th>Fund responsible person</th>
+                            <th>Fund current fiscal year approved budget</th>
+                            <th>Fund current fiscal year projected expenditures</th>
+                            <th>Fund requested budget</th>
+                            <th>Fund variance</th>
                         </tr>
                     </thead>
                     <!-- ko foreach: items -->
@@ -34,30 +34,30 @@
                             <td data-bind="text: Number"></td>
                             <td data-bind="text: Title"></td>
                             <td data-bind="text: ResponsiblePerson"></td>
-                            <td class="currency" data-bind="text: CurrentBudget"></td>
-                            <td class="currency" data-bind="text: ProjectedExpenditures"></td>
-                            <td class="currency" data-bind="text: requestedBudget"></td>
-                            <td class="currency" data-bind="text: variance"></td>
+                            <td data-bind="text: formattedCurrentBudget"></td>
+                            <td data-bind="text: formattedProjectedExpenditures"></td>
+                            <td data-bind="text: formattedRequestedBudget"></td>
+                            <td data-bind="text: formattedVariance"></td>
                         </tr>
                         <!--/ko-->
                     </tbody>
                     <tbody>
                         <tr class="subtotal" data-bind="with: subtotals">
                             <td colspan="3" data-bind="text: 'Total for ' + $parent.Name()"></td>
-                            <td class="currency" data-bind="text: currentBudget"></td>
-                            <td class="currency" data-bind="text: projectedExpenditures"></td>
-                            <td class="currency" data-bind="text: requestedBudget"></td>
-                            <td class="currency" data-bind="text: variance"></td>
+                            <td data-bind="text: formattedCurrentBudget"></td>
+                            <td data-bind="text: formattedProjectedExpenditures"></td>
+                            <td data-bind="text: formattedRequestedBudget"></td>
+                            <td data-bind="text: formattedVariance"></td>
                         </tr>
                     </tbody>
                     <!--/ko-->
                     <tbody>
                         <tr class="grandtotal" data-bind="with: grandTotals">
                             <td colspan="3">Grand totals</td>
-                            <td class="currency" data-bind="text: currentBudget"></td>
-                            <td class="currency" data-bind="text: projectedExpenditures"></td>
-                            <td class="currency" data-bind="text: requestedBudget"></td>
-                            <td class="currency" data-bind="text: variance"></td>
+                            <td data-bind="text: formattedCurrentBudget"></td>
+                            <td data-bind="text: formattedProjectedExpenditures"></td>
+                            <td data-bind="text: formattedRequestedBudget"></td>
+                            <td data-bind="text: formattedVariance"></td>
                         </tr>
                     </tbody>
                 </table>

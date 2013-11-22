@@ -16,11 +16,13 @@ namespace MvcWebRole.FileModels
         private const int NUM_COLUMNS = 7;
         private const int SUMMARY_DATA_COLUMNS = 4;
         private IEnumerable<Fund> Funds { get; set; }
+        private string OtherUsesOfFundsAreaId { get; set; }
         private int Row { get; set; }
 
         public FundingRequestReport(IEnumerable<Area> areas, IEnumerable<Fund> funds)
         {
             this.Funds = funds;
+            this.OtherUsesOfFundsAreaId = areas.SingleOrDefault(a => a.Number == "O").Id;
 
             ExcelPackage package = new ExcelPackage();
             ExcelWorksheet sheet = package.Workbook.Worksheets.Add("Funding Request Report");
@@ -31,7 +33,7 @@ namespace MvcWebRole.FileModels
             #endregion
 
             #region Area Data
-            foreach (Area area in areas.Where(a => a.Number != "O"))
+            foreach (Area area in areas.Where(a => a.Id != this.OtherUsesOfFundsAreaId))
             {
 
                 sheet = WriteAreaData(sheet, area);
@@ -43,7 +45,7 @@ namespace MvcWebRole.FileModels
             #endregion
 
             #region Other Uses of Funds Data
-            foreach (Area area in areas.Where(r => r.Number == "O"))
+            foreach (Area area in areas.Where(r => r.Id == this.OtherUsesOfFundsAreaId))
             {
                 sheet = WriteAreaData(sheet, area);
             }
@@ -144,7 +146,7 @@ namespace MvcWebRole.FileModels
                     sheet.Cells[Row, ++column].Value = fund.CurrentBudget;
                     sheet.Cells[Row, ++column].Value = fund.ProjectedExpenditures;
                     sheet.Cells[Row, ++column].Value = (fund.CurrentBudget + fund.BudgetAdjustment);
-                    sheet.Cells[Row, ++column].Value = (fund.CurrentBudget - fund.CurrentBudget + fund.BudgetAdjustment);
+                    sheet.Cells[Row, ++column].Value = fund.BudgetAdjustment * -1;
                 }
             }
             #endregion
@@ -169,7 +171,7 @@ namespace MvcWebRole.FileModels
             sheet.Cells[Row, ++column + SUMMARY_DATA_COLUMNS].Value = areaFunds
                 .Sum(f => f.CurrentBudget + f.BudgetAdjustment);
             sheet.Cells[Row, ++column + SUMMARY_DATA_COLUMNS].Value = areaFunds
-                .Sum(f => f.CurrentBudget - f.CurrentBudget + f.BudgetAdjustment);
+                .Sum(f => f.BudgetAdjustment * -1);
             #endregion
 
             return sheet;
@@ -191,12 +193,18 @@ namespace MvcWebRole.FileModels
             range_universitySummary.Style.Fill.BackgroundColor.SetColor(Color.FromArgb(43, 166, 203));
             range_universitySummaryTitle.Value = "Grand Total for University Programs";
 
-            sheet.Cells[Row, column + SUMMARY_DATA_COLUMNS].Value = Funds.Sum(f => f.CurrentBudget);
-            sheet.Cells[Row, ++column + SUMMARY_DATA_COLUMNS].Value = Funds.Sum(f => f.ProjectedExpenditures);
-            sheet.Cells[Row, ++column + SUMMARY_DATA_COLUMNS].Value = 
-                Funds.Sum(f => f.CurrentBudget + f.BudgetAdjustment);
-            sheet.Cells[Row, ++column + SUMMARY_DATA_COLUMNS].Value =
-                Funds.Sum(f => f.CurrentBudget - f.CurrentBudget + f.BudgetAdjustment);
+            sheet.Cells[Row, column + SUMMARY_DATA_COLUMNS].Value = Funds
+                .Where(f => f.AreaId != this.OtherUsesOfFundsAreaId)
+                .Sum(f => f.CurrentBudget);
+            sheet.Cells[Row, ++column + SUMMARY_DATA_COLUMNS].Value = Funds
+                .Where(f => f.AreaId != this.OtherUsesOfFundsAreaId)
+                .Sum(f => f.ProjectedExpenditures);
+            sheet.Cells[Row, ++column + SUMMARY_DATA_COLUMNS].Value = Funds
+                .Where(f => f.AreaId != this.OtherUsesOfFundsAreaId)
+                .Sum(f => f.CurrentBudget + f.BudgetAdjustment);
+            sheet.Cells[Row, ++column + SUMMARY_DATA_COLUMNS].Value = Funds
+                .Where(f => f.AreaId != this.OtherUsesOfFundsAreaId)
+                .Sum(f => f.BudgetAdjustment * -1);
 
             return sheet;
         }

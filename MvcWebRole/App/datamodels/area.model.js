@@ -44,5 +44,19 @@
             self.variance = ko.computed(function () {
                 return self.currentBudget() - self.requestedBudget();
             });
+            self.formattedCurrentBudget = ko.observable(data.currentBudget || 0)
+                .extend({ currency: [0, self.currentBudget] });
+            self.formattedProjectedExpenditures = ko.observable(data.projectedExpenditures || 0)
+                .extend({ currency: [0, self.projectedExpenditures] });
+            self.formattedRequestedBudget = ko.observable(self.requestedBudget())
+                .extend({ currency: [0] });
+            self.formattedVariance = ko.observable(self.variance())
+                .extend({ currency: [0] });
+            self.requestedBudget.subscribe(function (newValue) {
+                self.formattedRequestedBudget(newValue);
+            });
+            self.variance.subscribe(function (newValue) {
+                self.formattedVariance(newValue);
+            });
         }
     });

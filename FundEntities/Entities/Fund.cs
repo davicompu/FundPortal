@@ -36,24 +36,24 @@ namespace FundEntities
         public string Description { get; set; }
 
         [Required]
-        [Display(Name="Responsible person")]
+        [Display(Name = "Fund responsible person")]
         public string ResponsiblePerson { get; set; }
 
         [Required]
         [DataMember(IsRequired = true)]
-        [Display(Name="Current fiscal year approved budget")]
+        [Display(Name="Fund current fiscal year approved budget")]
         public int CurrentBudget { get; set; }
 
         [Required]
         [DataMember(IsRequired = true)]
-        [Display(Name="YTD and projected expenditures through June 30")]
+        [Display(Name="Fund YTD and projected expenditures through June 30")]
         public int ProjectedExpenditures { get; set; }
 
         [Required]
         [DataMember(IsRequired = true)]
         public int BudgetAdjustment { get; set; }
 
-        [ConditionallyRequireNote("BudgetAdjustment", 3)]
+        [ConditionallyRequireNote("Fund budgetAdjustment", 3)]
         public string BudgetAdjustmentNote { get; set; }
 
         public int FiscalYear { get; set; }

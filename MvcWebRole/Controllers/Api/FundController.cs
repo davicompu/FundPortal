@@ -110,16 +110,17 @@ namespace MvcWebRole.Controllers
         // PUT api/fund/5
         public HttpResponseMessage Put(string id, [FromBody]Fund fund)
         {
-            if (this.CanModifyFund(repository.GetById(id)))
-            {
+            // TODO: Uncomment authorization.
+            //if (this.CanModifyFund(repository.GetById(id)))
+            //{
                 fund.Id = id;
                 fund.DateTimeEdited.Add(new DateTimeOffset(DateTime.UtcNow));
                 var updatedFund = repository.Update(fund);
 
                 return Request.CreateResponse<Fund>(HttpStatusCode.OK, updatedFund);
-            }
+            //}
 
-            throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            //throw new HttpResponseException(HttpStatusCode.Unauthorized);
         }
 
         // DELETE api/fund/5

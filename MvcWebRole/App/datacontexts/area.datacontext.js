@@ -77,7 +77,7 @@
             function getFailed(result) {
                 var errorText = 'Error adding the new item: ' +
                     result.statusText + '.';
-                data.errorMessage(contextHelper.getModelStateErrors(JSON.parse(result.responseText), errorText));
+                data.errorMessage(contextHelper.getModelStateErrors(JSON.parse(result.responseText || '{}'), errorText));
             }
         }
 
@@ -96,7 +96,7 @@
             function getFailed(result) {
                 var errorText = 'Error adding the new item: ' +
                     result.statusText + '.';
-                data.errorMessage(contextHelper.getModelStateErrors(JSON.parse(result.responseText), errorText));
+                data.errorMessage(contextHelper.getModelStateErrors(JSON.parse(result.responseText || '{}'), errorText));
             }
         }
 

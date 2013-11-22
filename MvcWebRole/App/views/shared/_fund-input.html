@@ -4,12 +4,12 @@
             <h4 class="view-heading">FUND INFORMATION</h4>
 
             <fieldset>
-                <h5>Current status</h5>
+                <h5>Fund current status</h5>
 
                 <div class="row">
                     <div class="large-4 columns">
                         <label for="Status">
-                            Status
+                            Fund status
                         </label>
                         <select name="Status" data-bind="value: Status">
                             <option value="1">Draft</option>
@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="large-6 columns">
                         <label for="ResponsiblePerson">
-                            Responsible person<span class="required">*</span>
+                            Fund responsible person<span class="required">*</span>
                         </label>
                         <input name="ResponsiblePerson" type="text" data-bind="value: ResponsiblePerson" />
                         <label for="ResponsiblePerson"
@@ -52,9 +52,9 @@
                 <div class="row">
                     <div class="large-6 columns">
                         <label for="CurrentBudget">
-                            Current fiscal year approved budget<span class="required">*</span>
+                            Fund current fiscal year approved budget<span class="required">*</span>
                         </label>
-                        <input name="CurrentBudget" type="text" data-bind="value: CurrentBudget" />
+                        <input name="CurrentBudget" type="text" data-bind="value: formattedCurrentBudget" />
                         <label for="CurrentBudget"
                             class="error-message" data-bind="validationMessage: CurrentBudget"></label>
                     </div>
@@ -63,9 +63,9 @@
                 <div class="row">
                     <div class="large-6 columns">
                         <label for="ProjectedExpenditures">
-                            YTD and projected expenditures through June 30<span class="required">*</span>
+                            Fund current fiscal year projected expenditures<span class="required">*</span>
                         </label>
-                        <input name="ProjectedExpenditures" type="text" data-bind="value: ProjectedExpenditures" />
+                        <input name="ProjectedExpenditures" type="text" data-bind="value: formattedProjectedExpenditures" />
                         <label for="ProjectedExpenditures"
                             class="error-message" data-bind="validationMessage: ProjectedExpenditures"></label>
                     </div>
@@ -74,11 +74,9 @@
                 <div class="row">
                     <div class="large-6 columns">
                         <div class="input-panel">
-                            <span>Projected year-end balance :
+                            <span>Fund projected year-end balance:
                             <strong 
-                                data-bind="text: projectedYearEndBalance() >= 0 ? '$'
-                                    + projectedYearEndBalance() :
-                                    '($' + projectedYearEndBalance().toString().replace(/[^\.\d]/g, '') + ')'"></strong>
+                                data-bind="text: formattedProjectedYearEndBalance"></strong>
                             </span>
                         </div>
                     </div>
@@ -86,14 +84,14 @@
             </fieldset>
 
             <fieldset>
-                <h5>Next year projected budget</h5>
+                <h5>Fund next year projected budget</h5>
 
                 <div class="row">
                     <div class="large-4 columns">
                         <label for="BudgetAdjustment">
-                            Projected increase or decrease<span class="required">*</span>
+                            Fund projected increase or decrease<span class="required">*</span>
                         </label>
-                        <input name="BudgetAdjustment" type="text" data-bind="value: BudgetAdjustment" />
+                        <input name="BudgetAdjustment" type="text" data-bind="value: formattedBudgetAdjustment" />
                         <label for="BudgetAdjustment"
                             class="error-message" data-bind="validationMessage: BudgetAdjustment"></label>
                     </div>
@@ -102,11 +100,9 @@
                 <div class="row">
                     <div class="large-6 columns">
                         <div class="input-panel">
-                            <span>Requested budget: 
+                            <span>Fund requested budget: 
                             <strong 
-                                data-bind="text: requestedBudget() >= 0 ? '$'
-                                    + requestedBudget() :
-                                    '($' + requestedBudget().toString().replace(/[^\.\d]/g, '') + ')'"></strong>
+                                data-bind="text: formattedRequestedBudget"></strong>
                             </span>
                         </div>
                     </div>
@@ -114,7 +110,7 @@
             </fieldset>
 
             <fieldset>
-                <h5>Supporting information</h5>
+                <h5>Fund supporting information</h5>
 
                 <div class="row">
                     <div class="large-12 columns">
@@ -130,7 +126,7 @@
                 <div class="row">
                     <div class="large-12 columns">
                         <label for="BudgetAdjustmentNote">
-                            Reason for increase or decrease in the requested budget<span class="required"
+                            Reason for increase or decrease in the requested budget for this fund<span class="required"
                             data-bind="visible: BudgetAdjustment() > 0">*</span>
                         </label>
                         <textarea name="BudgetAdjustmentNote" data-bind="value: BudgetAdjustmentNote"></textarea>
@@ -141,7 +137,7 @@
             </fieldset>
 
             <fieldset>
-                <h5>Attachments</h5>
+                <h5>Fund attachments</h5>
 
                 <div class="row">
                     <div class="large-12 columns">

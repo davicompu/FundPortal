@@ -62,7 +62,7 @@
                 {
                     areaId: area.Id
                 },
-                [formatCurrency]);
+                []);
         }
 
         function getSubtotalsForArea(area) {
@@ -73,7 +73,7 @@
                 {
                     areaId: area.Id
                 },
-                [getGrandTotals, formatCurrency]);
+                [getGrandTotals]);
         }
 
         function getGrandTotals(areaSubtotals) {
@@ -90,10 +90,6 @@
             }
         }
 
-        function formatCurrency(config) {
-            $('.currency').formatCurrency({ colorize: false, roundToDecimalPlace: 0 });
-        }
-
         function GrandTotals(data) {
             var self = this;
             data = data || {};
@@ -102,6 +98,28 @@
             self.projectedExpenditures = ko.observable(0);
             self.requestedBudget = ko.observable(0);
             self.variance = ko.observable(0);
+
+            self.formattedCurrentBudget = ko.observable(data.currentBudget || 0)
+                .extend({ currency: [0, self.CurrentBudget] });
+            self.formattedProjectedExpenditures = ko.observable(data.projectedExpenditures || 0)
+                .extend({ currency: [0, self.ProjectedExpenditures] });
+            self.formattedRequestedBudget = ko.observable(self.requestedBudget())
+                .extend({ currency: [0] });
+            self.formattedVariance = ko.observable(self.variance())
+                .extend({ currency: [0] });
+
+            self.currentBudget.subscribe(function (newValue) {
+                self.formattedCurrentBudget(newValue);
+            });
+            self.projectedExpenditures.subscribe(function (newValue) {
+                self.formattedProjectedExpenditures(newValue);
+            });
+            self.requestedBudget.subscribe(function (newValue) {
+                self.formattedRequestedBudget(newValue);
+            });
+            self.variance.subscribe(function (newValue) {
+                self.formattedVariance(newValue);
+            });
         }
         //#endregion
     });

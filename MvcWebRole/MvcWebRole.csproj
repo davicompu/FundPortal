@@ -306,7 +306,6 @@
     <Content Include="Scripts\foundation\foundation.section.js" />
     <Content Include="Scripts\foundation\foundation.tooltips.js" />
     <Content Include="Scripts\foundation\foundation.topbar.js" />
-    <Content Include="Scripts\jquery.formatCurrency-1.4.0.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\knockout.validation.debug.js" />
     <Content Include="Scripts\knockout.validation.js" />

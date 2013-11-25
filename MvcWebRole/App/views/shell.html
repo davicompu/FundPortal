@@ -4,5 +4,17 @@
 
         <section id="content" data-bind="router: { transition: 'scrollers', cacheViews: true }">
         </section>
+
+        <div id="timeoutModal" class="small reveal-modal">
+            <h4>Your session is about to timeout.</h4>
+            <p>
+                You will be logged out in <span class="counter"></span> seconds. Click continue to
+                extend your session.
+            </p>
+            
+            <span class="text-button button-close-reveal-modal">Continue</span>
+            
+            <a class="close-reveal-modal">&#215;</a>
+        </div>
     </div>
 </div>

@@ -213,6 +213,7 @@
     <Compile Include="Controllers\Api\FundController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReportFileController.cs" />
+    <Compile Include="Controllers\Api\SessionController.cs" />
     <Compile Include="Extensions\DataAnnotationsHelper.cs" />
     <Compile Include="FileModels\FundingRequestReport.cs" />
     <Compile Include="FileModels\Report.cs" />
@@ -270,6 +271,7 @@
     <Content Include="Global.asax" />
     <Content Include="Documentation.chm" />
     <Content Include="Scripts\almond-custom.js" />
+    <Content Include="Scripts\app\chrisjsherm.counter.js" />
     <Content Include="Scripts\app\google.fastbutton.js" />
     <Content Include="Scripts\app\javascript.custom.functions.js" />
     <Content Include="Scripts\app\knockout.custom.bindings.js" />

@@ -4,7 +4,7 @@
         var vm = {
             //#region Initialization.
             error: ko.observable(),
-            title: 'NARRATIVE INFORMATION REPORT',
+            title: 'NARRATIVE REPORT',
             activate: activate,
             attached: attached,
             deactivate: deactivate,

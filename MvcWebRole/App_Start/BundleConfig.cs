@@ -42,7 +42,8 @@ namespace MvcWebRole
                       "~/Scripts/pace.js",
                       "~/Scripts/app/chrisjsherm.Counter.js",
                       "~/Scripts/foundation/foundation.js",
-                      "~/Scripts/foundation/foundation.reveal.js")
+                      "~/Scripts/foundation/foundation.reveal.js",
+                      "~/Scripts/foundation/foundation.topbar.js")
                   );
         }
 

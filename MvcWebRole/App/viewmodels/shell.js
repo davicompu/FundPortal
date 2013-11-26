@@ -13,7 +13,7 @@
         function activate() {
             router.map([
                 // Default route
-                { route: '', moduleId: 'viewmodels/funds/browse' },
+                { route: '', moduleId: 'viewmodels/reports/narrative' },
 
 
                 { route: 'areas/browse', moduleId: 'viewmodels/areas/browse' },
@@ -26,8 +26,8 @@
 
                 { route: 'reports/funding-request', moduleId: 'viewmodels/reports/funding-request' },
                 {
-                    route: 'reports/narrative-information',
-                    moduleId: 'viewmodels/reports/narrative-information'
+                    route: 'reports/narrative',
+                    moduleId: 'viewmodels/reports/narrative'
                 }
             ]).buildNavigationModel();
 
@@ -36,7 +36,7 @@
 
         function attached() {
             // Initialize Foundation scripts
-            $(document).foundation('reveal', { closeOnBackgroundClick: false });
+            $(document).foundation();
 
             // Create Counter object
             var countdown = new chrisjsherm.Counter({

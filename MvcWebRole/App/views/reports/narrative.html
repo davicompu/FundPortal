@@ -1,6 +1,6 @@
 ﻿<div class="row">
     <div class="large-12 columns">
-        <h4 class="view-heading">NARRATIVE INFORMATION REPORT</h4>
+        <h4 class="view-heading">NARRATIVE REPORT</h4>
 
         <!-- ko foreach: items -->
         <fieldset>
@@ -16,12 +16,12 @@
 
                         <p data-bind="text: Description"></p>
 
-                        <div class="mild-callout panel">
+                        <div class="mild-callout panel" data-bind="visible: variance() !== 0">
                             <p>
                                 <strong>Variance: </strong><span data-bind="text: formattedVariance"></span>
                             </p>
 
-                            <p data-bind="visible: variance() !== 0, text: BudgetAdjustmentNote"></p>
+                            <p data-bind="text: BudgetAdjustmentNote"></p>
                         </div>
                     </div>
                 </div>

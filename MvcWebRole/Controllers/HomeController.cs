@@ -22,5 +22,11 @@ namespace MvcWebRole.Controllers
         {
             return View();
         }
+
+        public ActionResult Logout()
+        {
+            DotNetCasClient.CasAuthentication.SingleSignOut();
+            return RedirectToAction("Index");
+        }
     }
 }

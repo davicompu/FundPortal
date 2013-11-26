@@ -40,11 +40,11 @@
 
             // Create Counter object
             var countdown = new chrisjsherm.Counter({
-                seconds: 1200,
+                seconds: 1170,
 
                 onUpdateStatus: function (second) {
                     // change the UI that displays the seconds remaining in the timeout.
-                    if (parseInt(second) <= 1197) {
+                    if (parseInt(second) < 91) {
                         $('#timeoutModal').foundation('reveal', 'open');
                         $('.counter').text(second);
                     }
@@ -52,7 +52,7 @@
 
                 onCounterEnd: function () {
                     // Replace the current URL with a random querystring to force reauthentication.
-                    window.location.replace(document.URL + '? =' + Math.random().toString().substr(2));
+                    window.location.replace('/home/logout');
                 },
             });
 

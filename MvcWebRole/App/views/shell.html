@@ -1,30 +1,32 @@
-﻿<div class="row view-background">
-    <div class="large-12 columns">
+﻿<div class="contain-to-grid">
+<nav class="top-bar" data-options="is_hover:false">
+    <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+            <!-- Leave this empty -->
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+    </ul>
 
-        <nav class="top-bar" data-options="is_hover:false">
-            <ul class="title-area">
-                <!-- Title Area -->
-                <li>
-                    <h1>foundation<span>portal</span></h1>
-                </li>
-                <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-            </ul>
+    <section class="top-bar-section">
+        <ul class="right">
+            <li><a href="/#/funds/browse">Funds</a></li>
+            <li class="has-dropdown"><a>Reports</a>
 
-            <section class="top-bar-section">
-                <ul class="right">
-                    <li><a href="/#/funds/browse">funds</a></li>
-                    <li class="has-dropdown"><a>reports</a>
-
-                        <ul class="dropdown">
-                            <li><a href="/#/reports/funding-request" class="">Funding Request</a></li>
-                            <li><a href="/#/reports/narrative" class="">Narrative</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/home/logout">logout</a></li>
+                <ul class="dropdown">
+                    <li><a href="/#/reports/funding-request">Funding Request</a></li>
+                    <li><a href="/#/reports/narrative">Narrative</a></li>
                 </ul>
-            </section>
-        </nav>
+            </li>
+            <li><a href="/home/logout">Logout</a></li>
+        </ul>
+    </section>
+</nav>
+</div>
+<div class="row view-background">
+    <div class="large-12 columns">
+        <h1 class="app-heading">Foundation<span>Portal</span></h1>
 
         <section id="content" data-bind="router: { transition: 'scrollers', cacheViews: true }">
         </section>
@@ -32,7 +34,7 @@
         <div id="timeoutModal" class="small reveal-modal" data-options="closeOnBackgroundClick: false">
             <h4>Your session is about to timeout.</h4>
             <p>
-                You will be logged out in <span class="counter"></span> seconds. Click continue to
+                You will be logged out in <span class="counter"></span>seconds. Click continue to
                 extend your session.
             </p>
 

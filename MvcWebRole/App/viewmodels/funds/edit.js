@@ -43,11 +43,11 @@
 
         function getFund(id) {
             // Try to get item from the BrowseVM, if initialized.
-            //ko.utils.arrayFirst(browseVM.items(), function (item) {
-            //    if (item.Id === id) {
-            //        return vm.item(item);
-            //    }
-            //});
+            ko.utils.arrayFirst(browseVM.items(), function (item) {
+                if (item.Id === id) {
+                    return vm.item(item);
+                }
+            });
 
             // If item wasn't retrieved from BrowseVM, retrieve from DB.
             if (undefined === vm.item()) {

@@ -261,7 +261,10 @@
     <Content Include="App\views\shell.html" />
     <Content Include="Content\durandal.css" />
     <Content Include="Content\fonts\foundation-icons.svg" />
+    <Content Include="Content\ie.css" />
     <Content Include="Content\images\bright-squares.png" />
+    <Content Include="Content\print.css" />
+    <Content Include="Content\screen.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="favicon.ico" />
     <Content Include="Foundation_readme.txt" />

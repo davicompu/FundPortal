@@ -117,7 +117,9 @@
                         <label for="Description">
                             Brief description of the program and types of expenses paid for by this fund<span class="required">*</span>
                         </label>
-                        <textarea name="Description" data-bind="value: Description"></textarea>
+                        <p class="print-only" data-bind="text: Description"></p>
+                        <textarea name="Description" class="hide-on-print"
+                            data-bind="value: Description"></textarea>
                         <label for="Description"
                             class="error-message" data-bind="validationMessage: Description"></label>
                     </div>
@@ -129,7 +131,9 @@
                             Reason for increase or decrease in the requested budget for this fund<span class="required"
                             data-bind="visible: BudgetAdjustment() > 0">*</span>
                         </label>
-                        <textarea name="BudgetAdjustmentNote" data-bind="value: BudgetAdjustmentNote"></textarea>
+                        <p class="print-only" data-bind="text: BudgetAdjustmentNote"></p>
+                        <textarea name="BudgetAdjustmentNote" class="hide-on-print"
+                            data-bind="value: BudgetAdjustmentNote"></textarea>
                         <label for="BudgetAdjustmentNote"
                             class="error-message" data-bind="validationMessage: BudgetAdjustmentNote"></label>
                     </div>

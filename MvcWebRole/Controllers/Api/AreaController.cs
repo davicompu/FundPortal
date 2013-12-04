@@ -16,7 +16,8 @@ namespace MvcWebRole.Controllers
         // GET api/area
         public HttpResponseMessage Get()
         {
-            var areas = repository;
+            var areas = repository
+                .OrderBy(a => a.Number);
 
             return Request.CreateResponse<IEnumerable<Area>>(HttpStatusCode.OK, areas);
         }

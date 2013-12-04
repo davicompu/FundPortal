@@ -13,7 +13,7 @@
         function activate() {
             router.map([
                 // Default route
-                { route: '', moduleId: 'viewmodels/reports/narrative' },
+                { route: '', moduleId: 'viewmodels/reports/funding-request' },
 
 
                 { route: 'areas/browse', moduleId: 'viewmodels/areas/browse' },

@@ -25,7 +25,7 @@
                         </tr>
                     </thead>
                     <!-- ko foreach: items -->
-                    <tbody>
+                    <tbody data-bind="ifnot: Number() === 'O'">
                         <tr>
                             <td colspan="7" class="text-center" data-bind="text: Name"></td>
                         </tr>
@@ -41,7 +41,7 @@
                         </tr>
                         <!--/ko-->
                     </tbody>
-                    <tbody>
+                    <tbody data-bind="ifnot: Number() === 'O'">
                         <tr class="subtotal" data-bind="with: subtotals">
                             <td colspan="3" data-bind="text: 'Total for ' + $parent.Name()"></td>
                             <td data-bind="text: formattedCurrentBudget"></td>
@@ -60,6 +60,33 @@
                             <td data-bind="text: formattedVariance"></td>
                         </tr>
                     </tbody>
+                    <!-- ko foreach: items -->
+                    <tbody data-bind="if: Number() === 'O'">
+                        <tr>
+                            <td colspan="7" class="text-center" data-bind="text: Name"></td>
+                        </tr>
+                        <!-- ko foreach: funds -->
+                        <tr>
+                            <td data-bind="text: Number"></td>
+                            <td data-bind="text: Title"></td>
+                            <td data-bind="text: ResponsiblePerson"></td>
+                            <td data-bind="text: formattedCurrentBudget"></td>
+                            <td data-bind="text: formattedProjectedExpenditures"></td>
+                            <td data-bind="text: formattedRequestedBudget"></td>
+                            <td data-bind="text: formattedVariance"></td>
+                        </tr>
+                        <!--/ko-->
+                    </tbody>
+                    <tbody data-bind="if: Number() === 'O'">
+                        <tr class="subtotal" data-bind="with: subtotals">
+                            <td colspan="3" data-bind="text: 'Total for ' + $parent.Name()"></td>
+                            <td data-bind="text: formattedCurrentBudget"></td>
+                            <td data-bind="text: formattedProjectedExpenditures"></td>
+                            <td data-bind="text: formattedRequestedBudget"></td>
+                            <td data-bind="text: formattedVariance"></td>
+                        </tr>
+                    </tbody>
+                    <!--/ko-->
                 </table>
             </div>
         </div>

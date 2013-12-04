@@ -12,6 +12,7 @@
 
             //#region Properties.
             items: ko.observableArray(),
+            oAreaFunds: ko.observableArray(),
             grandTotals: ko.observable(new GrandTotals()),
             //#endregion
 
@@ -48,8 +49,12 @@
 
         function getFundDataForAreas(areas) {
             $.each(vm.items(), function (index, value) {
-                getFundsForArea(value);
-                getSubtotalsForArea(value);
+                if (value.Number === 'O') {
+
+                } else {
+                    getFundsForArea(value);
+                    getSubtotalsForArea(value);
+                }
             });
             
         }

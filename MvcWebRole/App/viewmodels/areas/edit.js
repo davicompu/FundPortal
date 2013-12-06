@@ -18,13 +18,19 @@
             //#endregion
         };
 
+        // Initialize validation group once vm.item is set
+        vm.item.subscribe(function (newValue) {
+            if (newValue !== undefined) {
+                vm.errors = ko.validation.group(newValue);
+            }
+        });
+
         return vm;
 
         //#region Internal methods.
         function activate(id) {
             logger.log('Edit area view activated', null, 'areas/edit', false);
             getArea(id);
-            vm.errors = ko.validation.group(vm.item());
             return true;
         }
 
@@ -35,17 +41,17 @@
         }
 
         function getArea(id) {
-            if (router.activeItem()) {
-                var activeModule = router.activeItem().__moduleId__;
-                if (undefined !== browseVM.items()) {
-                    ko.utils.arrayFirst(browseVM.items(), function (item) {
-                        if (item.Id === id) {
-                            return vm.item(item);
-                        }
-                    });
+            // Try to get item from the BrowseVM, if initialized.
+            ko.utils.arrayFirst(browseVM.items(), function (item) {
+                if (item.Id === id) {
+                    return vm.item(item);
                 }
+            });
+
+            // If item wasn't retrieved from BrowseVM, retrieve from DB.
+            if (undefined === vm.item()) {
+                return datacontext.getItem(id, vm.item, vm.error);
             }
-            return datacontext.getItem(id, vm.item, vm.error);
         }
 
         // TODO: Client-side validation

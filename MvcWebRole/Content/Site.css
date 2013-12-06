@@ -4975,12 +4975,10 @@ table tfoot tr td {
   padding: 0.3125em;
 }
 
-/* line 1, ../sass/app/components/_button.scss */
-.text-button {
-  border: 0.125em solid #2ba6cb;
-  color: #2ba6cb;
-  font-size: 1.25em;
-  padding: 0.3125em;
+/* line 1, ../sass/app/components/_fieldset.scss */
+fieldset {
+  background-color: #fcf5ee;
+  padding-top: 0.625em;
 }
 
 /* line 1, ../sass/app/components/_heading.scss */

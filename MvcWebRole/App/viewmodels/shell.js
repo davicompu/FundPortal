@@ -44,7 +44,7 @@
 
                 onUpdateStatus: function (second) {
                     // change the UI that displays the seconds remaining in the timeout.
-                    if (parseInt(second) < 91) {
+                    if (parseInt(second, 10) < 91) {
                         $('#timeoutModal').foundation('reveal', 'open');
                         $('.counter').text(second);
                     }

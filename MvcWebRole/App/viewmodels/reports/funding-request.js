@@ -1,6 +1,6 @@
 ﻿define(['services/logger', 'plugins/router', 'datacontexts/area.datacontext',
-    'datacontexts/fund.datacontext'],
-    function (logger, router, areaDatacontext, fundDatacontext) {
+    'datacontexts/fund.datacontext', 'services/sorter'],
+    function (logger, router, areaDatacontext, fundDatacontext, sorter) {
         var vm = {
             //#region Initialization.
             error: ko.observable(),
@@ -17,6 +17,13 @@
             //#endregion
 
             //#region Methods.
+            sortByNumber: sortByNumber,
+            sortByTitle: sortByTitle,
+            sortByResponsiblePerson: sortByResponsiblePerson,
+            sortByCurrentBudget: sortByCurrentBudget,
+            sortByProjectedExpenditures: sortByProjectedExpenditures,
+            sortByRequestedBudget: sortByRequestedBudget,
+            sortByVariance: sortByVariance,
             //#endregion
         };
 
@@ -49,12 +56,8 @@
 
         function getFundDataForAreas(areas) {
             $.each(vm.items(), function (index, value) {
-                if (value.Number === 'O') {
-
-                } else {
-                    getFundsForArea(value);
-                    getSubtotalsForArea(value);
-                }
+                getFundsForArea(value);
+                getSubtotalsForArea(value);
             });
             
         }
@@ -82,7 +85,7 @@
         }
 
         function getGrandTotals(areaSubtotals) {
-            // Don't add 'Other uses of funds' subtotals to grand total
+            // Don't add 'Other uses of funds' subtotals to grand total.
             if (areaSubtotals.Id !== areaDatacontext.otherUsesOfFundsId()) {
                 vm.grandTotals().currentBudget(vm.grandTotals().currentBudget() +
                     areaSubtotals.currentBudget());
@@ -124,6 +127,48 @@
             });
             self.variance.subscribe(function (newValue) {
                 self.formattedVariance(newValue);
+            });
+        }
+
+        function sortByNumber() {
+            $.each(vm.items(), function (index, value) {
+                sorter.sortByNumber(value.funds);
+            });
+        }
+
+        function sortByTitle() {
+            $.each(vm.items(), function (index, value) {
+                sorter.sortByTitle(value.funds);
+            });
+        }
+
+        function sortByResponsiblePerson() {
+            $.each(vm.items(), function (index, value) {
+                sorter.sortByResponsiblePerson(value.funds);
+            });
+        }
+
+        function sortByCurrentBudget() {
+            $.each(vm.items(), function (index, value) {
+                sorter.sortByCurrentBudget(value.funds);
+            });
+        }
+
+        function sortByProjectedExpenditures() {
+            $.each(vm.items(), function (index, value) {
+                sorter.sortByProjectedExpenditures(value.funds);
+            });
+        }
+
+        function sortByRequestedBudget() {
+            $.each(vm.items(), function (index, value) {
+                sorter.sortByRequestedBudget(value.funds);
+            });
+        }
+
+        function sortByVariance() {
+            $.each(vm.items(), function (index, value) {
+                sorter.sortByVariance(value.funds);
             });
         }
         //#endregion

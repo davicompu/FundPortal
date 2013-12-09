@@ -12,7 +12,7 @@
         entity.errorMessage(null);
     }
 
-    function ajaxRequest(type, url, data, dataType) { // Ajax helper
+    function ajaxRequest(type, url, data, dataType) {
         var options = {
             dataType: dataType || "json",
             contentType: "application/json",

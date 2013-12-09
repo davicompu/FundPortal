@@ -236,6 +236,7 @@
     <Content Include="App\main.js" />
     <Content Include="App\services\contexthelper.js" />
     <Content Include="App\services\logger.js" />
+    <Content Include="App\services\sorter.js" />
     <Content Include="App\viewmodels\areas\browse.js" />
     <Content Include="App\viewmodels\areas\create.js" />
     <Content Include="App\viewmodels\areas\edit.js" />

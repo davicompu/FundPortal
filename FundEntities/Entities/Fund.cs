@@ -53,7 +53,7 @@ namespace FundEntities
         [DataMember(IsRequired = true)]
         public int BudgetAdjustment { get; set; }
 
-        [ConditionallyRequireNote("Fund budgetAdjustment", 3)]
+        [ConditionallyRequireNote("BudgetAdjustment", 3)]
         public string BudgetAdjustmentNote { get; set; }
 
         public int FiscalYear { get; set; }

@@ -30,8 +30,8 @@
 
             function getFailed(result) {
                 itemObservable(undefined);
-                errorObservable('An error occurred during your request: '
-                    + result.statusText);
+                errorObservable('An error occurred during your request: ' +
+                    result.statusText);
             }
         }
 
@@ -53,8 +53,8 @@
 
             function getFailed(result) {
                 itemObservableArray(undefined);
-                errorObservable('An error occurred during your request: '
-                    + result.statusText);
+                errorObservable('An error occurred during your request: ' +
+                    result.statusText);
             }
         }
 
@@ -74,8 +74,8 @@
 
             function getFailed(result) {
                 //itemObservableArray(undefined);
-                errorObservable('An error occurred during your request: '
-                    + result.statusText);
+                errorObservable('An error occurred during your request: ' +
+                    result.statusText);
             }
         }
 

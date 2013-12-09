@@ -217,7 +217,6 @@
     <Compile Include="FileModels\FundingRequestReport.cs" />
     <Compile Include="FileModels\Report.cs" />
     <Compile Include="Filters\ConditionallyRequireNoteAttribute.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\RequireHttpsAttributeWebApi.cs" />
     <Compile Include="Filters\ValidateModelAttribute.cs" />
     <Compile Include="Global.asax.cs">

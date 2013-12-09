@@ -19,7 +19,7 @@
             contextHelper.clearErrorMessage(data);
 
             var files = evt.target.files;
-            var formData = new FormData();
+            //var formData = new FormData();
             var url = itemApi('post');
             for (var i = 0, file; file = files[i]; ++i) {
                 var formData = new FormData();

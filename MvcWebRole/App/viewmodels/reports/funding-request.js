@@ -84,14 +84,14 @@
         function getGrandTotals(areaSubtotals) {
             // Don't add 'Other uses of funds' subtotals to grand total
             if (areaSubtotals.Id !== areaDatacontext.otherUsesOfFundsId()) {
-                vm.grandTotals().currentBudget(vm.grandTotals().currentBudget()
-                    + areaSubtotals.currentBudget());
-                vm.grandTotals().projectedExpenditures(vm.grandTotals().projectedExpenditures()
-                    + areaSubtotals.projectedExpenditures());
-                vm.grandTotals().requestedBudget(vm.grandTotals().requestedBudget()
-                    + (areaSubtotals.currentBudget() + areaSubtotals.budgetAdjustment()));
-                vm.grandTotals().variance(vm.grandTotals().variance()
-                    + (areaSubtotals.currentBudget() - areaSubtotals.requestedBudget()));
+                vm.grandTotals().currentBudget(vm.grandTotals().currentBudget() +
+                    areaSubtotals.currentBudget());
+                vm.grandTotals().projectedExpenditures(vm.grandTotals().projectedExpenditures() +
+                    areaSubtotals.projectedExpenditures());
+                vm.grandTotals().requestedBudget(vm.grandTotals().requestedBudget() +
+                    (areaSubtotals.currentBudget() + areaSubtotals.budgetAdjustment()));
+                vm.grandTotals().variance(vm.grandTotals().variance() +
+                    (areaSubtotals.currentBudget() - areaSubtotals.requestedBudget()));
             }
         }
 

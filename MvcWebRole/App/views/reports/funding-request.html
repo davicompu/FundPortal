@@ -15,13 +15,20 @@
                 <table class="tabular">
                     <thead>
                         <tr>
-                            <th data-bind="click: sortByNumber">Fund number</th>
-                            <th data-bind="click: sortByTitle">Fund title</th>
-                            <th data-bind="click: sortByResponsiblePerson">Fund responsible person</th>
-                            <th data-bind="click: sortByCurrentBudget">Fund current fiscal year approved budget</th>
-                            <th data-bind="click: sortByProjectedExpenditures">Fund current fiscal year projected expenditures</th>
-                            <th data-bind="click: sortByRequestedBudget">Fund requested budget</th>
-                            <th data-bind="click: sortByVariance">Fund variance</th>
+                            <th data-bind="click: sort.bind($data, 'Number')">
+                                Fund number</th>
+                            <th data-bind="click: sort.bind($data, 'Title')">
+                                Fund title</th>
+                            <th data-bind="click: sort.bind($data, 'ResponsiblePerson')">
+                                Fund responsible person</th>
+                            <th data-bind="click: sort.bind($data, 'CurrentBudget')">
+                                Fund current fiscal year approved budget</th>
+                            <th data-bind="click: sort.bind($data, 'ProjectedExpenditures')">
+                                Fund current fiscal year projected expenditures</th>
+                            <th data-bind="click: sort.bind($data, 'requestedBudget')">
+                                Fund requested budget</th>
+                            <th data-bind="click: sort.bind($data, 'variance')">
+                                Fund variance</th>
                         </tr>
                     </thead>
                     <!-- ko foreach: items -->

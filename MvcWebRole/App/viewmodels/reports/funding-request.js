@@ -17,13 +17,7 @@
             //#endregion
 
             //#region Methods.
-            sortByNumber: sortByNumber,
-            sortByTitle: sortByTitle,
-            sortByResponsiblePerson: sortByResponsiblePerson,
-            sortByCurrentBudget: sortByCurrentBudget,
-            sortByProjectedExpenditures: sortByProjectedExpenditures,
-            sortByRequestedBudget: sortByRequestedBudget,
-            sortByVariance: sortByVariance,
+            sort: sort,
             //#endregion
         };
 
@@ -130,45 +124,9 @@
             });
         }
 
-        function sortByNumber() {
+        function sort(fieldName) {
             $.each(vm.items(), function (index, value) {
-                sorter.sortByNumber(value.funds);
-            });
-        }
-
-        function sortByTitle() {
-            $.each(vm.items(), function (index, value) {
-                sorter.sortByTitle(value.funds);
-            });
-        }
-
-        function sortByResponsiblePerson() {
-            $.each(vm.items(), function (index, value) {
-                sorter.sortByResponsiblePerson(value.funds);
-            });
-        }
-
-        function sortByCurrentBudget() {
-            $.each(vm.items(), function (index, value) {
-                sorter.sortByCurrentBudget(value.funds);
-            });
-        }
-
-        function sortByProjectedExpenditures() {
-            $.each(vm.items(), function (index, value) {
-                sorter.sortByProjectedExpenditures(value.funds);
-            });
-        }
-
-        function sortByRequestedBudget() {
-            $.each(vm.items(), function (index, value) {
-                sorter.sortByRequestedBudget(value.funds);
-            });
-        }
-
-        function sortByVariance() {
-            $.each(vm.items(), function (index, value) {
-                sorter.sortByVariance(value.funds);
+                sorter.sort(value.funds, fieldName);
             });
         }
         //#endregion

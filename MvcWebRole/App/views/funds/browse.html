@@ -26,14 +26,22 @@
                 <table class="tabular" data-bind="visible: !noItemsToShow()">
                     <thead>
                         <tr>
-                            <th>Fund number</th>
-                            <th>Fund title</th>
-                            <th>Fund responsible person</th>
-                            <th class="hide-for-medium-down">Fund current fiscal year approved budget</th>
-                            <th class="hide-for-medium-down">Fund current fiscal year projected expenditures</th>
-                            <th class="hide-for-medium-down">Fund requested budget</th>
-                            <th class="hide-for-medium-down">Fund variance</th>
-                            <th class="hide-for-medium-down">Fund status</th>
+                            <th data-bind="click: sort.bind($data, 'Number')">
+                                Fund number</th>
+                            <th data-bind="click: sort.bind($data, 'Title')">
+                                Fund title</th>
+                            <th data-bind="click: sort.bind($data, 'ResponsiblePerson')">
+                                Fund responsible person</th>
+                            <th data-bind="click: sort.bind($data, 'CurrentBudget')">
+                                Fund current fiscal year approved budget</th>
+                            <th data-bind="click: sort.bind($data, 'ProjectedExpenditures')">
+                                Fund current fiscal year projected expenditures</th>
+                            <th data-bind="click: sort.bind($data, 'requestedBudget')">
+                                Fund requested budget</th>
+                            <th data-bind="click: sort.bind($data, 'requestedBudget')">
+                                Fund requested budget</th>
+                            <th data-bind="click: sort.bind($data, 'Status')">
+                                Fund status</th>
                         </tr>
                     </thead>
                     <tbody data-bind="foreach: items">

@@ -1,6 +1,6 @@
 ﻿define(['services/logger', 'plugins/router', 'datacontexts/fund.datacontext',
-    'datacontexts/area.datacontext'],
-    function (logger, router, datacontext, areaDatacontext) {
+    'datacontexts/area.datacontext', 'services/sorter'],
+    function (logger, router, datacontext, areaDatacontext, sorter) {
 
         var vm = {
             //#region Initialization.
@@ -21,6 +21,7 @@
             //#region Methods.
             navigateToCreateView: navigateToCreateView,
             updateNoItemsToShowProperty: updateNoItemsToShowProperty,
+            sort: sort,
             //#endregion
         };
 
@@ -79,6 +80,10 @@
 
         function navigateToCreateView() {
             return router.navigate('#/funds/create?areaid=' + vm.selectedAreaId());
+        }
+
+        function sort(fieldName) {
+            sorter.sort(vm.items, fieldName);
         }
         //#endregion
     });

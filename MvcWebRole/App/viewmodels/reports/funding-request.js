@@ -14,6 +14,8 @@
             items: ko.observableArray(),
             oAreaFunds: ko.observableArray(),
             grandTotals: ko.observable(new GrandTotals()),
+            sortField: ko.observable('Number'),
+            sortAscending: ko.observable(true),
             //#endregion
 
             //#region Methods.
@@ -125,9 +127,19 @@
         }
 
         function sort(fieldName) {
+            setSortOrder(fieldName);
             $.each(vm.items(), function (index, value) {
-                sorter.sort(value.funds, fieldName);
+                sorter.sort(value.funds, fieldName, vm.sortAscending());
             });
+        }
+
+        function setSortOrder(fieldName) {
+            if (fieldName === vm.sortField()) {
+                vm.sortAscending(!vm.sortAscending());
+            } else {
+                vm.sortField(fieldName);
+                vm.sortAscending(true);
+            }
         }
         //#endregion
     });

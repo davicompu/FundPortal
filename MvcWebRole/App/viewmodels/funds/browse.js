@@ -16,6 +16,8 @@
             selectedAreaId: ko.observable(),
             items: ko.observableArray([]),
             noItemsToShow: ko.observable(true),
+            sortField: ko.observable('Number'),
+            sortAscending: ko.observable(true),
             //#endregion
 
             //#region Methods.
@@ -83,7 +85,17 @@
         }
 
         function sort(fieldName) {
-            sorter.sort(vm.items, fieldName);
+            setSortOrder(fieldName);
+            sorter.sort(vm.items, fieldName, vm.sortAscending());
+        }
+
+        function setSortOrder(fieldName) {
+            if (fieldName === vm.sortField()) {
+                vm.sortAscending(!vm.sortAscending());
+            } else {
+                vm.sortField(fieldName);
+                vm.sortAscending(true);
+            }
         }
         //#endregion
     });

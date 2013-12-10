@@ -18,7 +18,8 @@ namespace MvcWebRole.Controllers
         // GET api/fund
         public HttpResponseMessage Get()
         {
-            var funds = repository;
+            var funds = repository
+                .OrderBy(f => f.Number);
 
             return Request.CreateResponse<IEnumerable<Fund>>(HttpStatusCode.OK, funds);
         }
@@ -36,7 +37,8 @@ namespace MvcWebRole.Controllers
         {
             // TODO: Verify access to area.
             var funds = repository
-                .Where(f => f.AreaId == areaId);
+                .Where(f => f.AreaId == areaId)
+                .OrderBy(f => f.Number);
 
             return Request.CreateResponse<IEnumerable<Fund>>(HttpStatusCode.OK, funds);
         }

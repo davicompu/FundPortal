@@ -19,7 +19,7 @@
             self.DateTimeCreated = data.DateTimeCreated || new Date();
             self.DateTimeEdited = data.DateTimeEdited || [];
             self.Title = ko.observable(data.Title).extend({ required: true });
-            self.Status = data.Status;
+            self.Status = ko.observable(data.Status);
             self.Description = ko.observable(data.Description).extend({ required: true });
             self.ResponsiblePerson = ko.observable(data.ResponsiblePerson).extend({ required: true });
             self.CurrentBudget = ko.observable(data.CurrentBudget || 0)
@@ -55,7 +55,7 @@
                 return self.CurrentBudget() - self.requestedBudget();
             });
             self.fundStatusText = ko.computed(function () {
-                switch (self.Status) {
+                switch (self.Status()) {
                     case 1:
                         return 'Draft';
                     case 2:

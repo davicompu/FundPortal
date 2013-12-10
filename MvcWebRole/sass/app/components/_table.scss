@@ -1,6 +1,10 @@
 table.tabular {
 	border: emCalc(2px) solid #FFF;
 
+	th {
+		cursor: pointer;
+	}
+
 	th, td {
 		border: emCalc(2px) solid #FFF;
 	}

@@ -20,7 +20,21 @@ namespace MvcWebRole.Controllers
         {
             var fund = repository.GetById(id);
 
-            return Request.CreateResponse<Fund>(HttpStatusCode.OK, fund);
+
+            if (fund != null)
+            {
+                var area = areaRepository.GetById(fund.AreaId);
+
+                if (CanAccessArea(area))
+                {
+                    return Request.CreateResponse<Fund>(HttpStatusCode.OK, fund);
+                }
+                else
+                {
+                    throw new HttpResponseException(HttpStatusCode.Unauthorized);
+                }
+            }
+            throw new HttpResponseException(HttpStatusCode.NotFound);
         }
 
         // GET api/fund/getbyarea

@@ -5202,27 +5202,23 @@ table.bumped {
   margin-top: 1.875em;
   width: 100%;
 }
-/* line 37, ../sass/app/components/_table.scss */
-table.bumped thead tr th {
-  font-size: 1.10em;
-}
-/* line 40, ../sass/app/components/_table.scss */
+/* line 38, ../sass/app/components/_table.scss */
 table.bumped thead tr th i {
   cursor: pointer;
 }
-/* line 47, ../sass/app/components/_table.scss */
+/* line 45, ../sass/app/components/_table.scss */
 table.bumped tbody {
   cursor: pointer;
 }
-/* line 50, ../sass/app/components/_table.scss */
+/* line 48, ../sass/app/components/_table.scss */
 table.bumped tbody tr {
   background: #FFF;
 }
-/* line 53, ../sass/app/components/_table.scss */
+/* line 51, ../sass/app/components/_table.scss */
 table.bumped tbody tr td {
   padding: 0;
 }
-/* line 56, ../sass/app/components/_table.scss */
+/* line 54, ../sass/app/components/_table.scss */
 table.bumped tbody tr td a {
   color: #333333;
   display: block;
@@ -5230,17 +5226,17 @@ table.bumped tbody tr td a {
   padding: 0.5625em 0.625em;
   width: 100%;
 }
-/* line 67, ../sass/app/components/_table.scss */
+/* line 65, ../sass/app/components/_table.scss */
 table.bumped tr {
   border-color: #d9d9d9;
   border-style: solid;
   border-width: 0.0625em 0 0.0625em 0;
 }
-/* line 73, ../sass/app/components/_table.scss */
+/* line 71, ../sass/app/components/_table.scss */
 table.bumped td {
   font-size: 1.25em;
 }
-/* line 77, ../sass/app/components/_table.scss */
+/* line 75, ../sass/app/components/_table.scss */
 table.bumped .button {
   margin: 0;
 }

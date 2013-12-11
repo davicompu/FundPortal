@@ -15,15 +15,6 @@ namespace MvcWebRole.Controllers
         private MongoRepository<Fund> repository = new MongoRepository<Fund>();
         private MongoRepository<Area> areaRepository = new MongoRepository<Area>();
 
-        // GET api/fund
-        public HttpResponseMessage Get()
-        {
-            var funds = repository
-                .OrderBy(f => f.Number);
-
-            return Request.CreateResponse<IEnumerable<Fund>>(HttpStatusCode.OK, funds);
-        }
-
         // GET api/fund/5
         public HttpResponseMessage Get(string id)
         {
@@ -35,19 +26,28 @@ namespace MvcWebRole.Controllers
         // GET api/fund/getbyarea
         public HttpResponseMessage GetByArea(string areaId)
         {
-            // TODO: Verify access to area.
-            var funds = repository
-                .Where(f => f.AreaId == areaId)
-                .OrderBy(f => f.Number);
+            var area = areaRepository.GetById(areaId);
 
-            return Request.CreateResponse<IEnumerable<Fund>>(HttpStatusCode.OK, funds);
+            if (CanAccessArea(area))
+            {
+                // TODO: Verify access to area.
+                var funds = repository
+                    .Where(f => f.AreaId == areaId)
+                    .OrderBy(f => f.Number);
+
+                return Request.CreateResponse<IEnumerable<Fund>>(HttpStatusCode.OK, funds);
+            }
+            throw new HttpResponseException(HttpStatusCode.Unauthorized);
         }
 
         // GET api/fund/getfundsubtotalsbyarea
         public HttpResponseMessage GetFundSubtotalsByArea(string areaId)
         {
-            // TODO: Verify access to area.
-            var match = new BsonDocument
+            var area = areaRepository.GetById(areaId);
+
+            if (CanAccessArea(area))
+            {
+                var match = new BsonDocument
             {
                 {
                     "$match", new BsonDocument
@@ -59,7 +59,7 @@ namespace MvcWebRole.Controllers
                 }
             };
 
-            var group = new BsonDocument 
+                var group = new BsonDocument 
             {
                 { 
                     "$group", new BsonDocument 
@@ -94,43 +94,43 @@ namespace MvcWebRole.Controllers
                     }
                 }
             };
-            var pipeline = new[] { match, group };
-            var result = repository.Collection.Aggregate(pipeline);
+                var pipeline = new[] { match, group };
+                var result = repository.Collection.Aggregate(pipeline);
 
-            return Request.CreateResponse(HttpStatusCode.OK, result.ResultDocuments.ToJson());
+                return Request.CreateResponse(HttpStatusCode.OK, result.ResultDocuments.ToJson());
+            }
+            throw new HttpResponseException(HttpStatusCode.Unauthorized);
         }
 
         // POST api/fund
         public HttpResponseMessage Post([FromBody]Fund fund)
         {
-            fund.DateTimeCreated = new DateTimeOffset(DateTime.UtcNow);
-            var newFund = repository.Add(fund);
+            var area = areaRepository.GetById(fund.AreaId);
 
-            return Request.CreateResponse<Fund>(HttpStatusCode.Created, newFund);
+            if (CanAccessArea(area))
+            {
+                fund.DateTimeCreated = new DateTimeOffset(DateTime.UtcNow);
+                var newFund = repository.Add(fund);
+
+                return Request.CreateResponse<Fund>(HttpStatusCode.Created, newFund);
+            }
+            throw new HttpResponseException(HttpStatusCode.Unauthorized);
         }
 
         // PUT api/fund/5
         public HttpResponseMessage Put(string id, [FromBody]Fund fund)
         {
-            // TODO: Uncomment authorization.
-            //if (this.CanModifyFund(repository.GetById(id)))
-            //{
+            var area = areaRepository.GetById(fund.AreaId);
+
+            if (CanAccessArea(area))
+            {
                 fund.Id = id;
                 fund.DateTimeEdited.Add(new DateTimeOffset(DateTime.UtcNow));
                 var updatedFund = repository.Update(fund);
 
                 return Request.CreateResponse<Fund>(HttpStatusCode.OK, updatedFund);
-            //}
-
-            //throw new HttpResponseException(HttpStatusCode.Unauthorized);
-        }
-
-        // DELETE api/fund/5
-        public HttpResponseMessage Delete(string id)
-        {
-            repository.Delete(id);
-
-            return Request.CreateResponse(HttpStatusCode.NoContent, "application/json");
+            }
+            throw new HttpResponseException(HttpStatusCode.Unauthorized);
         }
 
         #region Helpers
@@ -149,9 +149,9 @@ namespace MvcWebRole.Controllers
             return false;
         }
 
-        private bool CanAccessAreaFunds(Area area)
+        public bool CanAccessArea(Area area)
         {
-            string role = "CanEdit" + area.Number;
+            string role = "EDIT-" + area.Number;
 
             if (User.IsInRole(role))
             {
@@ -159,6 +159,20 @@ namespace MvcWebRole.Controllers
             }
 
             return false;
+        }
+
+        public HashSet<string> GetAreaAccessForCurrentUser()
+        {
+            var areaAccessList = new HashSet<string>();
+
+            foreach (var area in areaRepository)
+            {
+                if (CanAccessArea(area))
+                {
+                    areaAccessList.Add(area.Id);
+                }
+            }
+            return areaAccessList;
         }
         #endregion
     }

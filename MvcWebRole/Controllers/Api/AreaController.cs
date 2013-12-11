@@ -16,7 +16,10 @@ namespace MvcWebRole.Controllers
         // GET api/area
         public HttpResponseMessage Get()
         {
+            var areaAccessList = GetAreaAccessForCurrentUser();
+
             var areas = repository
+                .Where(a => areaAccessList.Contains(a.Id))
                 .OrderBy(a => a.Number);
 
             return Request.CreateResponse<IEnumerable<Area>>(HttpStatusCode.OK, areas);
@@ -29,40 +32,22 @@ namespace MvcWebRole.Controllers
 
             if (area != null)
             {
-                return Request.CreateResponse<Area>(HttpStatusCode.OK, area);
+                if (CanAccessArea(area))
+                {
+                    return Request.CreateResponse<Area>(HttpStatusCode.OK, area);
+                }
+                else
+                {
+                    throw new HttpResponseException(HttpStatusCode.Unauthorized);
+                }
             }
             throw new HttpResponseException(HttpStatusCode.NotFound);
-        }
-
-        // POST api/area
-        public HttpResponseMessage Post([FromBody]Area area)
-        {
-            var newArea = repository.Add(area);
-
-            return Request.CreateResponse<Area>(HttpStatusCode.Created, newArea);
-        }
-
-        // PUT api/area/5
-        public HttpResponseMessage Put(string id, [FromBody]Area area)
-        {
-            area.Id = id;
-            var updatedArea = repository.Update(area);
-
-            return Request.CreateResponse<Area>(HttpStatusCode.OK, updatedArea);
-        }
-
-        // DELETE api/area/5
-        public HttpResponseMessage Delete(string id)
-        {
-            repository.Delete(id);
-
-            return Request.CreateResponse(HttpStatusCode.NoContent, "application/json");
         }
 
         #region Helpers
         public bool CanAccessArea(Area area)
         {
-            string role = "CanEdit" + area.Number;
+            string role = "EDIT-" + area.Number;
 
             if (User.IsInRole(role))
             {
@@ -70,6 +55,20 @@ namespace MvcWebRole.Controllers
             }
 
             return false;
+        }
+
+        public HashSet<string> GetAreaAccessForCurrentUser()
+        {
+            var areaAccessList = new HashSet<string>();
+
+            foreach (var area in repository)
+            {
+                if (CanAccessArea(area))
+                {
+                    areaAccessList.Add(area.Id);
+                }
+            }
+            return areaAccessList;
         }
         #endregion
     }

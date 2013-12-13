@@ -25,7 +25,6 @@ namespace MvcWebRole
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            AuthConfig.RegisterAuth();
 
             // Verify that storage containers exist and create any that don't exist.
             CreateTablesQueuesBlobContainers();

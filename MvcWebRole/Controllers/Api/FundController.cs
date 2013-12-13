@@ -20,7 +20,6 @@ namespace MvcWebRole.Controllers
         {
             var fund = repository.GetById(id);
 
-
             if (fund != null)
             {
                 var area = areaRepository.GetById(fund.AreaId);
@@ -31,27 +30,27 @@ namespace MvcWebRole.Controllers
                 }
                 else
                 {
-                    throw new HttpResponseException(HttpStatusCode.Unauthorized);
+                    return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Unauthorized.");
                 }
             }
-            throw new HttpResponseException(HttpStatusCode.NotFound);
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "The item you requested was not found.");
         }
 
         // GET api/fund/getbyarea
         public HttpResponseMessage GetByArea(string areaId)
         {
-            var area = areaRepository.GetById(areaId);
+            //var area = areaRepository.GetById(areaId);
 
-            if (CanAccessArea(area))
-            {
+            //if (CanAccessArea(area))
+            //{
                 // TODO: Verify access to area.
                 var funds = repository
                     .Where(f => f.AreaId == areaId)
                     .OrderBy(f => f.Number);
 
                 return Request.CreateResponse<IEnumerable<Fund>>(HttpStatusCode.OK, funds);
-            }
-            throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            //}
+            //return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Unauthorized.");
         }
 
         // GET api/fund/getfundsubtotalsbyarea
@@ -128,7 +127,7 @@ namespace MvcWebRole.Controllers
 
                 return Request.CreateResponse<Fund>(HttpStatusCode.Created, newFund);
             }
-            throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Unauthorized.");
         }
 
         // PUT api/fund/5
@@ -144,7 +143,7 @@ namespace MvcWebRole.Controllers
 
                 return Request.CreateResponse<Fund>(HttpStatusCode.OK, updatedFund);
             }
-            throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Unauthorized.");
         }
 
         #region Helpers

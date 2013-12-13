@@ -16,13 +16,17 @@ namespace MvcWebRole.Controllers
         // GET api/area
         public HttpResponseMessage Get()
         {
-            var areaAccessList = GetAreaAccessForCurrentUser();
+            //var areaAccessList = GetAreaAccessForCurrentUser();
 
-            var areas = repository
-                .Where(a => areaAccessList.Contains(a.Id))
-                .OrderBy(a => a.Number);
+            //if (areaAccessList.Count > 0)
+            //{
+                var areas = repository
+                    //.Where(a => areaAccessList.Contains(a.Id))
+                    .OrderBy(a => a.Number);
 
-            return Request.CreateResponse<IEnumerable<Area>>(HttpStatusCode.OK, areas);
+                return Request.CreateResponse<IEnumerable<Area>>(HttpStatusCode.OK, areas);
+            //}
+            //return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Unauthorized.");
         }
 
         // GET api/area/5
@@ -38,10 +42,10 @@ namespace MvcWebRole.Controllers
                 }
                 else
                 {
-                    throw new HttpResponseException(HttpStatusCode.Unauthorized);
+                    return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Unauthorized.");
                 }
             }
-            throw new HttpResponseException(HttpStatusCode.NotFound);
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "The item you requested was not found.");
         }
 
         #region Helpers

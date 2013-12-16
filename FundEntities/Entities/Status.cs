@@ -8,7 +8,7 @@ namespace FundEntities
 {
     public enum Status
     {
-        Draft,
-        Final
+        Draft = 1,
+        Final = 2
     }
 }

@@ -39,18 +39,18 @@ namespace MvcWebRole.Controllers
         // GET api/fund/getbyarea
         public HttpResponseMessage GetByArea(string areaId)
         {
-            //var area = areaRepository.GetById(areaId);
+            var area = areaRepository.GetById(areaId);
 
-            //if (CanAccessArea(area))
-            //{
+            if (CanAccessArea(area))
+            {
                 // TODO: Verify access to area.
                 var funds = repository
                     .Where(f => f.AreaId == areaId)
                     .OrderBy(f => f.Number);
 
                 return Request.CreateResponse<IEnumerable<Fund>>(HttpStatusCode.OK, funds);
-            //}
-            //return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Unauthorized.");
+            }
+            return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Unauthorized.");
         }
 
         // GET api/fund/getfundsubtotalsbyarea
@@ -139,22 +139,31 @@ namespace MvcWebRole.Controllers
             {
                 fund.Id = id;
                 fund.DateTimeEdited.Add(new DateTimeOffset(DateTime.UtcNow));
-                var updatedFund = repository.Update(fund);
 
-                return Request.CreateResponse<Fund>(HttpStatusCode.OK, updatedFund);
+                var currentFund = repository.GetById(fund.Id);
+
+                if (CanModifyFund(currentFund))
+                {
+                    var updatedFund = repository.Update(fund);
+                    return Request.CreateResponse<Fund>(HttpStatusCode.OK, updatedFund);
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Unauthorized access to fund.");
+                }
             }
-            return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Unauthorized.");
+            return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Unauthorized access to area.");
         }
 
         #region Helpers
         private bool CanModifyFund(Fund fund)
         {
-            if (fund.Status.ToString() == "Draft")
+            if (fund.Status.CompareTo(Status.Draft) == 0)
             {
                 return true;
             }
 
-            if (User.IsInRole("CanAdministerFunds"))
+            if (User.IsInRole("MANAGE-FUNDS"))
             {
                 return true;
             }

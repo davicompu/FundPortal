@@ -55,7 +55,7 @@
                 return self.CurrentBudget() - self.requestedBudget();
             });
             self.fundStatusText = ko.computed(function () {
-                switch (self.Status()) {
+                switch (parseInt(self.Status())) {
                     case 1:
                         return 'Draft';
                     case 2:

@@ -213,6 +213,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReportFileController.cs" />
     <Compile Include="Controllers\Api\SessionController.cs" />
+    <Compile Include="DataAccess\SwapAdminRoleProvider.cs" />
     <Compile Include="Extensions\DataAnnotationsHelper.cs" />
     <Compile Include="FileModels\FundingRequestReport.cs" />
     <Compile Include="FileModels\Report.cs" />
@@ -413,6 +414,7 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />

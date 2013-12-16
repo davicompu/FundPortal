@@ -10,10 +10,10 @@ namespace MvcWebRole
             filters.Add(new HandleErrorAttribute());
 
             // TODO: Force requests to use Https.
-            //filters.Add(new RequireHttpsAttribute());
+            filters.Add(new RequireHttpsAttribute());
 
             // TODO: Force requests into role authorization pipeline.
-            //filters.Add(new AuthorizeAttribute());
+            filters.Add(new AuthorizeAttribute());
         }
     }
 }

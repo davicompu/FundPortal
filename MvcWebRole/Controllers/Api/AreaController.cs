@@ -16,17 +16,17 @@ namespace MvcWebRole.Controllers
         // GET api/area
         public HttpResponseMessage Get()
         {
-            //var areaAccessList = GetAreaAccessForCurrentUser();
+            var areaAccessList = GetAreaAccessForCurrentUser();
 
-            //if (areaAccessList.Count > 0)
-            //{
+            if (areaAccessList.Count > 0)
+            {
                 var areas = repository
-                    //.Where(a => areaAccessList.Contains(a.Id))
+                    .Where(a => areaAccessList.Contains(a.Id))
                     .OrderBy(a => a.Number);
 
                 return Request.CreateResponse<IEnumerable<Area>>(HttpStatusCode.OK, areas);
-            //}
-            //return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Unauthorized.");
+            }
+            return Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Unauthorized.");
         }
 
         // GET api/area/5

@@ -20,10 +20,10 @@ namespace MvcWebRole
             config.Filters.Add(new ValidateModelAttribute());
 
             // TODO: Force requests to use Https.
-            //config.Filters.Add(new RequireHttpsAttributeWebApi());
+            config.Filters.Add(new RequireHttpsAttributeWebApi());
 
             // TODO: Force requests into role authorization pipeline.
-            //config.Filters.Add(new AuthorizeAttribute());
+            config.Filters.Add(new AuthorizeAttribute());
 
             // Default responses to JSON
             var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");

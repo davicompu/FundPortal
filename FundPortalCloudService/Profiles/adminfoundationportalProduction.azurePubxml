@@ -9,8 +9,8 @@
     <AzureEnableRemoteDesktop>True</AzureEnableRemoteDesktop>
     <AzureEnableWebDeploy>True</AzureEnableWebDeploy>
     <AzureFallbackToDeleteAndRecreateIfUpgradeFails>False</AzureFallbackToDeleteAndRecreateIfUpgradeFails>
-    <AzureHostedServiceLabel>foundationportal</AzureHostedServiceLabel>
-    <AzureHostedServiceName>foundationportal</AzureHostedServiceName>
+    <AzureHostedServiceLabel>adminfoundationportal</AzureHostedServiceLabel>
+    <AzureHostedServiceName>adminfoundationportal</AzureHostedServiceName>
     <AzureEnableIntelliTrace>False</AzureEnableIntelliTrace>
     <AzureEnableProfiling>False</AzureEnableProfiling>
     <AzureServiceConfiguration>Cloud</AzureServiceConfiguration>

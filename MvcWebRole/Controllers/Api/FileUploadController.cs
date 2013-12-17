@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 using FundEntities;
@@ -16,7 +17,6 @@ namespace MvcWebRole.Controllers
 {
     public class FileUploadController : ApiController
     {
-        static readonly string hostName = "http://fundstorage.blob.core.windows.net/";
         static readonly string hostContainer = "fileuploads";
         static CloudBlobContainer blobContainer;
 
@@ -31,6 +31,26 @@ namespace MvcWebRole.Controllers
 
             // Retrieve a reference to a previously created container.
             blobContainer = blobClient.GetContainerReference(hostContainer);
+        }
+
+        // GET api/fileupload
+        public HttpResponseMessage Get(string id)
+        {
+            var blockBlob = blobContainer.GetBlockBlobReference(id);
+
+            var response = new HttpResponseMessage(HttpStatusCode.OK);
+            var blobStream = blockBlob.OpenRead();
+
+            response.Content = new StreamContent(blobStream);
+            response.Content.Headers.ContentLength = blockBlob.Properties.Length;
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue(blockBlob.Properties.ContentType);
+            response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+            {
+                FileName = blockBlob.Name,
+                Size = blockBlob.Properties.Length,
+            };
+
+            return response;
         }
 
         // POST api/fileupload
@@ -61,7 +81,8 @@ namespace MvcWebRole.Controllers
 
             string guid = Guid.NewGuid().ToString();
             string fileName = guid + fileExtension;
-            string src = hostName + hostContainer + "/" + fileName;
+            //string src = hostName + hostContainer + "/" + fileName;
+            string src = "/api/fileupload/get?id=" + fileName;
 
             // Add filename to srcList
             newFile = new FileUpload

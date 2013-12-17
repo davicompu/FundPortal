@@ -46,10 +46,7 @@ namespace MvcWebRole
             // Create the container if it doesn't exist.
             blobContainer.CreateIfNotExists();
 
-            // Set permissions to publicly accessible.
-            // TODO: modify access
-            blobContainer.SetPermissions(
-                new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
+            // Leave container permissions with default private.
         }
     }
 }

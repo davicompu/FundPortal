@@ -111,7 +111,7 @@
             }
 
             function getFailed(result) {
-                var errorText = 'Error adding the new item: ' +
+                var errorText = 'Error saving the item: ' +
                     result.statusText + '.';
                 data.errorMessage(contextHelper.getModelStateErrors(JSON.parse(result.responseText || '{}'), errorText));
             }

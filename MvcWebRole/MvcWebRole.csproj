@@ -211,8 +211,8 @@
     <Compile Include="Controllers\Api\FileUploadController.cs" />
     <Compile Include="Controllers\Api\FundController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ReportFileController.cs" />
     <Compile Include="Controllers\Api\SessionController.cs" />
+    <Compile Include="Controllers\ReportFileController.cs" />
     <Compile Include="DataAccess\SwapAdminRoleProvider.cs" />
     <Compile Include="Extensions\DataAnnotationsHelper.cs" />
     <Compile Include="FileModels\FundingRequestReport.cs" />

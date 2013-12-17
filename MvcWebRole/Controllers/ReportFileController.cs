@@ -16,7 +16,6 @@ namespace MvcWebRole.Controllers
 
         //
         // GET: /ReportFile/FundingRequest
-
         public ActionResult FundingRequest()
         {
             // TODO: Access control

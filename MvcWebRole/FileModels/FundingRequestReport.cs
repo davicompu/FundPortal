@@ -22,7 +22,12 @@ namespace MvcWebRole.FileModels
         public FundingRequestReport(IEnumerable<Area> areas, IEnumerable<Fund> funds)
         {
             this.Funds = funds;
-            this.OtherUsesOfFundsAreaId = areas.SingleOrDefault(a => a.Number == "O").Id;
+            
+            var otherUsesOfFundsArea = areas.SingleOrDefault(a => a.Number == "O");
+            if (otherUsesOfFundsArea != null)
+            {
+                this.OtherUsesOfFundsAreaId = otherUsesOfFundsArea.Id;
+            }
 
             ExcelPackage package = new ExcelPackage();
             ExcelWorksheet sheet = package.Workbook.Worksheets.Add("Funding Request Report");
@@ -35,7 +40,6 @@ namespace MvcWebRole.FileModels
             #region Area Data
             foreach (Area area in areas.Where(a => a.Id != this.OtherUsesOfFundsAreaId))
             {
-
                 sheet = WriteAreaData(sheet, area);
             }
             #endregion

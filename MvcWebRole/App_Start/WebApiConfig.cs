@@ -19,10 +19,10 @@ namespace MvcWebRole
             // Validate request against model attributes by default
             config.Filters.Add(new ValidateModelAttribute());
 
-            // TODO: Force requests to use Https.
+            // Force requests to use Https.
             config.Filters.Add(new RequireHttpsAttributeWebApi());
 
-            // TODO: Force requests into role authorization pipeline.
+            // Force requests into role authorization pipeline.
             config.Filters.Add(new AuthorizeAttribute());
 
             // Default responses to JSON

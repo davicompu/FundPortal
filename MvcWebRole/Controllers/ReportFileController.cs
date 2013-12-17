@@ -18,13 +18,66 @@ namespace MvcWebRole.Controllers
         // GET: /ReportFile/FundingRequest
         public ActionResult FundingRequest()
         {
-            // TODO: Access control
-            var areas = areaRepository;
-            var funds = fundRepository;
+            var accessibleAreas = GetAreaAccessForCurrentUser();
 
-            var report = new FundingRequestReport(areas, funds);
+            if (accessibleAreas.Count > 0)
+            {
+                var areas = areaRepository
+                    .Where(a => accessibleAreas.Contains(a.Id))
+                    .OrderBy(a => a.Number);
 
-            return File(report.BinaryData, report.FileType, report.FileName);
+                var funds = fundRepository
+                    .Where(f => accessibleAreas.Contains(f.AreaId))
+                    .OrderBy(f => f.Number);
+
+                var report = new FundingRequestReport(areas, funds);
+
+                return File(report.BinaryData, report.FileType, report.FileName);
+            }
+            return RedirectToAction("NotAuthorized", "Home");
         }
+
+        #region Helpers
+        private bool CanModifyFund(Fund fund)
+        {
+            if (fund.Status.CompareTo(Status.Draft) == 0)
+            {
+                return true;
+            }
+
+            if (User.IsInRole("MANAGE-FUNDS"))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool CanAccessArea(Area area)
+        {
+            string role = "EDIT-" + area.Number;
+
+            if (User.IsInRole(role))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public HashSet<string> GetAreaAccessForCurrentUser()
+        {
+            var areaAccessList = new HashSet<string>();
+
+            foreach (var area in areaRepository)
+            {
+                if (CanAccessArea(area))
+                {
+                    areaAccessList.Add(area.Id);
+                }
+            }
+            return areaAccessList;
+        }
+        #endregion
     }
 }

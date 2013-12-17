@@ -54,7 +54,6 @@
             }
         }
 
-        // TODO: Client-side validation
         function saveItem(item) {
             if (vm.errors().length === 0) {
                 datacontext.saveChangedItem(

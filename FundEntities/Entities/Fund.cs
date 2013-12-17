@@ -10,7 +10,6 @@ using System.Runtime.Serialization;
 
 namespace FundEntities
 {
-    // TODO: Server-side validation
     [DataContract]
     [JsonObject(MemberSerialization.OptOut)]
     public class Fund : Entity

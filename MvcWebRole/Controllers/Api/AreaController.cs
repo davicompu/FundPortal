@@ -9,7 +9,6 @@ using MongoRepository;
 
 namespace MvcWebRole.Controllers
 {
-    // TODO: Verify access to area.
     public class AreaController : ApiController
     {
         private MongoRepository<Area> repository = new MongoRepository<Area>();

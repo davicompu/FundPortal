@@ -14,6 +14,7 @@ using DotNetCasClient.Security;
 
 namespace MvcWebRole.DataAccess
 {
+    // TODO: Change class name.
     public class SwapAdminRoleProvider : RoleProvider
     {
         public const string ROLE_ATTRIBUTE_NAME = "roleAttributeName";

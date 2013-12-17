@@ -43,7 +43,6 @@ namespace MvcWebRole.Controllers
 
             if (CanAccessArea(area))
             {
-                // TODO: Verify access to area.
                 var funds = repository
                     .Where(f => f.AreaId == areaId)
                     .OrderBy(f => f.Number);

@@ -256,7 +256,6 @@
     <Content Include="App\views\reports\narrative.html" />
     <Content Include="App\views\shared\_area-input.html" />
     <Content Include="App\views\shared\_fund-input.html" />
-    <Content Include="App\views\shared\_top-bar.html" />
     <Content Include="App\views\shell.html" />
     <Content Include="Content\durandal.css" />
     <Content Include="Content\fonts\foundation-icons.svg" />

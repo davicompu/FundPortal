@@ -6982,3 +6982,8 @@ html {
 .negative-value {
   color: #c60f13;
 }
+
+/* line 5, ../sass/app/_shame.scss */
+.default-cursor {
+  cursor: default !important;
+}

@@ -42,6 +42,7 @@
                                 Fund variance</th>
                             <th data-bind="click: sort.bind($data, 'Status')">
                                 Fund status</th>
+                            <th class="default-cursor">Attachments</th>
                         </tr>
                     </thead>
                     <tbody data-bind="foreach: items">
@@ -56,6 +57,9 @@
                             <td data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></td>
                             <td data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></td>
                             <td data-bind="text: fundStatusText"></td>
+                            <td class="text-center" data-bind="foreach: FileUploads">
+                                <i class="fi-paperclip"></i>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

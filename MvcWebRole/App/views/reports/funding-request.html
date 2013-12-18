@@ -41,30 +41,30 @@
                             <td data-bind="text: Number"></td>
                             <td data-bind="text: Title"></td>
                             <td data-bind="text: ResponsiblePerson"></td>
-                            <td data-bind="text: formattedCurrentBudget"></td>
-                            <td data-bind="text: formattedProjectedExpenditures"></td>
-                            <td data-bind="text: formattedRequestedBudget"></td>
-                            <td data-bind="text: formattedVariance"></td>
+                            <td data-bind="text: formattedCurrentBudget, css: { 'negative-value': CurrentBudget() < 0 }"></td>
+                            <td data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': ProjectedExpenditures() < 0 }"></td>
+                            <td data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></td>
+                            <td data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></td>
                         </tr>
                         <!--/ko-->
                     </tbody>
                     <tbody data-bind="ifnot: Number() === 'O'">
                         <tr class="subtotal" data-bind="with: subtotals">
                             <td colspan="3" data-bind="text: 'Total for ' + $parent.Name()"></td>
-                            <td data-bind="text: formattedCurrentBudget"></td>
-                            <td data-bind="text: formattedProjectedExpenditures"></td>
-                            <td data-bind="text: formattedRequestedBudget"></td>
-                            <td data-bind="text: formattedVariance"></td>
+                            <td data-bind="text: formattedCurrentBudget, css: { 'negative-value': CurrentBudget() < 0 }"></td>
+                            <td data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': ProjectedExpenditures() < 0 }"></td>
+                            <td data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></td>
+                            <td data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></td>
                         </tr>
                     </tbody>
                     <!--/ko-->
                     <tbody>
                         <tr class="grandtotal" data-bind="with: grandTotals">
                             <td colspan="3">Grand totals</td>
-                            <td data-bind="text: formattedCurrentBudget"></td>
-                            <td data-bind="text: formattedProjectedExpenditures"></td>
-                            <td data-bind="text: formattedRequestedBudget"></td>
-                            <td data-bind="text: formattedVariance"></td>
+                            <td data-bind="text: formattedCurrentBudget, css: { 'negative-value': CurrentBudget() < 0 }"></td>
+                            <td data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': ProjectedExpenditures() < 0 }"></td>
+                            <td data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></td>
+                            <td data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></td>
                         </tr>
                     </tbody>
                     <!-- ko foreach: items -->
@@ -77,20 +77,20 @@
                             <td data-bind="text: Number"></td>
                             <td data-bind="text: Title"></td>
                             <td data-bind="text: ResponsiblePerson"></td>
-                            <td data-bind="text: formattedCurrentBudget"></td>
-                            <td data-bind="text: formattedProjectedExpenditures"></td>
-                            <td data-bind="text: formattedRequestedBudget"></td>
-                            <td data-bind="text: formattedVariance"></td>
+                            <td data-bind="text: formattedCurrentBudget, css: { 'negative-value': CurrentBudget() < 0 }"></td>
+                            <td data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': ProjectedExpenditures() < 0 }"></td>
+                            <td data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></td>
+                            <td data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></td>
                         </tr>
                         <!--/ko-->
                     </tbody>
                     <tbody data-bind="if: Number() === 'O'">
                         <tr class="subtotal" data-bind="with: subtotals">
                             <td colspan="3" data-bind="text: 'Total for ' + $parent.Name()"></td>
-                            <td data-bind="text: formattedCurrentBudget"></td>
-                            <td data-bind="text: formattedProjectedExpenditures"></td>
-                            <td data-bind="text: formattedRequestedBudget"></td>
-                            <td data-bind="text: formattedVariance"></td>
+                            <td data-bind="text: formattedCurrentBudget, css: { 'negative-value': CurrentBudget() < 0 }"></td>
+                            <td data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': ProjectedExpenditures() < 0 }"></td>
+                            <td data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></td>
+                            <td data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></td>
                         </tr>
                     </tbody>
                     <!--/ko-->

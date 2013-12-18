@@ -54,7 +54,8 @@
                         <label for="CurrentBudget">
                             Fund current fiscal year approved budget<span class="required">*</span>
                         </label>
-                        <input name="CurrentBudget" type="text" data-bind="value: formattedCurrentBudget" />
+                        <input name="CurrentBudget" type="text"
+                            data-bind="value: formattedCurrentBudget, css: { 'negative-value': CurrentBudget() < 0 }" />
                         <label for="CurrentBudget"
                             class="error-message" data-bind="validationMessage: CurrentBudget"></label>
                     </div>
@@ -65,7 +66,8 @@
                         <label for="ProjectedExpenditures">
                             Fund current fiscal year projected expenditures<span class="required">*</span>
                         </label>
-                        <input name="ProjectedExpenditures" type="text" data-bind="value: formattedProjectedExpenditures" />
+                        <input name="ProjectedExpenditures" type="text"
+                            data-bind="value: formattedProjectedExpenditures, css: { 'negative-value': ProjectedExpenditures() < 0 }" />
                         <label for="ProjectedExpenditures"
                             class="error-message" data-bind="validationMessage: ProjectedExpenditures"></label>
                     </div>
@@ -76,7 +78,7 @@
                         <div class="input-panel">
                             <span>Fund projected year-end balance:
                             <strong 
-                                data-bind="text: formattedProjectedYearEndBalance"></strong>
+                                data-bind="text: formattedProjectedYearEndBalance, css: { 'negative-value': projectedYearEndBalance() < 0 }"></strong>
                             </span>
                         </div>
                     </div>
@@ -91,7 +93,8 @@
                         <label for="BudgetAdjustment">
                             Fund projected increase or decrease<span class="required">*</span>
                         </label>
-                        <input name="BudgetAdjustment" type="text" data-bind="value: formattedBudgetAdjustment" />
+                        <input name="BudgetAdjustment" type="text"
+                            data-bind="value: formattedBudgetAdjustment, css: { 'negative-value': BudgetAdjustment() < 0 }" />
                         <label for="BudgetAdjustment"
                             class="error-message" data-bind="validationMessage: BudgetAdjustment"></label>
                     </div>
@@ -102,7 +105,7 @@
                         <div class="input-panel">
                             <span>Fund requested budget: 
                             <strong 
-                                data-bind="text: formattedRequestedBudget"></strong>
+                                data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></strong>
                             </span>
                         </div>
                     </div>

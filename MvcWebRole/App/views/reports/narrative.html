@@ -18,7 +18,8 @@
 
                         <div class="mild-callout panel" data-bind="visible: variance() !== 0">
                             <p>
-                                <strong>Variance: </strong><span data-bind="text: formattedVariance"></span>
+                                <strong>Variance: </strong><span
+                                    data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></span>
                             </p>
 
                             <p data-bind="text: BudgetAdjustmentNote"></p>

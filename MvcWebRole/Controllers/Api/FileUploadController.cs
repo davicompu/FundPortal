@@ -81,7 +81,6 @@ namespace MvcWebRole.Controllers
 
             string guid = Guid.NewGuid().ToString();
             string fileName = guid + fileExtension;
-            //string src = hostName + hostContainer + "/" + fileName;
             string src = "/api/fileupload/get?id=" + fileName;
 
             // Add filename to srcList

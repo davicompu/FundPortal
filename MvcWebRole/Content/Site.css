@@ -6977,3 +6977,8 @@ html {
 .fi-zoom-out:before {
   content: "\f21a";
 }
+
+/* line 1, ../sass/app/_shame.scss */
+.negative-value {
+  color: #c60f13;
+}

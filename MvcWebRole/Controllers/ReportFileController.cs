@@ -9,6 +9,7 @@ using MvcWebRole.FileModels;
 
 namespace MvcWebRole.Controllers
 {
+    [Authorize(Roles = "VT-EMPLOYEE, VT-STUDENT-WAGE")]
     public class ReportFileController : Controller
     {
         private MongoRepository<Area> areaRepository = new MongoRepository<Area>();

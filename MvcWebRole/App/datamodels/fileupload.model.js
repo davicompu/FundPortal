@@ -8,6 +8,10 @@
         return datamodel;
 
         function FileUpload(data) {
+            // Avoid the constructor pointing to the global object when 'new' is omitted.
+            if (!(this instanceof FileUpload)) {
+                return new FileUpload(data);
+            }
 
             var self = this;
             data = data || {};

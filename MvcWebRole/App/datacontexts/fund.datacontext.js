@@ -47,7 +47,9 @@
                 itemObservableArray(mappedItems);
 
                 $.each(successFunctions || [], function (index, value) {
-                    value(mappedItems);
+                    if (typeof value === "function") {
+                        value(mappedItems);
+                    }
                 });
             }
 
@@ -68,7 +70,9 @@
                 itemObservable(subtotalData);
 
                 $.each(successFunctions || [], function (index, value) {
-                    value(subtotalData);
+                    if (typeof value === "function") {
+                        value(mappedItems);
+                    }
                 });
             }
 
@@ -87,7 +91,9 @@
 
             function getSucceeded(result) {
                 $.each(successFunctions || [], function (index, value) {
-                    value(result);
+                    if (typeof value === "function") {
+                        value(mappedItems);
+                    }
                 });
             }
 
@@ -106,7 +112,9 @@
 
             function getSucceeded(result) {
                 $.each(successFunctions || [], function (index, value) {
-                    value(result);
+                    if (typeof value === "function") {
+                        value(mappedItems);
+                    }
                 });
             }
 
@@ -125,7 +133,9 @@
 
             function getSucceeded() {
                 $.each(successFunctions || [], function (index, value) {
-                    value();
+                    if (typeof value === "function") {
+                        value(mappedItems);
+                    }
                 });
             }
 

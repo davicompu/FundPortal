@@ -8,6 +8,10 @@
         return datamodel;
 
         function Fund(data) {
+            // Avoid the constructor pointing to the global object when 'new' is omitted.
+            if (!(this instanceof Fund)) {
+                return new Fund(data);
+            }
 
             var self = this;
             data = data || {};
@@ -37,14 +41,16 @@
                         message: 'This field is required when there is a budget adjustment.'
                     }
                 });
+            self.AdministratorNote = ko.observable(data.AdministratorNote);
             self.FiscalYear = data.FiscalYear;
             self.FileUploads = initFiles(self, data.FileUploads);
             //#endregion
 
-            
+
             //#region Non-persisted properties.
             // TODO: Remove on save to reduce unneccesary over-posting.
             self.errorMessage = ko.observable();
+            self.destroy = ko.observable(false);
             self.requestedBudget = ko.computed(function () {
                 return self.CurrentBudget() + self.BudgetAdjustment();
             });

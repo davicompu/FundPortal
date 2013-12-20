@@ -37,7 +37,9 @@
 
             function getSucceeded() {
                 $.each(successFunctions || [], function (index, value) {
-                    value();
+                    if (typeof value === "function") {
+                        value(mappedItems);
+                    }
                 });
             }
 

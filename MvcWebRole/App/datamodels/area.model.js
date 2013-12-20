@@ -9,7 +9,11 @@
         return datamodel;
 
         function Area(data) {
-
+            // Avoid the constructor pointing to the global object when 'new' is omitted.
+            if (!(this instanceof Area)) {
+                return new Area(data);
+            }
+            
             var self = this;
             data = data || {};
 

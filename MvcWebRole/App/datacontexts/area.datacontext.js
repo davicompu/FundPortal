@@ -73,7 +73,7 @@
             function getSucceeded(result) {
                 $.each(successFunctions || [], function (index, value) {
                     if (typeof value === "function") {
-                        value(mappedItems);
+                        value(result);
                     }
                 });
             }
@@ -94,7 +94,7 @@
             function getSucceeded(result) {
                 $.each(successFunctions || [], function (index, value) {
                     if (typeof value === "function") {
-                        value(mappedItems);
+                        value(result);
                     }
                 });
             }
@@ -115,7 +115,7 @@
             function getSucceeded() {
                 $.each(successFunctions || [], function (index, value) {
                     if (typeof value === "function") {
-                        value(mappedItems);
+                        value(data);
                     }
                 });
             }

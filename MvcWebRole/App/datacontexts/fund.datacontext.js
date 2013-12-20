@@ -71,7 +71,7 @@
 
                 $.each(successFunctions || [], function (index, value) {
                     if (typeof value === "function") {
-                        value(mappedItems);
+                        value(subtotalData);
                     }
                 });
             }
@@ -92,7 +92,7 @@
             function getSucceeded(result) {
                 $.each(successFunctions || [], function (index, value) {
                     if (typeof value === "function") {
-                        value(mappedItems);
+                        value(result);
                     }
                 });
             }
@@ -113,7 +113,7 @@
             function getSucceeded(result) {
                 $.each(successFunctions || [], function (index, value) {
                     if (typeof value === "function") {
-                        value(mappedItems);
+                        value(result);
                     }
                 });
             }
@@ -125,7 +125,7 @@
             }
         }
 
-        function deleteItem(data, itemObservableArray, successFunctions) {
+        function deleteItem(data, successFunctions) {
             contextHelper.clearErrorMessage(data);
             return contextHelper.ajaxRequest('delete', itemApi('delete', data.Id))
                 .done(getSucceeded)
@@ -134,7 +134,7 @@
             function getSucceeded() {
                 $.each(successFunctions || [], function (index, value) {
                     if (typeof value === "function") {
-                        value(mappedItems);
+                        value(data);
                     }
                 });
             }

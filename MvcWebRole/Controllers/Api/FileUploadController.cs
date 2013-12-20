@@ -15,7 +15,6 @@ using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace MvcWebRole.Controllers
 {
-    [Authorize(Roles = "VT-EMPLOYEE, VT-STUDENT-WAGE")]
     public class FileUploadController : ApiController
     {
         static readonly string hostContainer = "fileuploads";

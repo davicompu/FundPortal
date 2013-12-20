@@ -8,17 +8,18 @@ namespace MvcWebRole.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize(Roles = "VT-EMPLOYEE, VT-STUDENT-WAGE")]
         public ActionResult Index()
         {
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult NotAuthorized()
         {
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult CookiesRequired()
         {
             return View();

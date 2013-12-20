@@ -44,6 +44,11 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'services/log
                 }
             });
 
+            // Configure ko.validation options.
+            ko.validation.init({
+                insertMessages: false
+            });
+
             // TODO: Add "route not found" indicator.
         });
     });

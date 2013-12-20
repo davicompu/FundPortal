@@ -23,7 +23,7 @@ namespace MvcWebRole
             config.Filters.Add(new RequireHttpsAttributeWebApi());
 
             // Force requests into role authorization pipeline.
-            config.Filters.Add(new AuthorizeAttribute());
+            config.Filters.Add(new AuthorizeAttribute() { Roles = "VT-EMPLOYEE, VT-STUDENT-WAGE" });
 
             // Default responses to JSON
             var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");

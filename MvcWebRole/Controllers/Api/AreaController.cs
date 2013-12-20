@@ -9,7 +9,6 @@ using MongoRepository;
 
 namespace MvcWebRole.Controllers
 {
-    [Authorize(Roles = "VT-EMPLOYEE, VT-STUDENT-WAGE")]
     public class AreaController : ApiController
     {
         private MongoRepository<Area> repository = new MongoRepository<Area>();

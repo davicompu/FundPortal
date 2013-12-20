@@ -13,7 +13,7 @@ namespace MvcWebRole
             filters.Add(new RequireHttpsAttribute());
 
             // Force requests into role authorization pipeline.
-            filters.Add(new AuthorizeAttribute());
+            filters.Add(new AuthorizeAttribute() { Roles = "VT-EMPLOYEE, VT-STUDENT-WAGE" });
         }
     }
 }

@@ -9,14 +9,14 @@
     <AzureEnableRemoteDesktop>True</AzureEnableRemoteDesktop>
     <AzureEnableWebDeploy>True</AzureEnableWebDeploy>
     <AzureFallbackToDeleteAndRecreateIfUpgradeFails>False</AzureFallbackToDeleteAndRecreateIfUpgradeFails>
-    <AzureHostedServiceLabel>adminfoundationportal</AzureHostedServiceLabel>
-    <AzureHostedServiceName>adminfoundationportal</AzureHostedServiceName>
+    <AzureHostedServiceLabel>foundationportal</AzureHostedServiceLabel>
+    <AzureHostedServiceName>foundationportal</AzureHostedServiceName>
     <AzureEnableIntelliTrace>False</AzureEnableIntelliTrace>
     <AzureEnableProfiling>False</AzureEnableProfiling>
     <AzureServiceConfiguration>Cloud</AzureServiceConfiguration>
-    <AzureSolutionConfiguration>Debug</AzureSolutionConfiguration>
-    <AzureStorageAccountLabel>fundstorage</AzureStorageAccountLabel>
-    <AzureStorageAccountName>fundstorage</AzureStorageAccountName>
+    <AzureSolutionConfiguration>Release</AzureSolutionConfiguration>
+    <AzureStorageAccountLabel>funddiagnostics</AzureStorageAccountLabel>
+    <AzureStorageAccountName>funddiagnostics</AzureStorageAccountName>
     <AzureAppendTimestampToDeploymentLabel>True</AzureAppendTimestampToDeploymentLabel>
   </PropertyGroup>
 </Project>

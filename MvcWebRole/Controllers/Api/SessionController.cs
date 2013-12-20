@@ -7,7 +7,6 @@ using System.Web.Http;
 
 namespace MvcWebRole.Controllers
 {
-    [Authorize(Roles = "VT-EMPLOYEE, VT-STUDENT-WAGE")]
     public class SessionController : ApiController
     {
         [HttpGet]

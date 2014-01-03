@@ -87,8 +87,8 @@
                     <tbody data-bind="if: Number() === 'O'">
                         <tr class="subtotal" data-bind="with: subtotals">
                             <td colspan="3" data-bind="text: 'Total for ' + $parent.Name()"></td>
-                            <td data-bind="text: formattedCurrentBudget, css: { 'negative-value': CurrentBudget() < 0 }"></td>
-                            <td data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': ProjectedExpenditures() < 0 }"></td>
+                            <td data-bind="text: formattedCurrentBudget, css: { 'negative-value': currentBudget() < 0 }"></td>
+                            <td data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': projectedExpenditures() < 0 }"></td>
                             <td data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></td>
                             <td data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></td>
                         </tr>

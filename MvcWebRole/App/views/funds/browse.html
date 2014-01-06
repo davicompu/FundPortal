@@ -30,19 +30,19 @@
                                 Fund number</th>
                             <th data-bind="click: sort.bind($data, 'Title')">
                                 Fund title</th>
-                            <th data-bind="click: sort.bind($data, 'ResponsiblePerson')">
+                            <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'ResponsiblePerson')">
                                 Fund responsible person</th>
-                            <th data-bind="click: sort.bind($data, 'CurrentBudget')">
+                            <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'CurrentBudget')">
                                 Fund current fiscal year approved budget</th>
-                            <th data-bind="click: sort.bind($data, 'ProjectedExpenditures')">
+                            <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'ProjectedExpenditures')">
                                 Fund current fiscal year projected expenditures</th>
-                            <th data-bind="click: sort.bind($data, 'requestedBudget')">
+                            <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'requestedBudget')">
                                 Fund requested budget</th>
-                            <th data-bind="click: sort.bind($data, 'variance')">
+                            <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'variance')">
                                 Fund variance</th>
-                            <th data-bind="click: sort.bind($data, 'Status')">
+                            <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'Status')">
                                 Fund status</th>
-                            <th class="default-cursor">Attachments</th>
+                            <th class="default-cursor hide-for-medium-down">Attachments</th>
                         </tr>
                     </thead>
                     <tbody data-bind="foreach: items">
@@ -51,13 +51,13 @@
                                 <a data-bind="fastlink: '#/funds/edit/' + Id, text: Number"></a>
                             </td>
                             <td data-bind="text: Title"></td>
-                            <td data-bind="text: ResponsiblePerson"></td>
-                            <td data-bind="text: formattedCurrentBudget, css: { 'negative-value': CurrentBudget() < 0 }"></td>
-                            <td data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': ProjectedExpenditures() < 0 }"></td>
-                            <td data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></td>
-                            <td data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></td>
-                            <td data-bind="text: fundStatusText"></td>
-                            <td class="text-center" data-bind="foreach: FileUploads">
+                            <td class="hide-for-medium-down" data-bind="text: ResponsiblePerson"></td>
+                            <td class="hide-for-medium-down" data-bind="text: formattedCurrentBudget, css: { 'negative-value': CurrentBudget() < 0 }"></td>
+                            <td class="hide-for-medium-down" data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': ProjectedExpenditures() < 0 }"></td>
+                            <td class="hide-for-medium-down" data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></td>
+                            <td class="hide-for-medium-down" data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></td>
+                            <td class="hide-for-medium-down" data-bind="text: fundStatusText"></td>
+                            <td class="text-center hide-for-medium-down" data-bind="foreach: FileUploads">
                                 <i class="fi-paperclip"></i>
                             </td>
                         </tr>

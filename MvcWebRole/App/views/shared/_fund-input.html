@@ -8,79 +8,89 @@
 
                 <div class="row">
                     <div class="large-4 columns">
-                        <label for="Status">
-                            Fund status
+                        <label for="Status" class="hide-on-print">
+                            Status
                         </label>
-                        <select name="Status" data-bind="value: Status">
+                        <select name="Status" class="hide-on-print" data-bind="value: Status">
                             <option value="1">Draft</option>
                             <option value="2">Final</option>
                         </select>
+                        <span class="print-only" data-bind="text: 'Status: ' + fundStatusText()"></span>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="large-4 columns">
-                        <label for="Number">
+                        <label for="Number" class="hide-on-print">
                             Fund number<span class="required">*</span>
                         </label>
-                        <input name="Number" type="text" data-bind="value: Number, css: { validationElement: true }" />
+                        <input name="Number" type="text" class="hide-on-print" data-bind="value: Number, css: { validationElement: true }" />
+                        <span class="print-only" data-bind="text: 'Fund number: ' + Number()"></span>
                         <label for="Number" class="error-message" data-bind="validationMessage: Number"></label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="large-8 columns">
-                        <label for="Title">
-                            Fund title<span class="required">*</span>
+                        <label for="Title" class="hide-on-print">
+                            Title<span class="required">*</span>
                         </label>
-                        <input name="Title" type="text" data-bind="value: Title" />
+                        <input name="Title" type="text" class="hide-on-print" data-bind="value: Title" />
+                        <span class="print-only" data-bind="text: 'Title: ' + Title()"></span>
                         <label for="Title" class="error-message" data-bind="validationMessage: Title"></label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="large-6 columns">
-                        <label for="ResponsiblePerson">
-                            Fund responsible person<span class="required">*</span>
+                        <label for="ResponsiblePerson" class="hide-on-print">
+                            Responsible person<span class="required">*</span>
                         </label>
-                        <input name="ResponsiblePerson" type="text" data-bind="value: ResponsiblePerson" />
+                        <input name="ResponsiblePerson" type="text" class="hide-on-print" data-bind="value: ResponsiblePerson" />
+                        <span class="print-only" data-bind="text: 'Responsible person: ' + ResponsiblePerson()"></span>
                         <label for="ResponsiblePerson"
-                            class="error-message" data-bind="validationMessage: ResponsiblePerson"></label>
+                            class="error-message" data-bind="validationMessage: ResponsiblePerson">
+                        </label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="large-6 columns">
-                        <label for="CurrentBudget">
-                            Fund current fiscal year approved budget<span class="required">*</span>
+                        <label for="CurrentBudget" class="hide-on-print">
+                            Current fiscal year approved budget<span class="required">*</span>
                         </label>
-                        <input name="CurrentBudget" type="text"
+                        <input name="CurrentBudget" type="text" class="hide-on-print"
                             data-bind="value: formattedCurrentBudget, css: { 'negative-value': CurrentBudget() < 0 }" />
+                        <span class="print-only" data-bind="text: 'Current fiscal year approved budget: ' + formattedCurrentBudget()"></span>
                         <label for="CurrentBudget"
-                            class="error-message" data-bind="validationMessage: CurrentBudget"></label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="large-6 columns">
-                        <label for="ProjectedExpenditures">
-                            Fund current fiscal year projected expenditures<span class="required">*</span>
+                            class="error-message" data-bind="validationMessage: CurrentBudget">
                         </label>
-                        <input name="ProjectedExpenditures" type="text"
-                            data-bind="value: formattedProjectedExpenditures, css: { 'negative-value': ProjectedExpenditures() < 0 }" />
-                        <label for="ProjectedExpenditures"
-                            class="error-message" data-bind="validationMessage: ProjectedExpenditures"></label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="large-6 columns">
-                        <div class="input-panel">
-                            <span>Fund projected year-end balance:
-                            <strong 
+                        <label for="ProjectedExpenditures" class="hide-on-print">
+                            Current fiscal year projected expenditures<span class="required">*</span>
+                        </label>
+                        <input name="ProjectedExpenditures" type="text" class="hide-on-print"
+                            data-bind="value: formattedProjectedExpenditures, css: { 'negative-value': ProjectedExpenditures() < 0 }" />
+                        <span class="print-only" data-bind="text: 'Current fiscal year projected expenditures: ' + formattedProjectedExpenditures()"></span>
+                        <label for="ProjectedExpenditures"
+                            class="error-message" data-bind="validationMessage: ProjectedExpenditures">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-6 columns">
+                        <div class="input-panel hide-on-print">
+                            <span>Projected year-end balance:
+                            <strong
                                 data-bind="text: formattedProjectedYearEndBalance, css: { 'negative-value': projectedYearEndBalance() < 0 }"></strong>
                             </span>
                         </div>
+                        <span class="print-only" data-bind="text: 'Projected year-end balance: ' + formattedProjectedYearEndBalance()"></span>
                     </div>
                 </div>
             </fieldset>
@@ -90,24 +100,27 @@
 
                 <div class="row">
                     <div class="large-4 columns">
-                        <label for="BudgetAdjustment">
-                            Fund projected increase or decrease<span class="required">*</span>
+                        <label for="BudgetAdjustment" class="hide-on-print">
+                            Projected increase or decrease<span class="required">*</span>
                         </label>
-                        <input name="BudgetAdjustment" type="text"
+                        <input name="BudgetAdjustment" type="text" class="hide-on-print"
                             data-bind="value: formattedBudgetAdjustment, css: { 'negative-value': BudgetAdjustment() < 0 }" />
+                        <span class="print-only" data-bind="text: 'Projected increase or decrease: ' + formattedBudgetAdjustment()"></span>
                         <label for="BudgetAdjustment"
-                            class="error-message" data-bind="validationMessage: BudgetAdjustment"></label>
+                            class="error-message" data-bind="validationMessage: BudgetAdjustment">
+                        </label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="large-6 columns">
-                        <div class="input-panel">
-                            <span>Fund requested budget: 
-                            <strong 
+                        <div class="input-panel hide-on-print">
+                            <span>Requested budget: 
+                            <strong
                                 data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></strong>
                             </span>
                         </div>
+                        <span class="print-only" data-bind="text: 'Requested budget: ' + formattedRequestedBudget()"></span>
                     </div>
                 </div>
             </fieldset>
@@ -124,7 +137,8 @@
                         <textarea name="Description" class="hide-on-print"
                             data-bind="value: Description"></textarea>
                         <label for="Description"
-                            class="error-message" data-bind="validationMessage: Description"></label>
+                            class="error-message" data-bind="validationMessage: Description">
+                        </label>
                     </div>
                 </div>
 
@@ -132,13 +146,14 @@
                     <div class="large-12 columns">
                         <label for="BudgetAdjustmentNote">
                             Reason for increase or decrease in the requested budget for this fund<span class="required"
-                            data-bind="visible: BudgetAdjustment() > 0">*</span>
+                                data-bind="visible: BudgetAdjustment() > 0">*</span>
                         </label>
                         <p class="print-only" data-bind="text: BudgetAdjustmentNote"></p>
                         <textarea name="BudgetAdjustmentNote" class="hide-on-print"
                             data-bind="value: BudgetAdjustmentNote"></textarea>
                         <label for="BudgetAdjustmentNote"
-                            class="error-message" data-bind="validationMessage: BudgetAdjustmentNote"></label>
+                            class="error-message" data-bind="validationMessage: BudgetAdjustmentNote">
+                        </label>
                     </div>
                 </div>
             </fieldset>
@@ -146,7 +161,7 @@
             <fieldset>
                 <h5>Fund attachments</h5>
 
-                <div class="row">
+                <div class="row hide-on-print">
                     <div class="large-12 columns">
                         <p>
                             <a href="http://www.obfp.vt.edu/forms/foundation-portal/budget-request-template.xlsx">Download budget request template</a>
@@ -154,7 +169,7 @@
                     </div>
                 </div>
 
-                <form name="fileInputForm">
+                <form name="fileInputForm" class="hide-on-print">
                     <input type="file" name="files[]" multiple
                         data-bind="event: { onload: window.fileInputForm.reset(), change: $parent.postFiles }" />
                 </form>
@@ -197,7 +212,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row hide-on-print">
                 <div class="large-12 columns">
                     <span class="text-button" data-bind="click: $parent.saveItem">Save
                     </span>

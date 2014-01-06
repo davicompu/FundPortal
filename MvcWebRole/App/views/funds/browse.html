@@ -13,7 +13,7 @@
         <div class="row">
             <div class="large-4 columns">
                 <label for="Area">
-                    Fund requesting area
+                    Requesting area
                 </label>
                 <select name="Area" data-bind="foreach: areas, value: selectedAreaId">
                     <option data-bind="attr: { value: Id }, text: Name"></option>
@@ -29,19 +29,19 @@
                             <th data-bind="click: sort.bind($data, 'Number')">
                                 Fund number</th>
                             <th data-bind="click: sort.bind($data, 'Title')">
-                                Fund title</th>
+                                Title</th>
                             <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'ResponsiblePerson')">
-                                Fund responsible person</th>
+                                Responsible person</th>
                             <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'CurrentBudget')">
-                                Fund current fiscal year approved budget</th>
+                                Current fiscal year approved budget</th>
                             <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'ProjectedExpenditures')">
-                                Fund current fiscal year projected expenditures</th>
+                                Current fiscal year projected expenditures</th>
                             <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'requestedBudget')">
-                                Fund requested budget</th>
+                                Requested budget</th>
                             <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'variance')">
-                                Fund variance</th>
+                                Variance</th>
                             <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'Status')">
-                                Fund status</th>
+                                Status</th>
                             <th class="default-cursor hide-for-medium-down">Attachments</th>
                         </tr>
                     </thead>

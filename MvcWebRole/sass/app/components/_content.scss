@@ -10,3 +10,21 @@ html {
 	margin-top: 30px;
 	padding-bottom: emCalc(20px);
 }
+
+.text-underline {
+	text-decoration: underline;
+}
+
+p {
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+}
+
+.negative-value {
+	color: $alert-color;
+}
+
+.default-cursor {
+	cursor: default !important;
+}

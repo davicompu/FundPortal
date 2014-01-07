@@ -5199,26 +5199,25 @@ table.tabular tr.grandtotal td {
 /* line 30, ../sass/app/components/_table.scss */
 table.bumped {
   border-style: none;
-  margin-top: 1.875em;
   width: 100%;
 }
-/* line 38, ../sass/app/components/_table.scss */
+/* line 37, ../sass/app/components/_table.scss */
 table.bumped thead tr th i {
   cursor: pointer;
 }
-/* line 45, ../sass/app/components/_table.scss */
+/* line 44, ../sass/app/components/_table.scss */
 table.bumped tbody {
   cursor: pointer;
 }
-/* line 48, ../sass/app/components/_table.scss */
+/* line 47, ../sass/app/components/_table.scss */
 table.bumped tbody tr {
   background: #FFF;
 }
-/* line 51, ../sass/app/components/_table.scss */
+/* line 50, ../sass/app/components/_table.scss */
 table.bumped tbody tr td {
   padding: 0;
 }
-/* line 54, ../sass/app/components/_table.scss */
+/* line 53, ../sass/app/components/_table.scss */
 table.bumped tbody tr td a {
   color: #333333;
   display: block;
@@ -5226,17 +5225,17 @@ table.bumped tbody tr td a {
   padding: 0.5625em 0.625em;
   width: 100%;
 }
-/* line 65, ../sass/app/components/_table.scss */
+/* line 64, ../sass/app/components/_table.scss */
 table.bumped tr {
   border-color: #d9d9d9;
   border-style: solid;
   border-width: 0.0625em 0 0.0625em 0;
 }
-/* line 71, ../sass/app/components/_table.scss */
+/* line 70, ../sass/app/components/_table.scss */
 table.bumped td {
   font-size: 1.25em;
 }
-/* line 75, ../sass/app/components/_table.scss */
+/* line 74, ../sass/app/components/_table.scss */
 table.bumped .button {
   margin: 0;
 }
@@ -5254,6 +5253,26 @@ html {
   height: 90%;
   margin-top: 30px;
   padding-bottom: 1.25em;
+}
+
+/* line 14, ../sass/app/components/_content.scss */
+.text-underline {
+  text-decoration: underline;
+}
+
+/* line 19, ../sass/app/components/_content.scss */
+p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* line 24, ../sass/app/components/_content.scss */
+.negative-value {
+  color: #c60f13;
+}
+
+/* line 28, ../sass/app/components/_content.scss */
+.default-cursor {
+  cursor: default !important;
 }
 
 /* 
@@ -6976,14 +6995,4 @@ html {
 /* line 590, ../sass/fonts/_foundation-icons.scss */
 .fi-zoom-out:before {
   content: "\f21a";
-}
-
-/* line 1, ../sass/app/_shame.scss */
-.negative-value {
-  color: #c60f13;
-}
-
-/* line 5, ../sass/app/_shame.scss */
-.default-cursor {
-  cursor: default !important;
 }

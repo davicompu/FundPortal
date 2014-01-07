@@ -4,18 +4,17 @@
             <h4 class="view-heading">FUND INFORMATION</h4>
 
             <fieldset>
-                <h5>Fund current status</h5>
+                <h5>Current status</h5>
 
-                <div class="row">
+                <div class="row hide-on-print">
                     <div class="large-4 columns">
-                        <label for="Status" class="hide-on-print">
+                        <label for="Status">
                             Status
                         </label>
-                        <select name="Status" class="hide-on-print" data-bind="value: Status">
+                        <select name="Status" data-bind="value: Status">
                             <option value="1">Draft</option>
                             <option value="2">Final</option>
                         </select>
-                        <span class="print-only" data-bind="text: 'Status: ' + fundStatusText()"></span>
                     </div>
                 </div>
 
@@ -25,7 +24,9 @@
                             Fund number<span class="required">*</span>
                         </label>
                         <input name="Number" type="text" class="hide-on-print" data-bind="value: Number, css: { validationElement: true }" />
-                        <span class="print-only" data-bind="text: 'Fund number: ' + Number()"></span>
+                        <p class="print-only">
+                            <span class="text-underline">Fund number</span>: <span data-bind="text: Number"></span>
+                        </p>
                         <label for="Number" class="error-message" data-bind="validationMessage: Number"></label>
                     </div>
                 </div>
@@ -36,7 +37,9 @@
                             Title<span class="required">*</span>
                         </label>
                         <input name="Title" type="text" class="hide-on-print" data-bind="value: Title" />
-                        <span class="print-only" data-bind="text: 'Title: ' + Title()"></span>
+                        <p class="print-only">
+                            <span class="text-underline">Title</span>: <span data-bind="text: Title"></span>
+                        </p>
                         <label for="Title" class="error-message" data-bind="validationMessage: Title"></label>
                     </div>
                 </div>
@@ -47,7 +50,9 @@
                             Responsible person<span class="required">*</span>
                         </label>
                         <input name="ResponsiblePerson" type="text" class="hide-on-print" data-bind="value: ResponsiblePerson" />
-                        <span class="print-only" data-bind="text: 'Responsible person: ' + ResponsiblePerson()"></span>
+                        <p class="print-only">
+                            <span class="text-underline">Responsible person</span>: <span data-bind="text: ResponsiblePerson"></span>
+                        </p>
                         <label for="ResponsiblePerson"
                             class="error-message" data-bind="validationMessage: ResponsiblePerson">
                         </label>
@@ -61,7 +66,9 @@
                         </label>
                         <input name="CurrentBudget" type="text" class="hide-on-print"
                             data-bind="value: formattedCurrentBudget, css: { 'negative-value': CurrentBudget() < 0 }" />
-                        <span class="print-only" data-bind="text: 'Current fiscal year approved budget: ' + formattedCurrentBudget()"></span>
+                        <p class="print-only">
+                            <span class="text-underline">Current fiscal year approved budget</span>: <span data-bind="text: formattedCurrentBudget"></span>
+                        </p>
                         <label for="CurrentBudget"
                             class="error-message" data-bind="validationMessage: CurrentBudget">
                         </label>
@@ -75,7 +82,10 @@
                         </label>
                         <input name="ProjectedExpenditures" type="text" class="hide-on-print"
                             data-bind="value: formattedProjectedExpenditures, css: { 'negative-value': ProjectedExpenditures() < 0 }" />
-                        <span class="print-only" data-bind="text: 'Current fiscal year projected expenditures: ' + formattedProjectedExpenditures()"></span>
+                        <p class="print-only">
+                            <span class="text-underline">Current fiscal year projected expenditures</span>: 
+                            <span data-bind="text: formattedProjectedExpenditures"></span>
+                        </p>
                         <label for="ProjectedExpenditures"
                             class="error-message" data-bind="validationMessage: ProjectedExpenditures">
                         </label>
@@ -90,13 +100,15 @@
                                 data-bind="text: formattedProjectedYearEndBalance, css: { 'negative-value': projectedYearEndBalance() < 0 }"></strong>
                             </span>
                         </div>
-                        <span class="print-only" data-bind="text: 'Projected year-end balance: ' + formattedProjectedYearEndBalance()"></span>
+                        <p class="print-only">
+                            <span class="text-underline">Projected year-end balance</span>: <span data-bind="text: formattedProjectedYearEndBalance"></span>
+                        </p>
                     </div>
                 </div>
             </fieldset>
 
             <fieldset>
-                <h5>Fund next year projected budget</h5>
+                <h5>Next year projected budget</h5>
 
                 <div class="row">
                     <div class="large-4 columns">
@@ -105,7 +117,9 @@
                         </label>
                         <input name="BudgetAdjustment" type="text" class="hide-on-print"
                             data-bind="value: formattedBudgetAdjustment, css: { 'negative-value': BudgetAdjustment() < 0 }" />
-                        <span class="print-only" data-bind="text: 'Projected increase or decrease: ' + formattedBudgetAdjustment()"></span>
+                        <p class="print-only">
+                            <span class="text-underline">Projected increase or decrease</span>: <span data-bind="text: formattedBudgetAdjustment"></span>
+                        </p>
                         <label for="BudgetAdjustment"
                             class="error-message" data-bind="validationMessage: BudgetAdjustment">
                         </label>
@@ -120,22 +134,27 @@
                                 data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></strong>
                             </span>
                         </div>
-                        <span class="print-only" data-bind="text: 'Requested budget: ' + formattedRequestedBudget()"></span>
+                        <p class="print-only">
+                            <span class="text-underline">Requested budget</span>: <span data-bind="text: formattedRequestedBudget"></span>
+                        </p>
                     </div>
                 </div>
             </fieldset>
 
             <fieldset>
-                <h5>Fund supporting information</h5>
+                <h5>Supporting information</h5>
 
                 <div class="row">
                     <div class="large-12 columns">
-                        <label for="Description">
+                        <label for="Description" class="hide-on-print">
                             Brief description of the program and types of expenses paid for by this fund<span class="required">*</span>
                         </label>
-                        <p class="print-only" data-bind="text: Description"></p>
                         <textarea name="Description" class="hide-on-print"
                             data-bind="value: Description"></textarea>
+                        <p class="print-only">
+                            <span class="text-underline">Brief description of the program and types of expenses paid for by this fund</span>
+                        </p>
+                        <p class="print-only" data-bind="text: Description"></p>
                         <label for="Description"
                             class="error-message" data-bind="validationMessage: Description">
                         </label>
@@ -144,13 +163,16 @@
 
                 <div class="row">
                     <div class="large-12 columns">
-                        <label for="BudgetAdjustmentNote">
+                        <label for="BudgetAdjustmentNote" class="hide-on-print">
                             Reason for increase or decrease in the requested budget for this fund<span class="required"
                                 data-bind="visible: BudgetAdjustment() > 0">*</span>
                         </label>
-                        <p class="print-only" data-bind="text: BudgetAdjustmentNote"></p>
                         <textarea name="BudgetAdjustmentNote" class="hide-on-print"
                             data-bind="value: BudgetAdjustmentNote"></textarea>
+                        <p class="print-only">
+                            <span class="text-underline">Reason for increase or decrease in the requested budget for this fund</span>
+                        </p>
+                        <p class="print-only" data-bind="text: BudgetAdjustmentNote"></p>
                         <label for="BudgetAdjustmentNote"
                             class="error-message" data-bind="validationMessage: BudgetAdjustmentNote">
                         </label>
@@ -158,10 +180,10 @@
                 </div>
             </fieldset>
 
-            <fieldset>
-                <h5>Fund attachments</h5>
+            <fieldset class="hide-on-print">
+                <h5>Attachments</h5>
 
-                <div class="row hide-on-print">
+                <div>
                     <div class="large-12 columns">
                         <p>
                             <a href="http://www.obfp.vt.edu/forms/foundation-portal/budget-request-template.xlsx">Download budget request template</a>

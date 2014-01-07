@@ -45,7 +45,7 @@ namespace FundEntities
 
         [Required]
         [DataMember(IsRequired = true)]
-        [Display(Name="Fund YTD and projected expenditures through June 30")]
+        [Display(Name="Current fiscal year projected expenditures")]
         public int ProjectedExpenditures { get; set; }
 
         [Required]

@@ -25,6 +25,7 @@ namespace MvcWebRole.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult Logout()
         {
             DotNetCasClient.CasAuthentication.SingleSignOut();

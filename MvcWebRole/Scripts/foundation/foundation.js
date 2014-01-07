@@ -38,6 +38,10 @@ if (typeof jQuery === "undefined" &&
     https://github.com/paulirish/matchMedia.js
   */
 
+   $('head').append('<meta class="foundation-mq-small">');
+   $('head').append('<meta class="foundation-mq-medium">');
+   $('head').append('<meta class="foundation-mq-large">');
+
   window.matchMedia = window.matchMedia || (function( doc, undefined ) {
 
     "use strict";
@@ -163,12 +167,27 @@ if (typeof jQuery === "undefined" &&
     return this;
   };
 
+  function removeQuotes(string) {
+      if (typeof string === 'string' || string instanceof String) {
+          string = string.replace(/^['"]+|(;\s?})+|['"]$/g, '');
+      }
+      return string;
+  }
+
   window.Foundation = {
     name : 'Foundation',
 
-    version : '4.2.3',
+    version : '4.3.2',
 
     cache : {},
+
+    media_queries : {
+      small : removeQuotes($('.foundation-mq-small').css('font-family')),
+      medium : removeQuotes($('.foundation-mq-medium').css('font-family')),
+      large : removeQuotes($('.foundation-mq-large').css('font-family'))
+    },
+
+    stylesheet : $('<style></style>').appendTo('head')[0].sheet,
 
     init : function (scope, libraries, method, options, response, /* internal */ nc) {
       var library_arr,
@@ -231,8 +250,7 @@ if (typeof jQuery === "undefined" &&
         if (this.libs.hasOwnProperty(lib)) {
           this.patch(this.libs[lib]);
           return this.libs[lib].init.apply(this.libs[lib], args);
-        }
-        else {
+        } else {
           return function () {};
         }
       }.bind(this), lib);
@@ -386,6 +404,18 @@ if (typeof jQuery === "undefined" &&
         }
 
         return true;
+      },
+
+      addCustomRule : function(rule, media) {
+        if(media === undefined) {
+          Foundation.stylesheet.insertRule(rule, Foundation.stylesheet.cssRules.length);
+        } else {
+          var query = Foundation.media_queries[media];
+          if(query !== undefined) {
+            Foundation.stylesheet.insertRule('@media ' + 
+              Foundation.media_queries[media] + '{ ' + rule + ' }');
+          }
+        }
       }
     },
 
@@ -402,7 +432,7 @@ if (typeof jQuery === "undefined" &&
         return el.outerHeight();
       };
 
-      lib.outerWidth = function (el) {
+      lib.outerWidth = function (el, bool) {
         if (typeof Zepto === 'function') {
           return el.width();
         }
@@ -426,13 +456,7 @@ if (typeof jQuery === "undefined" &&
       return true;
     },
 
-    zj : function () {
-      if (typeof Zepto !== 'undefined') {
-        return Zepto;
-      } else {
-        return jQuery;
-      }
-    }()
+    zj : $
   };
 
   $.fn.foundation = function () {

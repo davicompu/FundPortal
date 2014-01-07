@@ -6,9 +6,11 @@
   Foundation.libs.interchange = {
     name : 'interchange',
 
-    version : '4.2.4',
+    version : '4.3.3',
 
     cache : {},
+
+    images_loaded : false,
 
     settings : {
       load_attr : 'interchange',
@@ -71,6 +73,11 @@
     resize : function () {
       var cache = this.cache;
 
+      if(!this.images_loaded) {
+        setTimeout($.proxy(this.resize, this), 50);
+        return;
+      }
+
       for (var uuid in cache) {
         if (cache.hasOwnProperty(uuid)) {
           var passed = this.results(uuid, cache[uuid]);
@@ -85,18 +92,17 @@
     },
 
     results : function (uuid, scenarios) {
-      var count = scenarios.length,
-          results_arr = [];
+      var count = scenarios.length;
 
       if (count > 0) {
         var el = $('[data-uuid="' + uuid + '"]');
 
         for (var i = count - 1; i >= 0; i--) {
-          var rule = scenarios[i][2];
+          var mq, rule = scenarios[i][2];
           if (this.settings.named_queries.hasOwnProperty(rule)) {
-            var mq = matchMedia(this.settings.named_queries[rule]);
+            mq = matchMedia(this.settings.named_queries[rule]);
           } else {
-            var mq = matchMedia(scenarios[i][2]);
+            mq = matchMedia(rule);
           }
           if (mq.matches) {
             return {el: el, scenario: scenarios[i]};
@@ -118,65 +124,36 @@
     update_images : function () {
       var images = document.getElementsByTagName('img'),
           count = images.length,
+          loaded_count = 0,
           data_attr = 'data-' + this.settings.load_attr;
 
       this.cached_images = [];
+      this.images_loaded = false;
 
       for (var i = count - 1; i >= 0; i--) {
-        this.loaded($(images[i]), (i === 0), function (image, last) {
-          if (image) {
-            var str = image.getAttribute(data_attr) || '';
+        loaded_count++;
+        if (images[i]) {
+          var str = images[i].getAttribute(data_attr) || '';
 
-            if (str.length > 0) {
-              this.cached_images.push(image);
-            }
+          if (str.length > 0) {
+            this.cached_images.push(images[i]);
           }
+        }
 
-          if (last) this.enhance();
-
-        }.bind(this));
-      }
-
-      return 'deferred';
-    },
-
-    // based on jquery.imageready.js
-    // @weblinc, @jsantell, (c) 2012
-
-    loaded : function (image, last, callback) {
-      function loaded () {
-        callback(image[0], last);
-      }
-
-      function bindLoad () {
-        this.one('load', loaded);
-
-        if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
-          var src = this.attr( 'src' ),
-              param = src.match( /\?/ ) ? '&' : '?';
-
-          param += 'random=' + (new Date()).getTime();
-          this.attr('src', src + param);
+        if(loaded_count === count) {
+          this.images_loaded = true;
+          this.enhance();
         }
       }
 
-      if (!image.attr('src')) {
-        loaded();
-        return;
-      }
-
-      if (image[0].complete || image[0].readyState === 4) {
-        loaded();
-      } else {
-        bindLoad.call(image);
-      }
+      return 'deferred';
     },
 
     enhance : function () {
       var count = this.images().length;
 
       for (var i = count - 1; i >= 0; i--) {
-        this._object($(this.images()[i]));
+        this.object($(this.images()[i]));
       }
 
       return $(window).trigger('resize');
@@ -196,7 +173,7 @@
       return 'replace';
     },
 
-    _object : function(el) {
+    object : function(el) {
       var raw_arr = this.parse_data_attr(el),
           scenarios = [], count = raw_arr.length;
 

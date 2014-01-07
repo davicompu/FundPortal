@@ -6,7 +6,7 @@
   Foundation.libs.abide = {
     name : 'abide',
 
-    version : '4.3.0',
+    version : '4.3.3',
 
     settings : {
       live_validate : true,
@@ -67,7 +67,8 @@
 
       forms
         .on('submit validate', function (e) {
-          return self.validate($(this).find('input, textarea, select').get(), e);
+          var is_ajax = /ajax/i.test($(this).attr('data-abide'));
+          return self.validate($(this).find('input, textarea, select').get(), e, is_ajax);
         });
 
       this.settings.init = true;
@@ -87,25 +88,28 @@
         });
     },
 
-    validate : function (els, e) {
+    validate : function (els, e, is_ajax) {
       var validations = this.parse_patterns(els),
           validation_count = validations.length,
-          form = $(els[0]).closest('form');
+          form = $(els[0]).closest('form'),
+          submit_event = /submit/.test(e.type);
 
-      while (validation_count--) {
-        if (!validations[validation_count] && /submit/.test(e.type)) {
-          if (this.settings.focus_on_invalid) els[validation_count].focus();
+      for (var i=0; i < validation_count; i++) {
+        if (!validations[i] && (submit_event || is_ajax)) {
+          if (this.settings.focus_on_invalid) els[i].focus();
           form.trigger('invalid');
-          $(els[validation_count]).closest('form').attr('data-invalid', '');
+          $(els[i]).closest('form').attr('data-invalid', '');
           return false;
         }
       }
 
-      if (/submit/.test(e.type)) {
+      if (submit_event || is_ajax) {
         form.trigger('valid');
       }
 
       form.removeAttr('data-invalid');
+
+      if (is_ajax) return false;
 
       return true;
     },

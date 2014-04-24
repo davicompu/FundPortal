@@ -28,3 +28,7 @@ p {
 .default-cursor {
 	cursor: default !important;
 }
+
+.destroy-item {
+	background-color: lighten($alert-color, 30%) !important;
+}

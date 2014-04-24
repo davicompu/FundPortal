@@ -41,6 +41,7 @@ namespace MvcWebRole
                       "~/Scripts/moment.js",
                       "~/Scripts/pace.js",
                       "~/Scripts/app/chrisjsherm.Counter.js",
+                      "~/Scripts/app/jquery.utilities.js",
                       "~/Scripts/foundation/foundation.js",
                       "~/Scripts/foundation/foundation.reveal.js",
                       "~/Scripts/foundation/foundation.topbar.js")

@@ -1,0 +1,37 @@
+﻿<div class="row collapse">
+    <div class="large-12 columns">
+        <h4 class="view-heading">USERS</h4>
+
+        <p>
+            <a data-bind="fastlink: '/#/users/create'">Create a new user</a>
+        </p>
+
+        <p class="error-message" data-bind="if: error, text: error"></p>
+
+        <table class="bumped" data-bind="visible: !noItemsToShow()">
+            <thead>
+                <tr>
+                    <th>Users</th>
+                    <th class="right" data-bind="fastbutton: toggleRemoveItems">
+                        <i data-bind="css: removeItems() ? 'fi-x' : 'fi-trash'"></i>
+                    </th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: items">
+                <tr>
+                    <td colspan="2">
+                        <a data-bind="fastbutton: $parent.selectItem">
+                            <span data-bind="text: Pid"></span>
+                            <span class="right" data-bind="ifnot: $parent.removeItems">&#62</span>
+                            <span class="right" data-bind="if: $parent.removeItems">
+                                <i class="fi-trash"></i>
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p data-bind="if: noItemsToShow">No records</p>
+    </div>
+</div>

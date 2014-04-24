@@ -65,10 +65,15 @@
         }
 
         function updateChangedItemInBrowseVM(changedItem) {
+            // Remove the changed item from the BrowseVM, if initialized.
             browseVM.items.remove(function (item) {
                 return item.Id === changedItem.Id;
             });
-            browseVM.items.push(changedItem);
+
+            // Add the item back to the BrowseVM reflecting the changes.
+            browseVM.items.push(datacontext.createItem(changedItem));
+
+            browseVM.updateNoItemsToShowProperty();
         }
 
         function navigateToBrowseView(newItem) {

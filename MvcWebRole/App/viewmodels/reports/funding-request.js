@@ -64,7 +64,7 @@
                 vm.error,
                 'getbyarea',
                 {
-                    areaId: area.Id
+                    id: area.Id
                 },
                 []);
         }
@@ -75,7 +75,7 @@
                 vm.error,
                 'getfundsubtotalsbyarea',
                 {
-                    areaId: area.Id
+                    id: area.Id
                 },
                 [getGrandTotals]);
         }

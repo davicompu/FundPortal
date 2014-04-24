@@ -207,36 +207,50 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\Api\AreaController.cs" />
-    <Compile Include="Controllers\Api\FileUploadController.cs" />
-    <Compile Include="Controllers\Api\FundController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AreaController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
+    <Compile Include="Controllers\FundController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Api\SessionController.cs" />
     <Compile Include="Controllers\ReportFileController.cs" />
+    <Compile Include="Controllers\SessionController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DataAccess\SwapAdminRoleProvider.cs" />
     <Compile Include="Extensions\DataAnnotationsHelper.cs" />
+    <Compile Include="Extensions\RoleValidator.cs" />
     <Compile Include="FileModels\FundingRequestReport.cs" />
     <Compile Include="FileModels\Report.cs" />
+    <Compile Include="Filters\AccessAreaAuthorizationFilter.cs" />
     <Compile Include="Filters\ConditionallyRequireNoteAttribute.cs" />
+    <Compile Include="Filters\CreateFundAuthorizationFilter.cs" />
+    <Compile Include="Filters\GetAreasActionFilter.cs" />
+    <Compile Include="Filters\ReadAreaAuthorizationFilter.cs" />
+    <Compile Include="Filters\ReadFundAuthorizationFilter.cs" />
     <Compile Include="Filters\RequireHttpsAttributeWebApi.cs" />
+    <Compile Include="Filters\UpdateFundAuthorizationFilter.cs" />
     <Compile Include="Filters\ValidateModelAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\UserInfoViewModel.cs" />
     <Compile Include="WebRole.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\datacontexts\area.datacontext.js" />
     <Content Include="App\datacontexts\fileupload.datacontext.js" />
     <Content Include="App\datacontexts\fund.datacontext.js" />
+    <Content Include="App\datacontexts\user.datacontext.js" />
     <Content Include="App\datamodels\area.model.js" />
     <Content Include="App\datamodels\fileupload.model.js" />
     <Content Include="App\datamodels\fund.model.js" />
+    <Content Include="App\datamodels\user.model.js" />
+    <Content Include="App\global\session.js" />
     <Content Include="App\main-built.js" />
     <Content Include="App\main.js" />
     <Content Include="App\services\contexthelper.js" />
     <Content Include="App\services\logger.js" />
+    <Content Include="App\services\security.js" />
     <Content Include="App\services\sorter.js" />
     <Content Include="App\viewmodels\areas\browse.js" />
     <Content Include="App\viewmodels\areas\create.js" />
@@ -244,20 +258,29 @@
     <Content Include="App\viewmodels\funds\browse.js" />
     <Content Include="App\viewmodels\funds\create.js" />
     <Content Include="App\viewmodels\funds\edit.js" />
+    <Content Include="App\viewmodels\funds\manage.js" />
     <Content Include="App\viewmodels\reports\funding-request.js" />
     <Content Include="App\viewmodels\reports\narrative.js" />
     <Content Include="App\viewmodels\shell.js" />
+    <Content Include="App\viewmodels\users\browse.js" />
+    <Content Include="App\viewmodels\users\create.js" />
+    <Content Include="App\viewmodels\users\edit.js" />
     <Content Include="App\views\areas\browse.html" />
     <Content Include="App\views\areas\create.html" />
     <Content Include="App\views\areas\edit.html" />
     <Content Include="App\views\funds\browse.html" />
     <Content Include="App\views\funds\create.html" />
     <Content Include="App\views\funds\edit.html" />
+    <Content Include="App\views\funds\manage.html" />
     <Content Include="App\views\reports\funding-request.html" />
     <Content Include="App\views\reports\narrative.html" />
     <Content Include="App\views\shared\_area-input.html" />
     <Content Include="App\views\shared\_fund-input.html" />
+    <Content Include="App\views\shared\_user-input.html" />
     <Content Include="App\views\shell.html" />
+    <Content Include="App\views\users\browse.html" />
+    <Content Include="App\views\users\create.html" />
+    <Content Include="App\views\users\edit.html" />
     <Content Include="Content\durandal.css" />
     <Content Include="Content\fonts\foundation-icons.svg" />
     <Content Include="Content\images\bright-squares.png" />
@@ -270,6 +293,7 @@
     <Content Include="Scripts\app\chrisjsherm.counter.js" />
     <Content Include="Scripts\app\google.fastbutton.js" />
     <Content Include="Scripts\app\javascript.custom.functions.js" />
+    <Content Include="Scripts\app\jquery.utilities.js" />
     <Content Include="Scripts\app\knockout.custom.bindings.js" />
     <Content Include="Scripts\durandal\activator.js" />
     <Content Include="Scripts\durandal\app.js" />
@@ -473,11 +497,8 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>if '$(Configuration)'=='Release' (
-    cd $(ProjectDir)
-    weyland build
-)
-)</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

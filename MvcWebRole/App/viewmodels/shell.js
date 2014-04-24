@@ -1,5 +1,6 @@
-﻿define(['plugins/router', 'durandal/app'],
-    function (router, app) {
+﻿define(['plugins/router', 'durandal/app', 'services/security', 'global/session',
+    'services/logger'],
+    function (router, app, security, session, logger) {
 
         var shell = {
             activate: activate,
@@ -10,28 +11,83 @@
         return shell;
 
         //#region Internal Methods
-        function activate() {
+        function setupRouter() {
             router.map([
                 // Default route
-                { route: '', moduleId: 'viewmodels/funds/browse' },
+                { route: ['', 'funds/browse'], moduleId: 'viewmodels/funds/browse' },
 
+                { route: 'areas/browse', moduleId: 'viewmodels/areas/browse', requiredRoles: ['MANAGE-AREAS'] },
+                { route: 'areas/create', moduleId: 'viewmodels/areas/create', requiredRoles: ['MANAGE-AREAS'] },
+                { route: 'areas/edit/:id', moduleId: 'viewmodels/areas/edit', requiredRoles: ['MANAGE-AREAS'] },
 
-                { route: 'areas/browse', moduleId: 'viewmodels/areas/browse' },
-                { route: 'areas/create', moduleId: 'viewmodels/areas/create' },
-                { route: 'areas/edit/:id', moduleId: 'viewmodels/areas/edit' },
-
-                { route: 'funds/browse', moduleId: 'viewmodels/funds/browse' },
                 { route: 'funds/create', moduleId: 'viewmodels/funds/create' },
                 { route: 'funds/edit/:id', moduleId: 'viewmodels/funds/edit' },
+                { route: 'funds/manage', moduleId: 'viewmodels/funds/manage', requiredRoles: ['MANAGE-FUNDS'] },
 
                 { route: 'reports/funding-request', moduleId: 'viewmodels/reports/funding-request' },
                 {
                     route: 'reports/narrative',
                     moduleId: 'viewmodels/reports/narrative'
-                }
+                },
+
+                { route: 'users/browse', moduleId: 'viewmodels/users/browse', requiredRoles: ['MANAGE-USERS'] },
+                { route: 'users/create', moduleId: 'viewmodels/users/create', requiredRoles: ['MANAGE-USERS'] },
+                { route: 'users/edit/:id', moduleId: 'viewmodels/users/edit', requiredRoles: ['MANAGE-USERS'] }
             ]).buildNavigationModel();
 
+            router.guardRoute = function (routeInfo, params, instance) {
+                if (typeof (params.config.requiredRoles) !== "undefined") {
+                    var res = session.userIsInRole(params.config.requiredRoles);
+
+                    if (!res) {
+                        logger.log("Access denied. Navigation canceled.",
+                            null,
+                            'viewmodels/shell',
+                            true,
+                            "warning"
+                        );
+                    }
+
+                    return res;
+                } else {
+                    return true;
+                }
+            };
+
             return router.activate();
+        }
+
+        function init() {
+            security.getUserInfo()
+                .done(function (data) {
+                    if (data.UserName) {
+                        session.setUser(data);
+                        setupRouter();
+                    } else {
+                        logger.log("Access denied. Navigation canceled.",
+                            null,
+                            'viewmodels/shell',
+                            true,
+                            "warning"
+                        );
+
+                        setupRouter();
+                    }
+                })
+                .fail(function () {
+                    logger.log("Access denied. Navigation canceled.",
+                        null,
+                        'viewmodels/shell',
+                        true,
+                        "warning"
+                    );
+
+                    setupRouter();
+                });
+        }
+
+        function activate() {
+            return init();
         }
 
         function attached() {

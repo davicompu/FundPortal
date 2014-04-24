@@ -19,6 +19,7 @@
             //#region Methods.
             toggleRemoveItems: toggleRemoveItems,
             selectItem: selectItem,
+            updateNoItemsToShowProperty: updateNoItemsToShowProperty,
             //#endregion
         };
 

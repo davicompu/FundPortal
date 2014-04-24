@@ -5275,6 +5275,11 @@ p:last-child {
   cursor: default !important;
 }
 
+/* line 32, ../sass/app/components/_content.scss */
+.destroy-item {
+  background-color: #f5797c !important;
+}
+
 /* 
  * Foundation Icons v 3.0
  * Made by ZURB 2013 http://zurb.com/playground/foundation-icon-fonts-3

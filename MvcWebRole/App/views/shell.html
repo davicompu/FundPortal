@@ -11,13 +11,23 @@
 
         <section class="top-bar-section">
             <ul class="right">
-                <li><a href="/#/funds/browse">Funds</a></li>
-                <li class="has-dropdown"><a>Reports</a>
+                <li data-bind="ifNotIsInRole: 'MANAGE-FUNDS'"><a href="/#/funds/browse">Funds</a></li>
+                <li data-bind="ifIsInRole: 'MANAGE-FUNDS'" class="has-dropdown">
+                    <a>Funds</a>
+                    <ul class="dropdown">
+                        <li><a href="/#/funds/browse">Browse</a></li>
+                        <li><a href="/#/funds/manage">Manage</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a>Reports</a>
                     <ul class="dropdown">
                         <li><a href="/#/reports/funding-request">Funding Request</a></li>
                         <li><a href="/#/reports/narrative">Narrative</a></li>
                     </ul>
                 </li>
+                <li data-bind="ifIsInRole: 'MANAGE-USERS'"><a href="/#/users/browse">Users</a></li>
+                <li data-bind="ifIsInRole: 'MANAGE-AREAS'"><a href="/#/areas/browse">Areas</a></li>
                 <li><a href="/home/logout">Logout</a></li>
             </ul>
         </section>

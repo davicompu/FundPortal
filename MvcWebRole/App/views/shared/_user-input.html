@@ -1,0 +1,110 @@
+﻿<div class="row viewBackground">
+    <div class="large-12 columns">
+        <section data-bind="with: item">
+            <h4 class="view-heading">USER INFORMATION</h4>
+
+            <fieldset>
+                <h5>Details</h5>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="Pid">
+                            Pid<span class="required">*</span>
+                        </label>
+                        <input type="text" name="Pid" required
+                            data-bind="value: Pid, blurOnEnter: true" />
+                        <label for="Pid" class="error-message" data-bind="validationMessage: Pid"></label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <h5>Fund roles</h5>
+
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label>
+                            <input type="checkbox" name="Roles" value="EDIT-O" data-bind="checked: Roles" />
+                            Edit Other Uses of Funds
+                        </label>
+                    </div>
+
+                    <div class="large-4 columns">
+                        <label>
+                            <input type="checkbox" name="Roles" value="EDIT-S27" data-bind="checked: Roles" />
+                            Edit President
+                        </label>
+                    </div>
+
+                    <div class="large-4 columns">
+                        <label>
+                            <input type="checkbox" name="Roles" value="EDIT-S26" data-bind="checked: Roles" />
+                            Edit Senior Vice President & Provost
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label>
+                            <input type="checkbox" name="Roles" value="EDIT-S41" data-bind="checked: Roles" />
+                            Edit Vice President for Development & University Relations
+                        </label>
+                    </div>
+
+                    <div class="large-4 columns">
+                        <label>
+                            <input type="checkbox" name="Roles" value="EDIT-S46" data-bind="checked: Roles" />
+                            Edit Vice President for Finance & CFO                           
+                        </label>
+                    </div>
+
+                    <div class="large-4 columns">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <h5>Administrator roles</h5>
+
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label>
+                            <input type="checkbox" name="Roles" value="MANAGE-FUNDS" data-bind="checked: Roles" />
+                            Manage funds
+                        </label>
+                    </div>
+
+                    <div class="large-4 columns">
+                        <label>
+                            <input type="checkbox" name="Roles" value="MANAGE-USERS" data-bind="checked: Roles" />
+                            Manage users
+                        </label>
+                    </div>
+
+                    <div class="large-4 columns">
+                        <label>
+                            <input type="checkbox" name="Roles" value="MANAGE-AREAS" data-bind="checked: Roles" />
+                            Manage areas
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="row" data-bind="visible: errorMessage">
+                <div class="large-12 columns">
+                    <p>
+                        <span class="error-message"
+                            data-bind="text: errorMessage"></span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-12 columns">
+                    <span class="text-button" data-bind="click: $parent.saveItem">Save
+                    </span>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

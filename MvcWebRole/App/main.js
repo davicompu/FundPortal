@@ -11,8 +11,8 @@ define('jquery', function () { return jQuery; });
 define('knockout', ko);
 
 define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'services/logger',
-    'plugins/router'],
-    function (system, app, viewLocator, logger, router) {
+    'plugins/router', 'global/session'],
+    function (system, app, viewLocator, logger, router, session) {
         //>>excludeStart("build", true);
         system.debug(true);
         //>>excludeEnd("build");
@@ -34,8 +34,9 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'services/log
             app.setRoot('viewmodels/shell');
 
             // toastr.js pop-up configuration
-            toastr.options.positionClass = 'toast-bottom-full-width';
-            toastr.options.backgroundpositionClass = 'toast-bottom-full-width';
+            toastr.options.timeOut = 0;
+            toastr.options.extendedTimeOut = 0;
+            toastr.options.closeButton = true;
 
             // Indicate when there is no Internet connection
             window.addEventListener('offline', function () {
@@ -44,11 +45,88 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'services/log
                 }
             });
 
-            // Configure ko.validation options.
+            configureKnockout();
+
+            // TODO: Add "route not found" indicator.
+        });
+
+        function configureKnockout() {
             ko.validation.init({
                 insertMessages: false
             });
 
-            // TODO: Add "route not found" indicator.
-        });
+            if (!ko.utils.cloneNodes) {
+                ko.utils.cloneNodes = function (nodesArray, shouldCleanNodes) {
+                    for (var i = 0, j = nodesArray.length, newNodesArray = []; i < j; i++) {
+                        var clonedNode = nodesArray[i].cloneNode(true);
+                        newNodesArray.push(shouldCleanNodes ? ko.cleanNode(clonedNode) : clonedNode);
+                    }
+                    return newNodesArray;
+                };
+            }
+
+            ko.bindingHandlers.ifIsInRole = {
+                init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+                    ko.utils.domData.set(element, '__ko_withIfBindingData', {});
+                    return { 'controlsDescendantBindings': true };
+                },
+                update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+                    var withIfData = ko.utils.domData.get(element, '__ko_withIfBindingData'),
+                        dataValue = ko.utils.unwrapObservable(valueAccessor()),
+                        shouldDisplay = session.userIsInRole(dataValue),
+                        isFirstRender = !withIfData.savedNodes,
+                        needsRefresh = isFirstRender || (shouldDisplay !== withIfData.didDisplayOnLastUpdate),
+                        makeContextCallback = false;
+
+                    if (needsRefresh) {
+                        if (isFirstRender) {
+                            withIfData.savedNodes = ko.utils.cloneNodes(ko.virtualElements.childNodes(element), true /* shouldCleanNodes */);
+                        }
+
+                        if (shouldDisplay) {
+                            if (!isFirstRender) {
+                                ko.virtualElements.setDomNodeChildren(element, ko.utils.cloneNodes(withIfData.savedNodes));
+                            }
+                            ko.applyBindingsToDescendants(makeContextCallback ? makeContextCallback(bindingContext, dataValue) : bindingContext, element);
+                        } else {
+                            ko.virtualElements.emptyNode(element);
+                        }
+
+                        withIfData.didDisplayOnLastUpdate = shouldDisplay;
+                    }
+                }
+            };
+
+            ko.bindingHandlers.ifNotIsInRole = {
+                init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+                    ko.utils.domData.set(element, '__ko_withIfBindingData', {});
+                    return { 'controlsDescendantBindings': true };
+                },
+                update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+                    var withIfData = ko.utils.domData.get(element, '__ko_withIfBindingData'),
+                        dataValue = ko.utils.unwrapObservable(valueAccessor()),
+                        shouldDisplay = !session.userIsInRole(dataValue),
+                        isFirstRender = !withIfData.savedNodes,
+                        needsRefresh = isFirstRender || (shouldDisplay !== withIfData.didDisplayOnLastUpdate),
+                        makeContextCallback = false;
+
+                    if (needsRefresh) {
+                        if (isFirstRender) {
+                            withIfData.savedNodes = ko.utils.cloneNodes(ko.virtualElements.childNodes(element), true /* shouldCleanNodes */);
+                        }
+
+                        if (shouldDisplay) {
+                            if (!isFirstRender) {
+                                ko.virtualElements.setDomNodeChildren(element, ko.utils.cloneNodes(withIfData.savedNodes));
+                            }
+                            ko.applyBindingsToDescendants(makeContextCallback ? makeContextCallback(bindingContext, dataValue) : bindingContext, element);
+                        } else {
+                            ko.virtualElements.emptyNode(element);
+                        }
+
+                        withIfData.didDisplayOnLastUpdate = shouldDisplay;
+                    }
+                }
+            };
+        }
     });

@@ -58,7 +58,7 @@
                 vm.error,
                 'getbyarea',
                 {
-                    areaId: area.Id
+                    id: area.Id
                 });
         }
         //#endregion

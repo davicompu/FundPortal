@@ -68,7 +68,7 @@
                 vm.error,
                 action,
                 {
-                    areaId: vm.selectedAreaId(),
+                    id: vm.selectedAreaId(),
                 },
                 [updateNoItemsToShowProperty]);
         }

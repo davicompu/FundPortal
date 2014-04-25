@@ -209,6 +209,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\FundController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -222,6 +223,7 @@
     <Compile Include="FileModels\Report.cs" />
     <Compile Include="Filters\AccessAreaAuthorizationFilter.cs" />
     <Compile Include="Filters\ConditionallyRequireNoteAttribute.cs" />
+    <Compile Include="Filters\CreateCommentAuthorizationFilter.cs" />
     <Compile Include="Filters\CreateFundAuthorizationFilter.cs" />
     <Compile Include="Filters\GetAreasActionFilter.cs" />
     <Compile Include="Filters\ReadAreaAuthorizationFilter.cs" />
@@ -238,10 +240,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\datacontexts\area.datacontext.js" />
+    <Content Include="App\datacontexts\comment.datacontext.js" />
     <Content Include="App\datacontexts\fileupload.datacontext.js" />
     <Content Include="App\datacontexts\fund.datacontext.js" />
     <Content Include="App\datacontexts\user.datacontext.js" />
     <Content Include="App\datamodels\area.model.js" />
+    <Content Include="App\datamodels\comment.model.js" />
     <Content Include="App\datamodels\fileupload.model.js" />
     <Content Include="App\datamodels\fund.model.js" />
     <Content Include="App\datamodels\user.model.js" />

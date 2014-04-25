@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="CustomValidationAttributes\ConditionallyRequireNoteAttribute.cs" />
     <Compile Include="Entities\Area.cs" />
+    <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\FileUpload.cs" />
     <Compile Include="Entities\Fund.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

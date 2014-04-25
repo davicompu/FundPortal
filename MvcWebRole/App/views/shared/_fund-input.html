@@ -180,6 +180,38 @@
                 </div>
             </fieldset>
 
+            <section data-bind="ifIsInRole:'MANAGE-FUNDS'">
+                <fieldset>
+                    <h5>Administrator comments</h5>
+                    <!-- TODO: Style username and date -->
+                    <table class="tabular">
+                        <tbody data-bind="foreach: $parent.comments">
+                            <tr>
+                                <td>
+                                    <span data-bind="text: Text() + ' by ' + UserName() + ' '"></span>
+                                    <span data-bind="text: moment(DateTimeCreated).fromNow()"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="row" data-bind="ifnot: $parent.newComment()">
+                        <div class="large-12 columns">
+                            <a data-bind="click: $parent.initComment">Add comment</a>
+                        </div>
+                    </div>
+
+                    <div class="row" data-bind="with: $parent.newComment">
+                        <div class="large-9 columns">
+                            <textarea data-bind="value: Text"></textarea>
+                        </div>
+                        <div class="large-3 columns">
+                            <a class="button" data-bind="click: $parents[1].saveComment">Save comment</a>
+                        </div>
+                    </div>
+                </fieldset>
+            </section>
+
             <fieldset class="hide-on-print">
                 <h5>Attachments</h5>
 

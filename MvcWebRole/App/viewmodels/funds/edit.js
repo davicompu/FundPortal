@@ -1,6 +1,8 @@
 ﻿define(['services/logger', 'plugins/router', 'datacontexts/fund.datacontext',
-    'datacontexts/fileupload.datacontext', 'viewmodels/funds/browse'],
-    function (logger, router, datacontext, fileuploadDatacontext, browseVM) {
+    'datacontexts/fileupload.datacontext', 'viewmodels/funds/browse',
+    'datacontexts/comment.datacontext', 'global/session'],
+    function (logger, router, datacontext, fileuploadDatacontext, browseVM,
+        commentDatacontext, session) {
         var vm = {
             //#region Initialization.
             error: ko.observable(),
@@ -10,11 +12,16 @@
             //#endregion
 
             //#region Properties.
+            fundId: ko.observable(),
             item: ko.observable(),
+            comments: ko.observableArray([]),
+            newComment: ko.observable(),
             //#endregion
 
             //#region Methods.
+            initComment: initComment,
             postFiles: postFiles,
+            saveComment: saveComment,
             saveItem: saveItem,
             removeFileUpload: removeFileUpload,
             //#endregion
@@ -31,7 +38,9 @@
         //#region Internal methods.
         function activate(id) {
             logger.log('Edit fund view activated', null, 'funds/edit', false);
+            vm.fundId(id);
             getFund(id);
+            getComments(id);
             return true;
         }
 
@@ -53,6 +62,26 @@
             if (undefined === vm.item()) {
                 return datacontext.getItem(id, vm.item, vm.error);
             }
+        }
+
+        function getComments(fundId) {
+            return commentDatacontext.getItems(
+                vm.comments,
+                vm.error,
+                'get',
+                { id: fundId });
+        }
+
+        function initComment() {
+            return vm.newComment(new commentDatacontext.createItem({FundId: vm.fundId()}));
+        }
+
+        function saveComment(comment) {
+            return commentDatacontext.saveNewItem(comment)
+                .done(function (result) {
+                    vm.newComment(undefined);
+                    vm.comments.push(new commentDatacontext.createItem(result));
+                });
         }
 
         function postFiles(data, evt) {

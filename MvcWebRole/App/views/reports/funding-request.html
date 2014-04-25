@@ -15,19 +15,20 @@
                 <table class="tabular">
                     <thead>
                         <tr>
-                            <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'Number')">
+                            <th class="hide-for-small" data-bind="click: sort.bind($data, 'Number')">
                                 Fund number</th>
                             <th data-bind="click: sort.bind($data, 'Title')">
                                 Title</th>
-                            <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'ResponsiblePerson')">
+                            <th class="hide-for-small" data-bind="click: sort.bind($data, 'ResponsiblePerson')">
                                 Responsible person</th>
-                            <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'CurrentBudget')">
+                            <th class="hide-for-small" data-bind="click: sort.bind($data, 'CurrentBudget')">
                                 Current fiscal year approved budget</th>
                             <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'ProjectedExpenditures')">
-                                Current fiscal year projected expenditures</th>
+                                Current fiscal year projected expenditures
+                            </th>
                             <th data-bind="click: sort.bind($data, 'requestedBudget')">
                                 Requested budget</th>
-                            <th class="hide-for-medium-down" data-bind="click: sort.bind($data, 'variance')">
+                            <th class="hide-for-small" data-bind="click: sort.bind($data, 'variance')">
                                 Variance</th>
                         </tr>
                     </thead>
@@ -38,31 +39,31 @@
                         </tr>
                         <!-- ko foreach: funds -->
                         <tr>
-                            <td class="hide-for-medium-down" data-bind="text: Number"></td>
+                            <td class="hide-for-small" data-bind="text: Number"></td>
                             <td data-bind="text: Title"></td>
-                            <td class="hide-for-medium-down" data-bind="text: ResponsiblePerson"></td>
-                            <td class="hide-for-medium-down" data-bind="text: formattedCurrentBudget, css: { 'negative-value': CurrentBudget() < 0 }"></td>
+                            <td class="hide-for-small" data-bind="text: ResponsiblePerson"></td>
+                            <td class="hide-for-small" data-bind="text: formattedCurrentBudget, css: { 'negative-value': CurrentBudget() < 0 }"></td>
                             <td class="hide-for-medium-down" data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': ProjectedExpenditures() < 0 }"></td>
                             <td data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></td>
-                            <td class="hide-for-medium-down" data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></td>
+                            <td class="hide-for-small" data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></td>
                         </tr>
                         <!--/ko-->
                     </tbody>
-                    <tbody class="hide-for-medium-down" data-bind="ifnot: Number() === 'O'">
+                    <tbody class="hide-for-small" data-bind="ifnot: Number() === 'O'">
                         <tr class="subtotal" data-bind="with: subtotals">
                             <td colspan="3" data-bind="text: 'Total for ' + $parent.Name()"></td>
                             <td data-bind="text: formattedCurrentBudget, css: { 'negative-value': currentBudget() < 0 }"></td>
-                            <td data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': projectedExpenditures() < 0 }"></td>
+                            <td class="hide-for-medium-down" data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': projectedExpenditures() < 0 }"></td>
                             <td data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></td>
                             <td data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></td>
                         </tr>
                     </tbody>
                     <!--/ko-->
-                    <tbody class="hide-for-medium-down">
+                    <tbody class="hide-for-small">
                         <tr class="grandtotal" data-bind="with: grandTotals">
                             <td colspan="3">Grand totals</td>
                             <td data-bind="text: formattedCurrentBudget, css: { 'negative-value': currentBudget() < 0 }"></td>
-                            <td data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': projectedExpenditures() < 0 }"></td>
+                            <td class="hide-for-medium-down" data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': projectedExpenditures() < 0 }"></td>
                             <td data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></td>
                             <td data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></td>
                         </tr>
@@ -74,21 +75,21 @@
                         </tr>
                         <!-- ko foreach: funds -->
                         <tr>
-                            <td class="hide-for-medium-down" data-bind="text: Number"></td>
+                            <td class="hide-for-small" data-bind="text: Number"></td>
                             <td data-bind="text: Title"></td>
-                            <td class="hide-for-medium-down" data-bind="text: ResponsiblePerson"></td>
-                            <td class="hide-for-medium-down" data-bind="text: formattedCurrentBudget, css: { 'negative-value': CurrentBudget() < 0 }"></td>
+                            <td class="hide-for-small" data-bind="text: ResponsiblePerson"></td>
+                            <td class="hide-for-small" data-bind="text: formattedCurrentBudget, css: { 'negative-value': CurrentBudget() < 0 }"></td>
                             <td class="hide-for-medium-down" data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': ProjectedExpenditures() < 0 }"></td>
                             <td data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></td>
-                            <td class="hide-for-medium-down" data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></td>
+                            <td class="hide-for-small" data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></td>
                         </tr>
                         <!--/ko-->
                     </tbody>
-                    <tbody class="hide-for-medium-down" data-bind="if: Number() === 'O'">
+                    <tbody class="hide-for-small" data-bind="if: Number() === 'O'">
                         <tr class="subtotal" data-bind="with: subtotals">
                             <td colspan="3" data-bind="text: 'Total for ' + $parent.Name()"></td>
                             <td data-bind="text: formattedCurrentBudget, css: { 'negative-value': currentBudget() < 0 }"></td>
-                            <td data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': projectedExpenditures() < 0 }"></td>
+                            <td class="hide-for-medium-down" data-bind="text: formattedProjectedExpenditures, css: { 'negative-value': projectedExpenditures() < 0 }"></td>
                             <td data-bind="text: formattedRequestedBudget, css: { 'negative-value': requestedBudget() < 0 }"></td>
                             <td data-bind="text: formattedVariance, css: { 'negative-value': variance() < 0 }"></td>
                         </tr>

@@ -5232,10 +5232,6 @@ table.bumped tr {
   border-width: 0.0625em 0 0.0625em 0;
 }
 /* line 70, ../sass/app/components/_table.scss */
-table.bumped td {
-  font-size: 1.25em;
-}
-/* line 74, ../sass/app/components/_table.scss */
 table.bumped .button {
   margin: 0;
 }

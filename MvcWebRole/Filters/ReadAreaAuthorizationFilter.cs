@@ -11,20 +11,17 @@ using System.Web.Http.Filters;
 
 namespace MvcWebRole.Filters
 {
-    public class ReadAreaAuthorizationFilter : AccessAreaAuthorizationFilter
+    public class ReadAreaActionFilter : AccessAreaActionFilter
     {
-        protected override bool IsAuthorized(System.Web.Http.Controllers.HttpActionContext actionContext)
+        public override void OnActionExecuting(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
-            // Run base method to handle Users and Roles filter parameters.
-            if (!base.IsAuthorized(actionContext))
-            {
-                return false;
-            }
-
             // Grab the areaId from the request.
             var areaId = HttpContext.Current.Request.QueryString.GetValues("id")[0];
 
-            return this.IsAuthorizedToAccessArea(areaId);
+            if (!this.IsAuthorizedToAccessArea(areaId))
+            {
+                throw new HttpException(401, "Unauthorized. You are not authorized to access this area.");
+            }
         }
     }
 }

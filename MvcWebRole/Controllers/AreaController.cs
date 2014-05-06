@@ -24,7 +24,7 @@ namespace MvcWebRole.Controllers
         }
 
         // GET api/area/5
-        [ReadAreaAuthorizationFilter]
+        [ReadAreaActionFilter]
         public HttpResponseMessage Get(string id)
         {
             var area = (Area)HttpContext.Current.Items["area"];

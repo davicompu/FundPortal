@@ -16,6 +16,7 @@
             item: ko.observable(),
             comments: ko.observableArray([]),
             newComment: ko.observable(),
+            router: router,
             //#endregion
 
             //#region Methods.

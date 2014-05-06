@@ -40,7 +40,7 @@ namespace MvcWebRole.Filters
             // Check if the user has entered an adjustment.
             if (numericValue > 0)
             {
-                // Check if the user has entered an adjustment explaination.
+                // Check if the user has entered an adjustment explanation.
                 if (Convert.ToString(value).Length < this.MinimumNoteLength)
                 {
                     return new ValidationResult(

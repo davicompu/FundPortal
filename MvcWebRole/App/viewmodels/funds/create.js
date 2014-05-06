@@ -1,6 +1,8 @@
 ﻿define(['services/logger', 'plugins/router', 'datacontexts/fund.datacontext',
-    'datacontexts/fileupload.datacontext', 'viewmodels/funds/browse'],
-    function (logger, router, datacontext, fileuploadDatacontext, browseVM) {
+    'datacontexts/fileupload.datacontext', 'viewmodels/funds/browse',
+    'datacontexts/comment.datacontext', 'global/session'],
+    function (logger, router, datacontext, fileuploadDatacontext, browseVM,
+        commentDatacontext, session) {
         var vm = {
             //#region Initialization.
             error: ko.observable(),
@@ -11,12 +13,17 @@
 
             //#region Properties.
             item: ko.observable(),
+            comments: ko.observableArray([]),
+            newComment: ko.observable(),
+            router: router,
             //#endregion
 
             //#region Methods.
+            initComment: initComment,
             postFiles: postFiles,
-            removeFileUpload: removeFileUpload,
+            saveComment: saveComment,
             saveItem: saveItem,
+            removeFileUpload: removeFileUpload,
             //#endregion
         };
 
@@ -57,6 +64,18 @@
                 // Mark upload item for removal when parent item is saved.
                 vm.item().FileUploads()[indexOfUpload].destroy(true);
             }
+        }
+
+        function initComment() {
+            return vm.newComment(new commentDatacontext.createItem({ FundId: vm.fundId() }));
+        }
+
+        function saveComment(comment) {
+            return commentDatacontext.saveNewItem(comment)
+                .done(function (result) {
+                    vm.newComment(undefined);
+                    vm.comments.push(new commentDatacontext.createItem(result));
+                });
         }
 
         function saveItem(item) {

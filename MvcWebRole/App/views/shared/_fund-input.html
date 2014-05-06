@@ -181,6 +181,7 @@
             </fieldset>
 
             <section data-bind="ifIsInRole:'MANAGE-FUNDS'">
+                <!-- ko  if: $parent.router.activeInstruction().fragment !== 'funds/create' -->
                 <fieldset>
                     <h5>Administrator comments</h5>
                     <!-- TODO: Style username and date -->
@@ -210,6 +211,7 @@
                         </div>
                     </div>
                 </fieldset>
+                <!--/ko-->
             </section>
 
             <fieldset class="hide-on-print">
@@ -268,8 +270,9 @@
 
             <div class="row hide-on-print">
                 <div class="large-12 columns">
-                    <span class="text-button" data-bind="click: $parent.saveItem">Save
-                    </span>
+                    <p>
+                        <span class="text-button" data-bind="click: $parent.saveItem">Save</span>
+                    </p>
                 </div>
             </div>
         </section>

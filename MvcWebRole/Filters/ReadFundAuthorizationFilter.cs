@@ -11,16 +11,11 @@ using System.Web.Http;
 
 namespace MvcWebRole.Filters
 {
-    public class ReadFundAuthorizationFilter : AccessAreaAuthorizationFilter
+    public class ReadFundActionFilter : AccessAreaActionFilter
     {
-        protected override bool IsAuthorized(System.Web.Http.Controllers.HttpActionContext actionContext)
+        public override void OnActionExecuting(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
             // Run base method to handle Users and Roles filter parameters.
-            if (!base.IsAuthorized(actionContext))
-            {
-                return false;
-            }
-
             // Grab the fundId from the request.
             var fundId = actionContext.ControllerContext.RouteData.Values["id"].ToString();
 
@@ -38,10 +33,11 @@ namespace MvcWebRole.Filters
             {
                 // Add the fund to the Items dictionary to avoid duplicating the query.
                 HttpContext.Current.Items["fund"] = fund;
-                return true;
             }
-
-            return false;
+            else
+            {
+                throw new HttpException(401, "Unauthorized. You are not authorized to access this area.");
+            }
         }
     }
 }

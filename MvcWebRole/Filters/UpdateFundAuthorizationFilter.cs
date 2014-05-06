@@ -14,16 +14,10 @@ namespace MvcWebRole.Filters
     /// <summary>
     /// Authorizes a user to modify a fund.
     /// </summary>
-    public class UpdateFundAuthorizationFilter : AccessAreaAuthorizationFilter
+    public class UpdateFundActionFilter : AccessAreaActionFilter
     {
-        protected override bool IsAuthorized(System.Web.Http.Controllers.HttpActionContext actionContext)
+        public override void OnActionExecuting(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
-            // Run base method to handle Users and Roles filter parameters.
-            if (!base.IsAuthorized(actionContext))
-            {
-                return false;
-            }
-
             // Grab the arguments from the request.
             var id = (string)actionContext.ActionArguments["id"];
             var fundData = (Fund)actionContext.ActionArguments["fund"];
@@ -40,7 +34,7 @@ namespace MvcWebRole.Filters
             // Ensure the fund exists.
             if (fund == null)
             {
-                throw new HttpException(404, "NotFound.");
+                throw new HttpException(404, "NotFound. The requested fund does not exist.");
             }
 
             // Ensure the user has not mismatched the AreaId property.
@@ -49,7 +43,10 @@ namespace MvcWebRole.Filters
                 throw new HttpException(400, "BadRequest: Data does not match item associated with request id.");
             }
 
-            return this.IsAuthorizedToAccessArea(fund.AreaId);
+            if (!this.IsAuthorizedToAccessArea(fund.AreaId))
+            {
+                throw new HttpException(401, "Unauthorized. You are not authorized to access this area.");
+            }
         }
     }
 }

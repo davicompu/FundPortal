@@ -8,21 +8,18 @@ using System.Web.Http;
 
 namespace MvcWebRole.Filters
 {
-    public class CreateFundAuthorizationFilter : AccessAreaAuthorizationFilter
+    public class CreateFundActionFilter : AccessAreaActionFilter
     {
-        protected override bool IsAuthorized(System.Web.Http.Controllers.HttpActionContext actionContext)
+        public override void OnActionExecuting(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
-            // Run base method to handle Users and Roles filter parameters.
-            if (!base.IsAuthorized(actionContext))
-            {
-                return false;
-            }
-
             // Grab the fund and its associated areaId from the request.
             var fund = (Fund)actionContext.ActionArguments["fund"];
             var areaId = fund.AreaId;
 
-            return this.IsAuthorizedToAccessArea(areaId);
+            if(!this.IsAuthorizedToAccessArea(areaId))
+            {
+                throw new HttpException(401, "Unauthorized. You are not authorized to access this area.");
+            }
         }
     }
 }

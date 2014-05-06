@@ -18,7 +18,7 @@ namespace MvcWebRole.Controllers
         public MongoRepository<Area> areaRepository = new MongoRepository<Area>();
 
         // GET api/fund/5
-        [ReadFundAuthorizationFilter]
+        [ReadFundActionFilter]
         public HttpResponseMessage Get(string id)
         {
             var fund = (Fund)HttpContext.Current.Items["fund"];
@@ -31,7 +31,7 @@ namespace MvcWebRole.Controllers
         }
 
         // GET api/fund/getbyarea
-        [ReadAreaAuthorizationFilter]
+        [ReadAreaActionFilter]
         public HttpResponseMessage GetByArea(string id)
         {
             var funds = repository
@@ -42,7 +42,7 @@ namespace MvcWebRole.Controllers
         }
 
         // GET api/fund/getfundsubtotalsbyarea
-        [ReadAreaAuthorizationFilter]
+        [ReadAreaActionFilter]
         public HttpResponseMessage GetFundSubtotalsByArea(string id)
         {
             var area = areaRepository.GetById(id);
@@ -101,7 +101,7 @@ namespace MvcWebRole.Controllers
         }
 
         // POST api/fund
-        [ReadAreaAuthorizationFilter]
+        [CreateFundActionFilter]
         public HttpResponseMessage Post([FromBody]Fund fund)
         {
             fund.DateTimeCreated = new DateTimeOffset(DateTime.UtcNow);
@@ -111,7 +111,7 @@ namespace MvcWebRole.Controllers
         }
 
         // PUT api/fund/5
-        [UpdateFundAuthorizationFilter]
+        [UpdateFundActionFilter]
         public HttpResponseMessage Put(string id, [FromBody]Fund fund)
         {
             fund.Id = id;

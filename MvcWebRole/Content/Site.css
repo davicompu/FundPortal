@@ -5276,6 +5276,11 @@ p:last-child {
   background-color: #f5797c !important;
 }
 
+/* line 36, ../sass/app/components/_content.scss */
+.time-stamp {
+  color: #777;
+}
+
 /* 
  * Foundation Icons v 3.0
  * Made by ZURB 2013 http://zurb.com/playground/foundation-icon-fonts-3

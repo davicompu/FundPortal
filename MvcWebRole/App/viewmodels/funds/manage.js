@@ -33,6 +33,7 @@
         //#region Internal methods.
         function activate() {
             logger.log('Manage funds view activated', null, 'funds/manage', false);
+            ga('send', 'pageview', { 'page': window.location.href, 'title': document.title });
             return true;
         }
 

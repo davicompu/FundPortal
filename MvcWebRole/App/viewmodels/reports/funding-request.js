@@ -29,6 +29,7 @@
         function activate() {
             logger.log('Funding request report view activated', null, 'reports/funding-request', false);
             getItems();
+            ga('send', 'pageview', { 'page': window.location.href, 'title': document.title });
             return true;
         }
 

@@ -32,6 +32,7 @@
         function activate(id) {
             logger.log('Edit user view activated', null, 'users/edit', false);
             getUser(id);
+            ga('send', 'pageview', { 'page': window.location.href, 'title': document.title });
             return true;
         }
 

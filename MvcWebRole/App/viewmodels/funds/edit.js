@@ -42,6 +42,7 @@
             vm.fundId(id);
             getFund(id);
             getComments(id);
+            ga('send', 'pageview', { 'page': window.location.href, 'title': document.title });
             return true;
         }
 

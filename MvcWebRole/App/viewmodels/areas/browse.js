@@ -28,6 +28,7 @@
         //#region Internal methods.
         function activate() {
             logger.log('Browse areas view activated', null, 'areas/browse', false);
+            ga('send', 'pageview', { 'page': window.location.href, 'title': document.title });
             return true;
         }
 

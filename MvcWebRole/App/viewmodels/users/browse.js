@@ -28,7 +28,7 @@
         function activate() {
             logger.log('Browse users view activated', null, 'users/browse', false);
             getItems('get');
-
+            ga('send', 'pageview', { 'page': window.location.href, 'title': document.title });
             return true;
         }
 

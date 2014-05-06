@@ -26,6 +26,7 @@
             logger.log('New user view activated', null, 'users/create', false);
             vm.item(datacontext.createItem({}));
             vm.errors = ko.validation.group(vm.item());
+            ga('send', 'pageview', { 'page': window.location.href, 'title': document.title });
             return true;
         }
 

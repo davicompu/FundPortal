@@ -31,6 +31,7 @@
         function activate(id) {
             logger.log('Edit area view activated', null, 'areas/edit', false);
             getArea(id);
+            ga('send', 'pageview', { 'page': window.location.href, 'title': document.title });
             return true;
         }
 

@@ -25,6 +25,7 @@
             logger.log('Create area view activated', null, 'areas/create', false);
             vm.item(datacontext.createItem({}));
             vm.errors = ko.validation.group(vm.item());
+            ga('send', 'pageview', { 'page': window.location.href, 'title': document.title });
             return true;
         }
 

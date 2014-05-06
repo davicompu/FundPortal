@@ -36,6 +36,7 @@
         //#region Internal methods.
         function activate() {
             logger.log('Browse funds view activated', null, 'funds/browse', false);
+            ga('send', 'pageview', { 'page': window.location.href, 'title': document.title });
             return true;
         }
 

@@ -24,6 +24,7 @@
         function activate() {
             logger.log('Narrative information report view activated', null, 'reports/narrative-information', false);
             getItems();
+            ga('send', 'pageview', { 'page': window.location.href, 'title': document.title });
             return true;
         }
 

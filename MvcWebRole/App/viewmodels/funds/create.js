@@ -44,6 +44,7 @@
             }));
 
             vm.errors = ko.validation.group(vm.item());
+            ga('send', 'pageview', { 'page': window.location.href, 'title': document.title });
             return true;
         }
 

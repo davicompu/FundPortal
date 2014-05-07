@@ -169,10 +169,11 @@
                         </label>
                         <textarea name="BudgetAdjustmentNote" class="hide-on-print"
                             data-bind="value: BudgetAdjustmentNote"></textarea>
-                        <p class="print-only">
+                        <p class="hide" data-bind="css: { 'hide-on-print': BudgetAdjustment() === 0, 'print-only': BudgetAdjustment() > 0 }">
                             <span class="text-underline">Reason for increase or decrease in the requested budget for this fund</span>
                         </p>
-                        <p class="print-only" data-bind="text: BudgetAdjustmentNote"></p>
+                        <p class="hide" 
+                           data-bind="text: BudgetAdjustmentNote, css: { 'hide-on-print': BudgetAdjustment() === 0, 'print-only': BudgetAdjustment() > 0 }"></p>
                         <label for="BudgetAdjustmentNote"
                             class="error-message" data-bind="validationMessage: BudgetAdjustmentNote">
                         </label>
@@ -182,7 +183,7 @@
 
             <section data-bind="ifIsInRole:'MANAGE-FUNDS'">
                 <!-- ko  if: $parent.router.activeInstruction().fragment !== 'funds/create' -->
-                <fieldset>
+                <fieldset class="hide-on-print">
                     <h5>Administrator comments</h5>
                     <!-- TODO: Style username and date -->
                     <table class="tabular">

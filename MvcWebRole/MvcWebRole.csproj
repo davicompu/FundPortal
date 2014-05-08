@@ -226,6 +226,7 @@
     <Compile Include="Filters\CreateCommentAuthorizationFilter.cs" />
     <Compile Include="Filters\CreateFundAuthorizationFilter.cs" />
     <Compile Include="Filters\GetAreasActionFilter.cs" />
+    <Compile Include="Filters\GetAreasMvcActionFilter.cs" />
     <Compile Include="Filters\ReadAreaAuthorizationFilter.cs" />
     <Compile Include="Filters\ReadFundAuthorizationFilter.cs" />
     <Compile Include="Filters\RequireHttpsAttributeWebApi.cs" />

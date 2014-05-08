@@ -12,17 +12,22 @@ namespace MvcWebRole.Controllers
 {
     public class ReportFileController : Controller
     {
+        private MongoRepository<Area> areaRepository = new MongoRepository<Area>();
         private MongoRepository<Fund> fundRepository = new MongoRepository<Fund>();
 
         //
         // GET: /ReportFile/FundingRequest
-        [GetAreasActionFilter]
-        public ActionResult FundingRequest(List<Area> areas = null)
+        [GetAreasMvcActionFilter]
+        public ActionResult FundingRequest(HashSet<string> accessibleAreas = null)
         {
-            if (areas.Count > 0)
+            if (accessibleAreas.Count > 0)
             {
+                var areas = areaRepository
+                    .Where(a => accessibleAreas.Contains(a.Id))
+                    .OrderBy(a => a.Number);
+
                 var funds = fundRepository
-                    .Where(f => areas.Any(a => a.Id == f.AreaId))
+                    .Where(f => accessibleAreas.Contains(f.AreaId))
                     .OrderBy(f => f.Number);
 
                 var report = new FundingRequestReport(areas, funds);

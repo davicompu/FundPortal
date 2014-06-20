@@ -221,16 +221,16 @@
     <Compile Include="Extensions\RoleValidator.cs" />
     <Compile Include="FileModels\FundingRequestReport.cs" />
     <Compile Include="FileModels\Report.cs" />
-    <Compile Include="Filters\AccessAreaAuthorizationFilter.cs" />
+    <Compile Include="Filters\AccessAreaActionFilter.cs" />
     <Compile Include="Filters\ConditionallyRequireNoteAttribute.cs" />
-    <Compile Include="Filters\CreateCommentAuthorizationFilter.cs" />
-    <Compile Include="Filters\CreateFundAuthorizationFilter.cs" />
+    <Compile Include="Filters\CreateCommentActionFilter.cs" />
+    <Compile Include="Filters\CreateFundActionFilter.cs" />
     <Compile Include="Filters\GetAreasActionFilter.cs" />
     <Compile Include="Filters\GetAreasMvcActionFilter.cs" />
-    <Compile Include="Filters\ReadAreaAuthorizationFilter.cs" />
-    <Compile Include="Filters\ReadFundAuthorizationFilter.cs" />
+    <Compile Include="Filters\ReadAreaActionFilter.cs" />
+    <Compile Include="Filters\ReadFundActionFilter.cs" />
     <Compile Include="Filters\RequireHttpsAttributeWebApi.cs" />
-    <Compile Include="Filters\UpdateFundAuthorizationFilter.cs" />
+    <Compile Include="Filters\UpdateFundActionFilter.cs" />
     <Compile Include="Filters\ValidateModelAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

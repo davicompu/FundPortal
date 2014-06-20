@@ -11,7 +11,7 @@
     </Sites>
     <Endpoints>
       <InputEndpoint name="Endpoint1" protocol="http" port="80" />
-      <InputEndpoint name="HttpsEndpoint" protocol="https" port="443" certificate="FundPortalSelfCert" />
+      <InputEndpoint name="HttpsEndpoint" protocol="https" port="443" certificate="fundportaltest" />
     </Endpoints>
     <Imports>
       <Import moduleName="Diagnostics" />
@@ -22,7 +22,7 @@
       <Setting name="StorageConnectionString" />
     </ConfigurationSettings>
     <Certificates>
-      <Certificate name="FundPortalSelfCert" storeLocation="LocalMachine" storeName="My" />
+      <Certificate name="fundportaltest" storeLocation="LocalMachine" storeName="My" />
     </Certificates>
   </WebRole>
 </ServiceDefinition>

@@ -6,7 +6,7 @@
     <AzureDeploymentLabel>FundPortalCloudService</AzureDeploymentLabel>
     <AzureDeploymentReplacementMethod>AutomaticUpgrade</AzureDeploymentReplacementMethod>
     <AzureSlot>Production</AzureSlot>
-    <AzureEnableRemoteDesktop>True</AzureEnableRemoteDesktop>
+    <AzureEnableRemoteDesktop>False</AzureEnableRemoteDesktop>
     <AzureEnableWebDeploy>True</AzureEnableWebDeploy>
     <AzureFallbackToDeleteAndRecreateIfUpgradeFails>False</AzureFallbackToDeleteAndRecreateIfUpgradeFails>
     <AzureHostedServiceLabel>foundationportal-test</AzureHostedServiceLabel>

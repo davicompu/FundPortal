@@ -10,6 +10,7 @@
             //#endregion
 
             //#region Properties
+            editChecksVisible: ko.observable(false),
             item: ko.observable(),
             showBackButton: ko.observable(true),
             //#endregion
@@ -23,6 +24,13 @@
         vm.item.subscribe(function (newValue) {
             if (newValue !== undefined) {
                 vm.errors = ko.validation.group(newValue);
+                //init Manage funds check
+                fundRolesVisibleInitialization();
+                //update Manage funds check
+                vm.item().Roles.subscribe(function (newValue) {
+                    var found = !((newValue.indexOf("MANAGE-FUNDS")) > -1);
+                    vm.editChecksVisible(found);
+                });
             }
         });
 
@@ -88,6 +96,12 @@
 
         function clearItems() {
             vm.item(undefined);
+        }
+
+        function fundRolesVisibleInitialization() {
+            var roles = vm.item().Roles();
+            var found = !((roles.indexOf("MANAGE-FUNDS")) > -1);
+            vm.editChecksVisible(found);
         }
         //#endregion
     });
